@@ -11,9 +11,10 @@
 </head>
 <body>
 <h1>Barcode Scanner</h1>
-<video id="video" autoplay></video>
-<div id="result">Waiting for barcode...</div>
-<script src="../../js/scanner.js"></script>
+<div id="camera" style="width:100%"></div>
+<script src="https://cdn.jsdelivr.net/npm/@ericblade/quagga2/dist/quagga.min.js"></script>
+<!-- <div id="result">Waiting for barcode...</div> -->
+<script src="../../js/scannerQ.js"></script>
 </body>
 </html>
 
