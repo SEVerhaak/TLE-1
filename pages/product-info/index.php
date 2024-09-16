@@ -1,8 +1,12 @@
 <?php
+require_once "../../api/db.php";
+/** @var mysqli $db */
+
 if (isset($_GET['ean'])) {
-    $ean = $_GET['ean'];
-} else {
-    header("Location: ../scanner/");
+    $ean = mysqli_real_escape_string($db, $_GET['ean']);
+    // echo $ean;
+} else{
+    header('location: ../homepage');
 }
 ?>
 <!doctype html>
@@ -22,6 +26,9 @@ if (isset($_GET['ean'])) {
 <h1 id = "product-name"></h1>
 <img id = "product-image" >
 <p id = "nutri-score"></p>
+<div id="ean" style="display: none"><?= $ean ?></div>
+<h1>Naam product</h1>
+<p>Description</p>
 <p>Producent: producer</p>
 <p>diet-info: IF STATEMENT alleen als deze info er is</p>
 <p>Materialen: materialen</p>

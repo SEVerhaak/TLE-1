@@ -1,10 +1,10 @@
 <?php
-/** @var mysqli $db */
 
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
 require_once "db.php";
+/** @var mysqli $db */
 
 if (isset($_GET['ean'])) {
     $ean = mysqli_real_escape_string($db, $_GET['ean']);

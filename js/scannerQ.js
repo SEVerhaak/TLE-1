@@ -49,15 +49,21 @@ function fetchEAN(ean) {
                 return false;
             } else{
                 if (data[0] === 'error'){
-                    resultElement.textContent = 'EAN not recognized'
+                    // resultElement.textContent = 'EAN not recognized'
                 } else{
-                    resultElement.textContent = data.EAN
+                    // resultElement.textContent = data.EAN
+                    succesHandler(ean)
                     console.log(data)
                 }
             }
 
         })
         .catch(error => errorHandler(error));
+}
+
+function succesHandler(ean){
+    // !!!! dit moet veranderd worden tijdelijke fix !!!!!
+    window.location.href = `http://localhost/TLE-1/pages/product-info/index.php?ean=${ean}`;
 }
 
 function errorHandler(err){
