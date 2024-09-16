@@ -14,6 +14,6 @@
 <h1>Welkom bij EcoJourney!</h1>
 <p>Scan je producten en kom achter alle productspecificaties!</p>
 <p>Kom ook achter de Eco-score van alle producten</p>
-<a href = "../scanner"><button>Click here!</button></a>
+<a href = "../scanner"><button>Scan hier!</button></a>
 </body>
 </html>
