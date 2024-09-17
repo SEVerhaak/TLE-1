@@ -83,10 +83,8 @@ function startScanner() {
     Quagga.onDetected(function (result) {
 
         console.log("Barcode detected and processed : [" + result.codeResult.code + "]");
-        results.push(result.codeResult.code)
-        if (results.length > filterMax){
-            fetchEAN(mostFrequentNumber(results))
-        }
+        // results.push(result.codeResult.code)
+        addVariable(result.codeResult.code)
     });
 }
 
@@ -129,29 +127,13 @@ function errorHandler(err){
     //resultElement.textContent = 'EAN not recognized'
 }
 
-function mostFrequentNumber(arr) {
-    // Object om de frequenties van elk getal bij te houden
-    let frequency = {};
+function addVariable(variable) {
+    results.push(variable);
 
-    // Door de array lopen en frequenties bijwerken
-    arr.forEach(num => {
-        frequency[num] = (frequency[num] || 0) + 1;
-    });
+    // Check if any variable occurs 5 times
+    let occurrences = results.filter(item => item === variable).length;
 
-    // Variabelen om het meest voorkomende getal en zijn frequentie op te slaan
-    let mostFrequent = null;
-    let maxCount = 0;
-
-    // Door het frequentie-object lopen om het getal met de hoogste frequentie te vinden
-    for (let num in frequency) {
-        if (frequency[num] > maxCount) {
-            maxCount = frequency[num];
-            mostFrequent = Number(num);
-        }
+    if (occurrences === 5) {
+        fetchEAN(variable);
     }
-
-    results = [];
-
-    return mostFrequent;
 }
-    
