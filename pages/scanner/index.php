@@ -15,7 +15,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@ericblade/quagga2/dist/quagga.min.js"></script>
 <!-- <div id="result">Waiting for barcode...</div> -->
 <script src="../../js/scannerQ.js"></script>
-<h1 id="result">Geen barcode gevonden</h1>
+<h1 id="result"></h1>
 </body>
 </html>
 

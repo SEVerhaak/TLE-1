@@ -1,4 +1,4 @@
-let resultElement = document.getElementById('result')
+const resultElement = document.getElementById('result')
 
 const quaggaConf = {
     inputStream: {
@@ -44,16 +44,20 @@ function fetchEAN(ean) {
         .then(response => response.json())
         .then(data => {
             if (data.length === 0){
-                console.log('no results found')
-                //resultElement.textContent = 'EAN not recognized'
+                console.log('no results found');
+                console.log(data);
+                errorHandler();
                 return false;
             } else{
-                if (data[0] === 'error'){
-                    // resultElement.textContent = 'EAN not recognized'
+                if (data.errors.length === 0){
+                    succesHandler(ean);
+                    console.log(data);
+                    return true;
                 } else{
-                    // resultElement.textContent = data.EAN
-                    succesHandler(ean)
-                    console.log(data)
+                    console.log('no results found');
+                    console.log(data);
+                    errorHandler();
+                    return false;
                 }
             }
 
