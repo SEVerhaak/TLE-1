@@ -11,8 +11,8 @@
         /* In order to place the tracking correctly */
         canvas.drawing, canvas.drawingBuffer {
             position: absolute;
-            left: 0;
-            top: 0;
+            left: 60px;
+            top: 90px;
         }
     </style>
 </head>
