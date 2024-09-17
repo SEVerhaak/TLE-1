@@ -5,16 +5,19 @@ let results = [];
 startScanner();
 
 function startScanner() {
+
     Quagga.init({
+
         inputStream: {
             name: "Live",
             type: "LiveStream",
             target: document.querySelector('#scanner-container'),
             constraints: {
-                width: 480,
-                height: 320,
+                width: 260,
+                height: 260,
                 facingMode: "environment"
             },
+
         },
         decoder: {
             readers: [

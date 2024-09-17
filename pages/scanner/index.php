@@ -17,7 +17,7 @@
     </style>
 </head>
 <nav>
-    <img src="../../images/arrow.png" alt="Menu">
+    <a href = "../homepage"><img src="../../images/arrow.png" alt="Menu"></a>
 </nav>
 <body>
 <!-- Div to show the scanner -->
@@ -34,4 +34,5 @@
 <p id="warning"></p>
 </body>
 </html>
+
 

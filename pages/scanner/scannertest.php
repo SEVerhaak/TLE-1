@@ -25,9 +25,7 @@
 <!-- Include the image-diff library -->
 <script src="quagga.min.js"></script>
 
-<script>
 
-</script>
 </body>
 
 </html>
