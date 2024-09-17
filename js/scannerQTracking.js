@@ -14,7 +14,7 @@ function startScanner() {
             target: document.querySelector('#scanner-container'),
             constraints: {
                 width: 280,
-                height: 240,
+                height: 320,
                 facingMode: "environment"
             },
 
@@ -81,6 +81,7 @@ function startScanner() {
 
 
     Quagga.onDetected(function (result) {
+
         console.log("Barcode detected and processed : [" + result.codeResult.code + "]");
         results.push(result.codeResult.code)
         if (results.length > filterMax){

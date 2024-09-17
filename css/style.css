@@ -53,8 +53,8 @@ footer img {
 
 video {
     border: 2px solid #333;
-    width: 70vw;
-    height: 60vw;
+    max-width: 75vw;
+    height: 80vw;
     margin: 5vw 15vw
 }
 #result {
