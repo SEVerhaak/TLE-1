@@ -1,4 +1,5 @@
-var _scannerIsRunning = false;
+let _scannerIsRunning = false;
+let filterMax = 25;
 let results = [];
 
 startScanner();
@@ -39,11 +40,13 @@ function startScanner() {
     }, function (err) {
         if (err) {
             console.log(err);
+            document.getElementById('warning').textContent = 'kon de scanner niet starten!'
             return
         }
 
         console.log("Initialization finished. Ready to start");
         Quagga.start();
+        document.getElementById('warning').textContent = 'Scanner gestart!'
 
         // Set flag to is running
         _scannerIsRunning = true;
@@ -77,10 +80,49 @@ function startScanner() {
     Quagga.onDetected(function (result) {
         console.log("Barcode detected and processed : [" + result.codeResult.code + "]");
         results.push(result.codeResult.code)
-        if (results.length > 20){
-            console.log(mostFrequentNumber(results))
+        if (results.length > filterMax){
+            fetchEAN(mostFrequentNumber(results))
         }
     });
+}
+
+
+function fetchEAN(ean) {
+    // fetch(`http://localhost/TLE-1/api/product-data-api.php?ean=${ean}`)
+
+    fetch(`https://world.openfoodfacts.org/api/v3/product/${ean}.json`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.length === 0){
+                console.log('no results found');
+                console.log(data);
+                errorHandler();
+                return false;
+            } else{
+                if (data.errors.length === 0){
+                    succesHandler(ean);
+                    console.log(data);
+                    return true;
+                } else{
+                    console.log('no results found');
+                    console.log(data);
+                    errorHandler();
+                    return false;
+                }
+            }
+
+        })
+        .catch(error => errorHandler(error));
+}
+
+function succesHandler(ean){
+    // !!!! dit moet veranderd worden tijdelijke fix !!!!!
+    window.location.href = `http://localhost/TLE-1/pages/product-info/index.php?ean=${ean}`;
+}
+
+function errorHandler(err){
+    console.error('EAN Fetch error ' + err)
+    resultElement.textContent = 'EAN not recognized'
 }
 
 function mostFrequentNumber(arr) {
