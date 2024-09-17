@@ -97,7 +97,7 @@ if (isset($_GET['ean'])) {
             // dit veranderen tijdelijk!!
             // dit veranderen tijdelijk!!
             // dit veranderen tijdelijk!!
-            document.getElementById('product-image').src = `http://localhost/TLE-1/images/placeholder.webp`;
+            document.getElementById('product-image').src = `../../images/placeholder.webp`;
         }
 
         if (data.product.categories !== undefined && data.product.categories !== '' && data.product.categories !== null) {
