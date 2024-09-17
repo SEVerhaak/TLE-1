@@ -11,9 +11,23 @@
     <title>Homepage</title>
 </head>
 <body>
-<h1>Welkom bij EcoJourney!</h1>
-<p>Scan je producten en kom achter alle productspecificaties!</p>
-<p>Kom ook achter de Eco-score van alle producten</p>
-<a href = "../scanner"><button>Scan hier!</button></a>
+<nav>
+    <img src="../../images/menu.png" alt="Menu">
+    <img src="../../images/settings.png" alt="Settings">
+</nav>
+
+<main>
+    <img src="../../images/EcoJourneyL2.png" alt="Logo">
+<a href = "../scanner">
+    <button>Scan hier!</button>
+</a>
+<a href="">
+    <button>Scan Geschiedenis</button>
+</a>
+</main>
+
+<footer>
+    <img src="../../images/triangular-arrows-sign-for-recycle.png" alt="Recycle"
+</footer>
 </body>
 </html>
