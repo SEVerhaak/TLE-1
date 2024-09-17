@@ -55,7 +55,7 @@ video {
     border: 2px solid #333;
     max-width: 75vw;
     height: 80vw;
-    margin: 5vw 15vw
+    margin: 5vw 15vw;
 }
 #result {
     margin-top: 20px;

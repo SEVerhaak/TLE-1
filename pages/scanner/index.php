@@ -11,8 +11,8 @@
         /* In order to place the tracking correctly */
         canvas.drawing, canvas.drawingBuffer {
             position: absolute;
-            left: 60px;
-            top: 90px;
+            left: 15vw;
+            top: 24vw;
         }
     </style>
 </head>
@@ -36,7 +36,7 @@
 <script>
     window.onload = function () {
         let video = document.getElementsByTagName('video')[0]
-        //video.setAttribute('playsinline', '');
+        video.setAttribute('playsinline', '');
     };
 </script>
 </body>

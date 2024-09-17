@@ -121,7 +121,7 @@ function fetchEAN(ean) {
 
 function succesHandler(ean){
     // !!!! dit moet veranderd worden tijdelijke fix !!!!!
-    window.location.href = `http://localhost/TLE-1/pages/product-info/index.php?ean=${ean}`;
+    window.location.href = `../product-info/index.php?ean=${ean}`;
 }
 
 function errorHandler(err){
