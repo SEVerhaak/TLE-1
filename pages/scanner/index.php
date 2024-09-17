@@ -36,7 +36,7 @@
 <script>
     window.onload = function () {
         let video = document.getElementsByTagName('video')[0]
-        video.setAttribute('playsinline', '');
+        //video.setAttribute('playsinline', '');
     };
 </script>
 </body>
