@@ -28,7 +28,6 @@
 <script src="../../js/scannerQTracking.js"></script>
 
 <!-- Include the image-diff library -->
-<script src="quagga.min.js"></script>
 <div class="wrapper">
     <button>Herlaad</button>
     <button>Geschiedenis</button>
