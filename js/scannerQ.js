@@ -25,6 +25,7 @@ Quagga.init(quaggaConf, function (err) {
 
 Quagga.onDetected(function (result) {
     //alert("Detected barcode: " + result.codeResult.code);
+    
     fetchEAN(result.codeResult.code)
     console.log(result.codeResult.code)
 });
