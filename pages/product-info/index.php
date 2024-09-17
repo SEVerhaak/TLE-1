@@ -1,9 +1,10 @@
 <?php
-require_once "../../api/db.php";
-/** @var mysqli $db */
+//require_once "../../api/db.php";
+///** @var mysqli $db */
 
 if (isset($_GET['ean'])) {
-    $ean = mysqli_real_escape_string($db, $_GET['ean']);
+    $ean = $_GET['ean'];
+//    $ean = mysqli_real_escape_string($db, $_GET['ean']);
     // echo $ean;
 } else{
     header('location: ../homepage');
@@ -27,8 +28,6 @@ if (isset($_GET['ean'])) {
 <img id = "product-image" >
 <p id = "nutri-score"></p>
 <div id="ean" style="display: none"><?= $ean ?></div>
-<h1>Naam product</h1>
-<p>Description</p>
 <p>Producent: producer</p>
 <p>diet-info: IF STATEMENT alleen als deze info er is</p>
 <p>Materialen: materialen</p>
@@ -44,6 +43,7 @@ if (isset($_GET['ean'])) {
         .then(response => {
             // Controleer of het verzoek succesvol was
             if (!response.ok) {
+                window.location.href = '../scanner'
                 throw new Error('Network response was not ok');
             }
             // Converteer de response naar JSON
@@ -55,7 +55,7 @@ if (isset($_GET['ean'])) {
                 document.getElementById('nutri-score').innerHTML = `Nutri-score: ${data.product.nutriscore_2021_tags || 'N/A'}`;
                 document.getElementById('product-image').src = `${data.product.image_front_small_url || 'N/A'}`;
             } else {
-                console.error('Product data not found');
+                window.location.href = '../scanner'
             }
         })
         .catch(error => {
