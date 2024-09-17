@@ -126,7 +126,7 @@ function succesHandler(ean){
 
 function errorHandler(err){
     console.error('EAN Fetch error ' + err)
-    resultElement.textContent = 'EAN not recognized'
+    //resultElement.textContent = 'EAN not recognized'
 }
 
 function mostFrequentNumber(arr) {
