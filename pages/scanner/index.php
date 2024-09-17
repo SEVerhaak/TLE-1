@@ -21,7 +21,9 @@
 </nav>
 <body>
 <!-- Div to show the scanner -->
-<div id="scanner-container"></div>
+<div id="scanner-container">
+
+</div>
 <input style='display: none' type="button" id="btn" value="Start/Stop the scanner"/>
 <script src="../../js/scannerQTracking.js"></script>
 
@@ -32,6 +34,12 @@
     <button>Geschiedenis</button>
 </div>
 <p id="warning"></p>
+<script>
+    window.onload = function () {
+        let video = document.getElementsByTagName('video')[0]
+        video.setAttribute('playsinline', '');
+    };
+</script>
 </body>
 </html>
 
