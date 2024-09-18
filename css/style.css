@@ -1,5 +1,11 @@
+@import url("https://use.typekit.net/tln1elf.css");
+
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: "tt-commons-pro", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    color: #735439;
     height: 100vh;
     margin: 0;
     background-color: #F4EEE5;
@@ -27,6 +33,13 @@ main img {
     margin: 5vw;
     padding-right: 8vw;
     padding-bottom: 5vw;
+}
+
+h1 {
+    font-family: "tt-commons-pro", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    color: #284010;
 }
 
 button {
