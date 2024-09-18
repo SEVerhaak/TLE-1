@@ -39,14 +39,20 @@ if (mysqli_num_rows($result) > 0) {
     <div class="stripe"> </div>
     <h1 class="sub-header">Scan geschiedenis</h1>
     <div class="stripe"> </div>
-    <?php foreach ($data as $item) { ?>
-        <section class="history">
-            <h2><?= "Product Name: " . $item['product_name'] ?> </h2>
-            <h2> <?= "Barcode: " . $item['barcode'] ?> </h2>
+    <?php if (!empty($data)) { ?>
+        <!-- Als er resultaten zijn, toon ze -->
+        <?php foreach ($data as $item) { ?>
+            <section class="history">
+                <h2><?= "Product Name: " . $item['product_name'] ?> </h2>
+                <h2> <?= "Barcode: " . $item['barcode'] ?> </h2>
 
-            <a href = "../product-info/index.php?ean=<?= $item['barcode']?>"><button>Ga naar product</button></a>
-        </section>
-            <?php } ?>
+                <a href="../product-info/index.php?ean=<?= $item['barcode'] ?>"><button>Ga naar product</button></a>
+            </section>
+        <?php } ?>
+    <?php } else { ?>
+        <!-- Als er geen resultaten zijn, toon een bericht -->
+        <p>Geen scan geschiedenis gevonden.</p>
+    <?php } ?>
 
 
 </main>

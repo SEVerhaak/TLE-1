@@ -115,7 +115,7 @@ video {
     padding: 5vw;
     border: 2px solid #284010;
     border-radius: 16px;
-    width: 90vw;
+    width: 80vw;
 }
 
 .stripe {
@@ -133,7 +133,7 @@ video {
 .sub-header {
     background-color: #A7BF8F;
     padding: 5vw;
-    width: 90vw;
+    width: 80vw;
     border: 2px solid #284010;
     border-radius: 16px;
     text-align: center;

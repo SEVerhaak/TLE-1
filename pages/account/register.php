@@ -37,9 +37,8 @@ VALUES ('$email','$hash','$firstName','$lastName', '$phoneNumber')";
         $row = mysqli_fetch_assoc($result);
 
         $_SESSION['users_id'] = $row['id'];
-
-        echo $_SESSION['users_id'];
-        //header('Location: ../homepage/index.php');
+        $_SESSION['user_name'] = $row['f_name'];
+        header('Location: ../homepage/index.php');
 
     } else {
         // Handle the case where no user is found or query failed
