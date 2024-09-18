@@ -1,13 +1,24 @@
 <?php
 session_start();
+require_once "../../api/db.php";
+/** @var mysqli $db */
 if(isset($_SESSION['users_id'])){
     $user_id = $_SESSION['users_id'];
 }else{
     header('Location: ../account/login.php');
 }
-$query = "SELECT barcode, product_name FROM `user_history` WHERE user_id = 4;";
+$query = "SELECT barcode, product_name FROM `user_history` WHERE user_id = '$user_id';";
 $result = mysqli_query($db, $query)
 or die('Error ' . mysqli_error($db) . ' with query ' . $query);
+
+if (mysqli_num_rows($result) > 0) {
+    // Verwerk elke rij uit het resultaat
+    while ($row = mysqli_fetch_assoc($result)) {
+        // Voeg elke rij toe aan de array
+        $data[] = $row;
+    }
+}
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -26,7 +37,16 @@ or die('Error ' . mysqli_error($db) . ' with query ' . $query);
 
 <main>
     <h1>Scan geschiedenis</h1>
-    <h2>Product naam</h2>
+    <?php foreach ($data as $item) { ?>
+        <section>
+            <h2><?= "Product Name: " . $item['product_name'] ?> </h2>
+            <h2> <?= "Barcode: " . $item['barcode'] ?> </h2>
+
+            <a href = "../product-info/index.php?ean=<?= $item['barcode']?>"><button>Ga naar product</button></a>
+        </section>
+            <?php } ?>
+
+
 </main>
 
 <footer>
