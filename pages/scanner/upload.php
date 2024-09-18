@@ -46,6 +46,7 @@
             locate: true, // try to locate the barcode in the image
             src: URL.createObjectURL(file[0]) // or 'data:image/jpg;base64,' + data
         }, function(result){
+            console.log(result)
             if(result.codeResult) {
                 console.log("result", result.codeResult.code);
                 //fetchEAN(result.codeResult.code)
@@ -54,7 +55,7 @@
             } else {
                 let error = document.getElementById('error');
                 error.textContent = "Geen barcode herkend in de foto!";
-                selector.value = '';
+                //selector.value = '';
                 console.log("not detected");
             }
         });
