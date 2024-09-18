@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 'On');
 //connectie met de database
 /** @var $db */
 require_once "../../api/db.php";
@@ -26,6 +28,11 @@ if(isset($_POST['submit'])){
 VALUES ('$email','$hash','$firstName','$lastName', '$phoneNumber')";
     $result = mysqli_query($db, $query)
     or die('Error ' . mysqli_error($db) . ' with query ' . $query);
+
+    $secondQuery = "SELECT `id` FROM `users` WHERE `email` LIKE '$email';";
+    $result = mysqli_query($db, $secondQuery);
+    $_SESSION['user_id'] = $result[0];
+
     header('Location: ../homepage/index.php');
 
 }

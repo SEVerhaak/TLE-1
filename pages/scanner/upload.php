@@ -48,10 +48,38 @@
         }, function(result){
             if(result.codeResult) {
                 console.log("result", result.codeResult.code);
+                fetchEAN(result.codeResult.code)
             } else {
                 console.log("not detected");
             }
         });
+    }
+    function fetchEAN(ean) {
+        // fetch(`http://localhost/TLE-1/api/product-data-api.php?ean=${ean}`)
+
+        fetch(`https://world.openfoodfacts.org/api/v3/product/${ean}.json`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.length === 0) {
+                    console.log('no results found');
+                    console.log(data);
+                    errorHandler();
+                    return false;
+                } else {
+                    if (data.errors.length === 0) {
+                        succesHandler(ean);
+                        console.log(data);
+                        return true;
+                    } else {
+                        console.log('no results found');
+                        console.log(data);
+                        errorHandler();
+                        return false;
+                    }
+                }
+
+            })
+            .catch(error => errorHandler(error));
     }
 
 </script>

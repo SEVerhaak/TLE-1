@@ -54,9 +54,11 @@ if (isset($_GET['ean'])) {
 </body>
 </html>
 <script>
-    let ean = document.getElementById('meta-data-ean').innerHTML;
+    const ean = document.getElementById('meta-data-ean').innerHTML;
+    const userId =  document.getElementById('meta-data-id').textContent;
     let url = `https://world.openfoodfacts.org/api/v2/product/${ean}.json`;
     // Gebruik de fetch-API om de data op te halen
+
     fetch(url)
         .then(response => {
             // Controleer of het verzoek succesvol was
@@ -70,7 +72,14 @@ if (isset($_GET['ean'])) {
         .then(data => {
             if (data && data.product) {
                 dataHandler(data)
-
+                let name
+                if (data.product.brands && data.product.product_name){
+                    name = `${data.product.brands} - ${data.product.product_name}`
+                    saveToHistory(ean, name, userId)
+                } else{
+                    name = 'N.A'
+                    saveToHistory(ean, name, userId)
+                }
             } else {
                 window.location.href = '../scanner'
             }
@@ -81,23 +90,21 @@ if (isset($_GET['ean'])) {
         });
 
     function saveToHistory(ean, name, id){
-        const userId =  document.getElementById('meta-data-id')
         if (userId !== '' && userId !== undefined && userId){
-            const url = '../api'
+            console.log('saving to history!')
+            const url = `../api/product-data-api.php?ean=${ean}&name=${name}&id=${id}`
             fetch(url)
                 .then(response => {
                     // Controleer of het verzoek succesvol was
                     if (!response.ok) {
-                        window.location.href = '../scanner'
+                        //window.location.href = '../scanner'
                         throw new Error('Network response was not ok');
                     }
                     // Converteer de response naar JSON
                     return response.json();
                 })
                 .then(data => {
-                    if (data && data.product) {
-                    } else {
-                    }
+
                 })
                 .catch(error => {
                     // Foutafhandeling als het verzoek mislukt
