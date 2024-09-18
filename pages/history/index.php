@@ -5,7 +5,9 @@ if(isset($_SESSION['users_id'])){
 }else{
     header('Location: ../account/login.php');
 }
-
+$query = "SELECT barcode, product_name FROM `user_history` WHERE user_id = 4;";
+$result = mysqli_query($db, $query)
+or die('Error ' . mysqli_error($db) . ' with query ' . $query);
 ?>
 <!doctype html>
 <html lang="en">
