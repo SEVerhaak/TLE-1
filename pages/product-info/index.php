@@ -1,14 +1,15 @@
 <?php
 //require_once "../../api/db.php";
 ///** @var mysqli $db */
-
+session_start();
 if (isset($_GET['ean'])) {
     $ean = $_GET['ean'];
 //    $ean = mysqli_real_escape_string($db, $_GET['ean']);
-    // echo $ean;
+    // Controleer of er al een array voor EAN's in de sessie bestaat, zo niet, maak er een
 } else {
     header('location: ../homepage');
 }
+
 ?>
 <!doctype html>
 <html lang="en">
