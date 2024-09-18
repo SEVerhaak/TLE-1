@@ -1,6 +1,6 @@
 <?php
 $host       = "localhost";
-$database   = "TLE-1";
+$database   = "tle_1";
 $user       = "root";
 $password   = "";
 
