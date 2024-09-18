@@ -47,17 +47,26 @@
             src: URL.createObjectURL(file[0]) // or 'data:image/jpg;base64,' + data
         }, function(result){
             console.log(result)
-            if(result.codeResult) {
-                console.log("result", result.codeResult.code);
-                //fetchEAN(result.codeResult.code)
-                window.location.href = `https://world.openfoodfacts.org/api/v3/product/${ean}.json`
+            if (result){
+                if(result.codeResult) {
+                    console.log("result", result.codeResult.code);
+                    //fetchEAN(result.codeResult.code)
+                    const ean = result.codeResult.code
+                    window.location.href = `https://world.openfoodfacts.org/api/v3/product/${ean}.json`
 
+                } else {
+                    let error = document.getElementById('error');
+                    error.textContent = "Geen barcode herkend in de foto!";
+                    //selector.value = '';
+                    console.log("not detected");
+                }
             } else {
                 let error = document.getElementById('error');
                 error.textContent = "Geen barcode herkend in de foto!";
                 //selector.value = '';
                 console.log("not detected");
             }
+
         });
     }
 </script>
