@@ -1,8 +1,8 @@
 <?php
-$host       = "https://sql.hosted.hro.nl/";
-$database = "1068035";
-$user =  "1068035";
-$password = "eeloquie";
+$host       = "localhost";
+$database   = "tle_1";
+$user       = "root";
+$password   = "";
 
 $db = mysqli_connect($host, $user, $password, $database)
 or die("Error: " . mysqli_connect_error());
