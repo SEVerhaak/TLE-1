@@ -51,6 +51,9 @@ button {
     text-align: center;
     text-decoration: none;
     display: inline-block;
+    font-family: "tt-commons-pro", sans-serif;
+    font-weight: 600;
+    font-style: normal;
     font-size: 16px;
     margin: 2vw;
     width: 90vw;
@@ -64,6 +67,9 @@ input[type="file"]::file-selector-button{
     text-align: center;
     text-decoration: none;
     display: flex;
+    font-family: "tt-commons-pro", sans-serif;
+    font-weight: 600;
+    font-style: normal;
     font-size: 16px;
     margin: 2vw;
     width: 60vw;
@@ -100,6 +106,10 @@ video {
 section {
     margin: 4vw;
     padding: 1vw;
+}
+
+section #nutri-score-image, #ecoscore-image, #ingredients-image {
+    height: 10vh;
 }
 
 .history {

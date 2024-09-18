@@ -36,6 +36,12 @@ if (isset($_GET['ean'])) {
 <nav>
     <a href = "../homepage"><img src="../../images/arrow.png" alt="Menu"></a>
 </nav>
+<main>
+    <a href="../scanner">
+        <button>Scan opnieuw</button>
+    </a>
+</main>
+
 
 <section>
     <h1 id="product-name"></h1>
@@ -57,10 +63,6 @@ if (isset($_GET['ean'])) {
     <p id="transport"></p>
     <p>Ingredients:</p>
     <img id="ingredients-image">
-    <a href="../scanner">
-        <button>Scan opnieuw</button>
-    </a>
-
 </section>
 
 </body>
