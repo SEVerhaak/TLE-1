@@ -1,4 +1,8 @@
 <?php
+session_start();
+
+error_reporting(E_ALL);
+ini_set('display_errors', 'On');
 //connectie met de database
 /** @var $db */
 require_once "../../api/db.php";
@@ -26,7 +30,22 @@ if(isset($_POST['submit'])){
 VALUES ('$email','$hash','$firstName','$lastName', '$phoneNumber')";
     $result = mysqli_query($db, $query)
     or die('Error ' . mysqli_error($db) . ' with query ' . $query);
-    header('Location: ../homepage/index.php');
+
+    $secondQuery = "SELECT `id` FROM `users` WHERE `email` LIKE '$email';";
+    $result = mysqli_query($db, $secondQuery);
+    if ($result && mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+
+        $_SESSION['users_id'] = $row['id'];
+
+        echo $_SESSION['users_id'];
+        //header('Location: ../homepage/index.php');
+
+    } else {
+        // Handle the case where no user is found or query failed
+        echo "No user found with this email or query failed.";
+    }
+
 
 }
 

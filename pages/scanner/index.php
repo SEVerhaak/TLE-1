@@ -30,7 +30,7 @@
 <!-- Include the image-diff library -->
 <div class="wrapper">
     <a href = "upload.php"><button>Upload een foto</button></a>
-    <button>Geschiedenis</button>
+    <a href = "../history"><button>Geschiedenis</button></a>
 </div>
 <p id="warning"></p>
 <script>

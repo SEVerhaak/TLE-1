@@ -22,21 +22,21 @@
 <input type="file" id="file-selector" accept="image/*">
 <h2>Maak nieuwe foto (Alleen voor mobiel beschikbaar!)</h2>
 <input type="file" id="picture" name="picture" accept="image/*" capture="environment" />
-
+<p id="error" style="color: red"></p>
 <script>
     const fileSelector = document.getElementById('file-selector');
     fileSelector.addEventListener('change', (event) => {
         const fileList = event.target.files;
-        useFile(fileList)
+        useFile(fileList, fileSelector)
     });
 
     const camera = document.getElementById('picture')
     camera.addEventListener('change', (event) => {
         const fileList = event.target.files;
-        useFile(fileList)
+        useFile(fileList, camera)
     });
 
-    function useFile(file){
+    function useFile(file, selector){
         console.log(file);
 
         Quagga.decodeSingle({
@@ -46,14 +46,20 @@
             locate: true, // try to locate the barcode in the image
             src: URL.createObjectURL(file[0]) // or 'data:image/jpg;base64,' + data
         }, function(result){
+            console.log(result)
             if(result.codeResult) {
                 console.log("result", result.codeResult.code);
+                //fetchEAN(result.codeResult.code)
+                window.location.href = `https://world.openfoodfacts.org/api/v3/product/${ean}.json`
+
             } else {
+                let error = document.getElementById('error');
+                error.textContent = "Geen barcode herkend in de foto!";
+                //selector.value = '';
                 console.log("not detected");
             }
         });
     }
-
 </script>
 </body>
 </html>

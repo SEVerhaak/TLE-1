@@ -96,3 +96,15 @@ video {
     font-size: 18px;
     font-weight: bold;
 }
+section{
+    background-color: #A7BF8F;
+    margin: 4vw;
+    padding: 1vw;
+    border: 2px solid black;
+    border-radius: 16px;
+
+}
+section button{
+    background-color: #475b4f;
+    color: #F4EEE5;
+}
