@@ -22,21 +22,21 @@
 <input type="file" id="file-selector" accept="image/*">
 <h2>Maak nieuwe foto (Alleen voor mobiel beschikbaar!)</h2>
 <input type="file" id="picture" name="picture" accept="image/*" capture="environment" />
-
+<p id="error" style="color: red"></p>
 <script>
     const fileSelector = document.getElementById('file-selector');
     fileSelector.addEventListener('change', (event) => {
         const fileList = event.target.files;
-        useFile(fileList)
+        useFile(fileList, fileSelector)
     });
 
     const camera = document.getElementById('picture')
     camera.addEventListener('change', (event) => {
         const fileList = event.target.files;
-        useFile(fileList)
+        useFile(fileList, camera)
     });
 
-    function useFile(file){
+    function useFile(file, selector){
         console.log(file);
 
         Quagga.decodeSingle({
@@ -48,51 +48,17 @@
         }, function(result){
             if(result.codeResult) {
                 console.log("result", result.codeResult.code);
-                fetchEAN(result.codeResult.code)
+                //fetchEAN(result.codeResult.code)
+                window.location.href = `https://world.openfoodfacts.org/api/v3/product/${ean}.json`
+
             } else {
+                let error = document.getElementById('error');
+                error.textContent = "Geen barcode herkend in de foto!";
+                selector.value = '';
                 console.log("not detected");
             }
         });
     }
-    function fetchEAN(ean) {
-        // fetch(`http://localhost/TLE-1/api/product-data-api.php?ean=${ean}`)
-
-        fetch(`https://world.openfoodfacts.org/api/v3/product/${ean}.json`)
-            .then(response => response.json())
-            .then(data => {
-                if (data.length === 0) {
-                    console.log('no results found');
-                    console.log(data);
-                    errorHandler();
-                    return false;
-                } else {
-                    if (data.errors.length === 0) {
-                        succesHandler(ean);
-                        console.log(data);
-                        return true;
-                    } else {
-                        console.log('no results found');
-                        console.log(data);
-                        errorHandler();
-                        return false;
-                    }
-                }
-
-            })
-            .catch(error => errorHandler(error));
-    }
-
-    function succesHandler(ean) {
-        // location.replace = `../product-info/index.php?ean=${ean}`;
-        window.location.href = `../product-info/index.php?ean=${ean}`
-        //location.replace(`../product-info/index.php?ean=${ean}`)
-    }
-
-    function errorHandler(err) {
-        console.error('EAN Fetch error ' + err)
-        //resultElement.textContent = 'EAN not recognized'
-    }
-
 </script>
 </body>
 </html>

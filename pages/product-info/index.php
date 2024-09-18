@@ -6,6 +6,8 @@ if (isset($_GET['ean'])) {
     $ean = $_GET['ean'];
     if (isset($_SESSION['users_id'])) {
         $id = $_SESSION['users_id'];
+    } else{
+        $id = '';
     }
 //    $ean = mysqli_real_escape_string($db, $_GET['ean']);
     // Controleer of er al een array voor EAN's in de sessie bestaat, zo niet, maak er een
@@ -92,7 +94,7 @@ if (isset($_GET['ean'])) {
     function saveToHistory(ean, name, id){
         if (userId !== '' && userId !== undefined && userId){
             console.log('saving to history!')
-            const url = `../api/product-data-api.php?ean=${ean}&name=${name}&id=${id}`
+            const url = `../../api/history-add.php?ean=` + encodeURIComponent(`${ean}`) + `&name=` + encodeURIComponent(`${name}`) + `&id=` + encodeURIComponent(`${id}`)
             fetch(url)
                 .then(response => {
                     // Controleer of het verzoek succesvol was
