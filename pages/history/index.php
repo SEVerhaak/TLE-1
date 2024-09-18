@@ -38,7 +38,7 @@ if (mysqli_num_rows($result) > 0) {
 <main>
     <h1>Scan geschiedenis</h1>
     <?php foreach ($data as $item) { ?>
-        <section>
+        <section class="history">
             <h2><?= "Product Name: " . $item['product_name'] ?> </h2>
             <h2> <?= "Barcode: " . $item['barcode'] ?> </h2>
 

@@ -26,33 +26,43 @@ if (isset($_GET['ean'])) {
     <link rel="stylesheet" href="../../css/style.css">
     <title>Product-info</title>
 </head>
+
 <header>
     <div id="meta-data-ean" style="display: none;"><?php echo $ean ?> </div>
     <div id="meta-data-id" style="display: none"><?= $id ?></div>
 </header>
 <body>
-<h1 id="product-name"></h1>
-<img id="product-image">
-<p id="categories"></p>
-<p id="quantity"></p>
-<p id="nutri-score"></p>
-<img id="nutri-score-image">
-<div id="ingredienttagwrapper">
-    <p id="ingredienttag_0">Palmolie: </p>
-    <p id="ingredienttag_1">Vegan: </p>
-    <p id="ingredienttag_2">Vegetarisch: </p>
-</div>
-<img id="ecoscore-image">
-<p id="ecoscore-score"></p>
-<p id="co2-score"></p>
-<p id="packaging"></p>
-<p id="recycling"></p>
-<p id="transport"></p>
-<p>Ingredients:</p>
-<img id="ingredients-image">
-<a href="../scanner">
-    <button>Scan opnieuw</button>
-</a>
+
+<nav>
+    <a href = "../homepage"><img src="../../images/arrow.png" alt="Menu"></a>
+</nav>
+
+<section>
+    <h1 id="product-name"></h1>
+    <img id="product-image">
+    <p id="categories"></p>
+    <p id="quantity"></p>
+    <p id="nutri-score"></p>
+    <img id="nutri-score-image">
+    <div id="ingredienttagwrapper">
+        <p id="ingredienttag_0">Palmolie: </p>
+        <p id="ingredienttag_1">Vegan: </p>
+        <p id="ingredienttag_2">Vegetarisch: </p>
+    </div>
+    <img id="ecoscore-image">
+    <p id="ecoscore-score"></p>
+    <p id="co2-score"></p>
+    <p id="packaging"></p>
+    <p id="recycling"></p>
+    <p id="transport"></p>
+    <p>Ingredients:</p>
+    <img id="ingredients-image">
+    <a href="../scanner">
+        <button>Scan opnieuw</button>
+    </a>
+
+</section>
+
 </body>
 </html>
 <script>
