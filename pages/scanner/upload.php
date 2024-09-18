@@ -82,6 +82,17 @@
             .catch(error => errorHandler(error));
     }
 
+    function succesHandler(ean) {
+        // location.replace = `../product-info/index.php?ean=${ean}`;
+        window.location.href = `../product-info/index.php?ean=${ean}`
+        //location.replace(`../product-info/index.php?ean=${ean}`)
+    }
+
+    function errorHandler(err) {
+        console.error('EAN Fetch error ' + err)
+        //resultElement.textContent = 'EAN not recognized'
+    }
+
 </script>
 </body>
 </html>
