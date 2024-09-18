@@ -1,10 +1,12 @@
 let _scannerIsRunning = false;
 let filterMax = 25;
 let results = [];
+let processCounter = 0;
 
 startScanner();
 
 function startScanner() {
+
 
     Quagga.init({
 
@@ -39,6 +41,11 @@ function startScanner() {
                 }
             }
         },
+        locator:
+            {
+                halfSample: false,
+                patchSize: "x-large", // x-small, small, medium, large, x-large
+            }
 
     }, function (err) {
         if (err) {
@@ -65,16 +72,16 @@ function startScanner() {
                 result.boxes.filter(function (box) {
                     return box !== result.box;
                 }).forEach(function (box) {
-                    Quagga.ImageDebug.drawPath(box, { x: 0, y: 1 }, drawingCtx, { color: "green", lineWidth: 2 });
+                    Quagga.ImageDebug.drawPath(box, {x: 0, y: 1}, drawingCtx, {color: "green", lineWidth: 2});
                 });
             }
 
             if (result.box) {
-                Quagga.ImageDebug.drawPath(result.box, { x: 0, y: 1 }, drawingCtx, { color: "#00F", lineWidth: 2 });
+                Quagga.ImageDebug.drawPath(result.box, {x: 0, y: 1}, drawingCtx, {color: "#00F", lineWidth: 2});
             }
 
             if (result.codeResult && result.codeResult.code) {
-                Quagga.ImageDebug.drawPath(result.line, { x: 'x', y: 'y' }, drawingCtx, { color: 'red', lineWidth: 3 });
+                Quagga.ImageDebug.drawPath(result.line, {x: 'x', y: 'y'}, drawingCtx, {color: 'red', lineWidth: 3});
             }
         }
     });
@@ -95,17 +102,17 @@ function fetchEAN(ean) {
     fetch(`https://world.openfoodfacts.org/api/v3/product/${ean}.json`)
         .then(response => response.json())
         .then(data => {
-            if (data.length === 0){
+            if (data.length === 0) {
                 console.log('no results found');
                 console.log(data);
                 errorHandler();
                 return false;
-            } else{
-                if (data.errors.length === 0){
+            } else {
+                if (data.errors.length === 0) {
                     succesHandler(ean);
                     console.log(data);
                     return true;
-                } else{
+                } else {
                     console.log('no results found');
                     console.log(data);
                     errorHandler();
@@ -117,12 +124,11 @@ function fetchEAN(ean) {
         .catch(error => errorHandler(error));
 }
 
-function succesHandler(ean){
-    // !!!! dit moet veranderd worden tijdelijke fix !!!!!
+function succesHandler(ean) {
     window.location.href = `../product-info/index.php?ean=${ean}`;
 }
 
-function errorHandler(err){
+function errorHandler(err) {
     console.error('EAN Fetch error ' + err)
     //resultElement.textContent = 'EAN not recognized'
 }
@@ -135,5 +141,6 @@ function addVariable(variable) {
 
     if (occurrences === 5) {
         fetchEAN(variable);
+        results = [];
     }
 }
