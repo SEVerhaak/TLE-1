@@ -7,26 +7,32 @@ startScanner();
 
 function startScanner() {
 
-
     Quagga.init({
 
         inputStream: {
+            // basis instellingen voor de camera live stream
             name: "Live",
             type: "LiveStream",
+            // bepaalt het element waar de video op gestreamd worden
             target: document.querySelector('#scanner-container'),
             constraints: {
+                // bepaald de resolutie niet aankomen
                 width: 280,
                 height: 320,
+                // buiten camera heeft voorkeur
                 facingMode: "environment"
             },
 
         },
+        // hoe vaak er per seconde gescand wordt
         frequency: 60,
+        // type barcodes waarvoor gezocht moet worden
         decoder: {
             readers: [
                 "code_128_reader",
                 "ean_reader"
             ],
+            // debug info niet aankomen
             debug: {
                 showCanvas: true,
                 showPatches: true,
@@ -42,6 +48,7 @@ function startScanner() {
                 }
             }
         },
+        // instellingen voor efficienter scannen
         locator:
             {
                 halfSample: false,
@@ -49,17 +56,17 @@ function startScanner() {
             }
 
     }, function (err) {
+        // error handler als de scanner niet kan starten
         if (err) {
             console.log(err);
             document.getElementById('warning').textContent = 'kon de scanner niet starten!'
             return
         }
-
         console.log("Initialization finished. Ready to start");
         Quagga.start();
         document.getElementById('warning').textContent = 'Scanner gestart!'
 
-        // Set flag to is running
+        // Scanner running boolean aan
         _scannerIsRunning = true;
     });
 
@@ -68,13 +75,15 @@ function startScanner() {
             drawingCanvas = Quagga.canvas.dom.overlay;
 
         if (result) {
-            if (result.boxes) {
+            processCounter++
+            if (result.boxes && processCounter === 10) {
                 drawingCtx.clearRect(0, 0, parseInt(drawingCanvas.getAttribute("width")), parseInt(drawingCanvas.getAttribute("height")));
                 result.boxes.filter(function (box) {
                     return box !== result.box;
                 }).forEach(function (box) {
                     Quagga.ImageDebug.drawPath(box, {x: 0, y: 1}, drawingCtx, {color: "green", lineWidth: 2});
                 });
+                processCounter = 0;
             }
 
             if (result.box) {
@@ -86,7 +95,6 @@ function startScanner() {
             }
         }
     });
-
 
     Quagga.onDetected(function (result) {
 

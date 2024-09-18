@@ -4,6 +4,9 @@
 session_start();
 if (isset($_GET['ean'])) {
     $ean = $_GET['ean'];
+    if (isset($_SESSION['users_id'])) {
+        $id = $_SESSION['users_id'];
+    }
 //    $ean = mysqli_real_escape_string($db, $_GET['ean']);
     // Controleer of er al een array voor EAN's in de sessie bestaat, zo niet, maak er een
 } else {
@@ -23,6 +26,7 @@ if (isset($_GET['ean'])) {
 </head>
 <header>
     <div id="meta-data-ean" style="display: none;"><?php echo $ean ?> </div>
+    <div id="meta-data-id" style="display: none"><?= $id ?></div>
 </header>
 <body>
 <h1 id="product-name"></h1>
@@ -52,7 +56,6 @@ if (isset($_GET['ean'])) {
 <script>
     let ean = document.getElementById('meta-data-ean').innerHTML;
     let url = `https://world.openfoodfacts.org/api/v2/product/${ean}.json`;
-    console.log(url)
     // Gebruik de fetch-API om de data op te halen
     fetch(url)
         .then(response => {
@@ -67,6 +70,7 @@ if (isset($_GET['ean'])) {
         .then(data => {
             if (data && data.product) {
                 dataHandler(data)
+
             } else {
                 window.location.href = '../scanner'
             }
@@ -75,6 +79,32 @@ if (isset($_GET['ean'])) {
             // Foutafhandeling als het verzoek mislukt
             console.error('Er is een fout opgetreden:', error);
         });
+
+    function saveToHistory(ean, name, id){
+        const userId =  document.getElementById('meta-data-id')
+        if (userId !== '' && userId !== undefined && userId){
+            const url = '../api'
+            fetch(url)
+                .then(response => {
+                    // Controleer of het verzoek succesvol was
+                    if (!response.ok) {
+                        window.location.href = '../scanner'
+                        throw new Error('Network response was not ok');
+                    }
+                    // Converteer de response naar JSON
+                    return response.json();
+                })
+                .then(data => {
+                    if (data && data.product) {
+                    } else {
+                    }
+                })
+                .catch(error => {
+                    // Foutafhandeling als het verzoek mislukt
+                    console.error('Er is een fout opgetreden:', error);
+                });
+        }
+    }
 
     function dataHandler(data) {
         console.log(data);
@@ -164,29 +194,27 @@ if (isset($_GET['ean'])) {
 
         if (data.product.packaging !== undefined && data.product.packaging !== '') {
             document.getElementById('packaging').innerHTML = `Verpakking: ${data.product.packaging}`;
-        } else{
+        } else {
             document.getElementById('packaging').innerHTML = `Verpakking: Onbekend`;
         }
 
         if (data.product.packaging_recycling_tags !== undefined && data.product.packaging_recycling_tags !== '' && data.product.packaging_recycling_tags.length !== 0) {
             document.getElementById('recycling').innerHTML = `Recycling: ${data.product.packaging_recycling_tags}`;
-        } else{
+        } else {
             document.getElementById('recycling').innerHTML = `Recycling: Onbekend`;
         }
 
         if (data.product.origins !== undefined && data.product.origins !== '') {
             document.getElementById('transport').innerHTML = `Transport: ${data.product.origins}`;
-        } else{
+        } else {
             document.getElementById('transport').innerHTML = `Transport: Onbekend`;
         }
 
         if (data.product.image_ingredients_small_url !== undefined && data.product.image_ingredients_small_url !== '') {
             document.getElementById('ingredients-image').src = `${data.product.image_ingredients_small_url}`;
-        } else{
+        } else {
             document.getElementById('ingredients-image').src = ``;
         }
-
-
 
 
         //document.getElementById('nutri-score').innerHTML = `Nutri-score: ${data.product.nutriscore_2021_tags || 'N/A'}`;
