@@ -18,12 +18,12 @@
 
 <main>
     <img src="../../images/EcoJourneyL2.png" alt="Logo">
-<a href = "../scanner">
-    <button>Scan hier!</button>
-</a>
-<a href="">
-    <button>Scan Geschiedenis</button>
-</a>
+    <a href = "../scanner">
+        <button>Scan hier!</button>
+    </a>
+    <a href="">
+        <button>Scan Geschiedenis</button>
+    </a>
 </main>
 
 <footer>

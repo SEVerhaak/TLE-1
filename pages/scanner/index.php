@@ -29,7 +29,7 @@
 
 <!-- Include the image-diff library -->
 <div class="wrapper">
-    <button>Herlaad</button>
+    <a href = "upload.php"><button>Upload een foto</button></a>
     <button>Geschiedenis</button>
 </div>
 <p id="warning"></p>

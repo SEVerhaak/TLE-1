@@ -9,12 +9,18 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.rawgit.com/serratus/quaggaJS/0420d5e0/dist/quagga.min.js"></script>
+    <link rel="stylesheet" href="../../css/style.css">
+
     <title>Upload picture</title>
 </head>
+
 <body>
-<p>Upload bestaande foto</p>
+<nav>
+    <a href = "index.php"><img src="../../images/arrow.png" alt="Menu"></a>
+</nav>
+<h2>Upload bestaande foto</h2>
 <input type="file" id="file-selector" accept="image/*">
-<p>Maak nieuwe foto (Alleen voor mobiel beschikbaar!)</p>
+<h2>Maak nieuwe foto (Alleen voor mobiel beschikbaar!)</h2>
 <input type="file" id="picture" name="picture" accept="image/*" capture="environment" />
 
 <script>
@@ -35,7 +41,7 @@
 
         Quagga.decodeSingle({
             decoder: {
-                readers: ["code_128_reader"] // List of active readers
+                readers: ["code_128_reader", "ean_reader"] // List of active readers
             },
             locate: true, // try to locate the barcode in the image
             src: URL.createObjectURL(file[0]) // or 'data:image/jpg;base64,' + data

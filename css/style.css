@@ -25,6 +25,8 @@ main img {
     height: 50vw;
     border-bottom: 2px solid #333333;
     margin: 5vw;
+    padding-right: 8vw;
+    padding-bottom: 5vw;
 }
 
 button {
@@ -38,11 +40,30 @@ button {
     display: inline-block;
     font-size: 16px;
     margin: 2vw;
-    width: 90%;
+    width: 90vw;
+}
+input[type="file"]::file-selector-button{
+    background-color: #A7BF8F; /* Green */
+    border: 2px solid black;
+    border-radius: 16px;
+    color: black;
+    padding: 2vw 4vw;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    font-size: 16px;
+    margin: 2vw;
+    width: 60vw;
+    justify-content: center;
 }
 
 footer img {
     height: 12vw;
+}
+
+footer{
+    position: fixed;
+    bottom: 0;
 }
 
 .wrapper{
