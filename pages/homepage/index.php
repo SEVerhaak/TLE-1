@@ -1,4 +1,8 @@
 <?php
+session_start();
+if(isset($_SESSION['users_id'])){
+    $userName = $_SESSION['user_name'];
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -17,13 +21,25 @@
 </nav>
 
 <main>
+    <?php if(isset($_SESSION['users_id'])){
+    ?><h1>Welkom <?= $userName ?></h1>
+    <?php }?>
     <img src="../../images/EcoJourneyL2.png" alt="Logo">
     <a href = "../scanner">
         <button>Scan hier!</button>
     </a>
-    <a href="">
+    <a href="../history/index.php">
         <button>Scan Geschiedenis</button>
     </a>
+    <?php if(isset($_SESSION['users_id'])){
+        ?><a href="../account/logout.php">
+            <button>Uitloggen</button>
+        </a>
+    <?php }else{ ?>
+        <a href="../account/login.php">
+            <button>Inloggen</button>
+        </a>
+    <?php }?>
 </main>
 
 <footer>

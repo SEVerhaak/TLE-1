@@ -1,5 +1,10 @@
 <?php
-session_start()
+session_start();
+if(isset($_SESSION['users_id'])){
+    $user_id = $_SESSION['users_id'];
+}else{
+    header('Location: ../account/login.php');
+}
 
 ?>
 <!doctype html>
@@ -20,7 +25,6 @@ session_start()
 <main>
     <h1>Scan geschiedenis</h1>
     <h2>Product naam</h2>
-    <
 </main>
 
 <footer>

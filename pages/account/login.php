@@ -24,6 +24,7 @@ if (isset($_POST['submit'])) {
         if (password_verify($password, $user['password'])) {
             // Gebruiker succesvol ingelogd
             $_SESSION['users_id'] = $user['id'];
+            $_SESSION['user_name'] = $user['f_name'];
 
 
                 header('Location: ../homepage/index.php');
