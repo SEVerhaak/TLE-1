@@ -153,10 +153,10 @@ if (isset($_GET['ean'])) {
         }
 
         if (data.product.categories !== undefined && data.product.categories !== '' && data.product.categories !== null) {
-            document.getElementById('categories').innerHTML = `Categorien: ${data.product.categories}`;
+            document.getElementById('categories').innerHTML = `Categorieën: ${data.product.categories}`;
         } else {
             console.log('categorien')
-            document.getElementById('categories').innerHTML = 'Geen categorien gevonden'
+            document.getElementById('categories').innerHTML = 'Geen categorieën gevonden'
         }
 
 

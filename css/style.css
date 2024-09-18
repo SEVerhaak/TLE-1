@@ -42,6 +42,10 @@ h1 {
     color: #284010;
 }
 
+h2 {
+    color: #284010;
+}
+
 button {
     background-color: #A7BF8F; /* Green */
     border: 2px solid #284010;
@@ -123,4 +127,21 @@ section #nutri-score-image, #ecoscore-image, #ingredients-image {
 .history button {
     background-color: #284010;
     color: #F4EEE5;
+}
+
+#email, #password, #f_name, #l_name, #phone {
+    background-color: #F4EEE5; /* Green */
+    border: 2px solid #735439;
+    border-radius: 16px;
+    color: #735439;
+    padding: 2vw 4vw;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-family: "tt-commons-pro", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 16px;
+    margin: 2vw;
+    width: 80vw;
 }
