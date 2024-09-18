@@ -51,8 +51,10 @@
                 if(result.codeResult) {
                     console.log("result", result.codeResult.code);
                     //fetchEAN(result.codeResult.code)
+                    error.textContent = "";
+
                     const ean = result.codeResult.code
-                    window.location.href = `https://world.openfoodfacts.org/api/v3/product/${ean}.json`
+                    window.location.href = `../product-info/index.php?ean=${ean}`
 
                 } else {
                     let error = document.getElementById('error');

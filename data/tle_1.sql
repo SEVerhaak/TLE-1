@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Gegenereerd op: 18 sep 2024 om 10:24
--- Serverversie: 10.4.28-MariaDB
--- PHP-versie: 8.2.4
+-- Host: localhost
+-- Generation Time: Sep 18, 2024 at 12:53 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `products`
+-- Table structure for table `products`
 --
 
 CREATE TABLE `products` (
@@ -38,7 +38,7 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Gegevens worden geëxporteerd voor tabel `products`
+-- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`EAN`, `name`, `description`, `producer`, `diet_info`, `materials`, `eco_impact`) VALUES
@@ -66,7 +66,7 @@ INSERT INTO `products` (`EAN`, `name`, `description`, `producer`, `diet_info`, `
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -79,16 +79,25 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Gegevens worden geëxporteerd voor tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `f_name`, `l_name`, `phone`) VALUES
-(4, '123@gmail.com', '$2y$10$Vr.WmgsxFzCS.Wgdg0FifuO5TcO9uudBcHnjq/fNFrpP67104Oi5u', 'Elisa', 'Zornig', '0612345678');
+(4, '123@gmail.com', '$2y$10$Vr.WmgsxFzCS.Wgdg0FifuO5TcO9uudBcHnjq/fNFrpP67104Oi5u', 'Elisa', 'Zornig', '0612345678'),
+(5, 'severhaak@hotmail.nl', '$2y$10$X5CKJFggmKLUYJeSSmoBOO6FzF7WsVcpvTek5I7eQ9/6eXGjChiGq', 'Bas', 'Verhaak', '06123456789'),
+(6, 'aejf@gjs.com', '$2y$10$o49hrTXOOYv75iiEdd985eS20RQmBv8GhtJRgSTycqv8Im9UneZ0q', '`baw', 'wfg', '30634634'),
+(8, 'yo@yo.com', '$2y$10$jDgo9MkKUS5phgUHjHGEre8kjvTLHcDR3Zr.SSdSIXxyoem/XH9rO', 'gfd', 'esg', '032323542'),
+(10, 'yo@yo2.com', '$2y$10$RPm/YTiQn.yeZVRD4wzQB.qy51pUSBCf84fYYm.OcEt0/p9L.Zmw2', 'gfd', 'esg', '032323542'),
+(11, 'yo@yo3.com', '$2y$10$hzhxNKxGUggVL6zjZlcrPeshgBc0qr5bDd3sXfpiQnj3m4aysLuiK', 'gfd', 'esg', '032323542'),
+(12, 'fdghj@ghsd.com', '$2y$10$O7k2ciuB95eHZKTfiuxrluYozQnXaPg/hgU9DiFVCBSdaMXJRjlGC', 'gfgdhf', 'dgfdhfjk', '123467890'),
+(13, 'sdfsgd@gamailc.com', '$2y$10$K69GAXJzyChHU9WVtd0k6O0/1Be4fYBT24.5o6PyyIlpq02IPEnEG', 'asfdgdg', 'ads@', '924583643549'),
+(14, 'sfdgf', '$2y$10$S8x83CnIgbvQKuxtjBvOE.nYovvLkQ8pFzsoOxLE1fsjTJb1NDS06', 'fdsgdf', 'adsfgdg', 'asfdg'),
+(15, 'fkldskfglk@gmail.com', '$2y$10$hbNjh4lipdue321fi9uQ9.CR.ZinZUZ8Ci7emKbGMcGcPaQ/kAXRi', 'sdfghjgsa', 'dgfhsafdg', 'vqwesgfdkl');
 
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `user_history`
+-- Table structure for table `user_history`
 --
 
 CREATE TABLE `user_history` (
@@ -99,37 +108,53 @@ CREATE TABLE `user_history` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Indexen voor geëxporteerde tabellen
+-- Dumping data for table `user_history`
+--
+
+INSERT INTO `user_history` (`id`, `barcode`, `product_name`, `user_id`) VALUES
+(1, '1', 'test', 1),
+(2, '8711327511576 ', 'Lipton - Lipton Green Ice Tea', 15),
+(3, '8711327511576 ', 'Lipton - Lipton Green Ice Tea', 15),
+(4, '241', 'test', 15);
+
+--
+-- Indexes for dumped tables
 --
 
 --
--- Indexen voor tabel `products`
+-- Indexes for table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`EAN`);
 
 --
--- Indexen voor tabel `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- Indexen voor tabel `user_history`
+-- Indexes for table `user_history`
 --
 ALTER TABLE `user_history`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT voor geëxporteerde tabellen
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT voor een tabel `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `user_history`
+--
+ALTER TABLE `user_history`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
