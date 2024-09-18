@@ -21,10 +21,13 @@ if(isset($_SESSION['users_id'])){
 </nav>
 
 <main>
+    <div class="stripe"> </div>
+
     <?php if(isset($_SESSION['users_id'])){
     ?><h1>Welkom <?= $userName ?></h1>
     <?php }?>
     <img src="../../images/EcoJourneyL2.png" alt="Logo">
+    <div class="short-stripe"> </div>
     <a href = "../scanner">
         <button>Scan hier!</button>
     </a>

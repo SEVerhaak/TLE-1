@@ -36,14 +36,17 @@ if (isset($_GET['ean'])) {
 <nav>
     <a href = "../homepage"><img src="../../images/arrow.png" alt="Menu"></a>
 </nav>
+
 <main>
-    <a href="../scanner">
-        <button>Scan opnieuw</button>
-    </a>
-</main>
+    <div class="stripe"> </div>
 
+    <h1 class="sub-header">
+        Product informatie
+    </h1>
 
-<section>
+    <div class="stripe"> </div>
+
+<section class="info">
     <h1 id="product-name"></h1>
     <img id="product-image">
     <p id="categories"></p>
@@ -55,8 +58,8 @@ if (isset($_GET['ean'])) {
         <p id="ingredienttag_1">Vegan: </p>
         <p id="ingredienttag_2">Vegetarisch: </p>
     </div>
-    <img id="ecoscore-image">
     <p id="ecoscore-score"></p>
+    <img id="ecoscore-image">
     <p id="co2-score"></p>
     <p id="packaging"></p>
     <p id="recycling"></p>
@@ -64,6 +67,12 @@ if (isset($_GET['ean'])) {
     <p>Ingredients:</p>
     <img id="ingredients-image">
 </section>
+
+    <a href="../scanner">
+        <button>Scan opnieuw</button>
+    </a>
+
+</main>
 
 </body>
 </html>

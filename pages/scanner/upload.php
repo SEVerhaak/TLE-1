@@ -18,6 +18,9 @@
 <nav>
     <a href = "index.php"><img src="../../images/arrow.png" alt="Menu"></a>
 </nav>
+
+<main class="text-center">
+    <div class="stripe"> </div>
 <h2>Upload bestaande foto</h2>
 <input type="file" id="file-selector" accept="image/*">
 <h2>Maak nieuwe foto (Alleen voor mobiel beschikbaar!)</h2>
@@ -72,5 +75,6 @@
         });
     }
 </script>
+</main>
 </body>
 </html>

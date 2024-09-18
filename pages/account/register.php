@@ -69,6 +69,7 @@ mysqli_close($db);
     <a href = "../homepage"><img src="../../images/arrow.png" alt="Menu"></a>
 </nav>
 <main>
+    <div class="stripe"> </div>
     <form action="" method="post">
         <div class = "input-fields">
             <div class = "input">

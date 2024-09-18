@@ -16,10 +16,13 @@
         }
     </style>
 </head>
+
+<body>
 <nav>
     <a href = "../homepage"><img src="../../images/arrow.png" alt="Menu"></a>
 </nav>
-<body>
+<main>
+<div class="stripe"> </div>
 <!-- Div to show the scanner -->
 <div id="scanner-container">
 
@@ -55,6 +58,7 @@
         }
     });
 </script>
+</main>
 </body>
 </html>
 

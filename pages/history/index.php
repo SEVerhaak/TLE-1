@@ -36,7 +36,9 @@ if (mysqli_num_rows($result) > 0) {
 </nav>
 
 <main>
-    <h1>Scan geschiedenis</h1>
+    <div class="stripe"> </div>
+    <h1 class="sub-header">Scan geschiedenis</h1>
+    <div class="stripe"> </div>
     <?php foreach ($data as $item) { ?>
         <section class="history">
             <h2><?= "Product Name: " . $item['product_name'] ?> </h2>
