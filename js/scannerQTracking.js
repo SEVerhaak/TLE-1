@@ -21,6 +21,7 @@ function startScanner() {
             },
 
         },
+        frequency: 60,
         decoder: {
             readers: [
                 "code_128_reader",
@@ -44,7 +45,7 @@ function startScanner() {
         locator:
             {
                 halfSample: false,
-                patchSize: "x-large", // x-small, small, medium, large, x-large
+                patchSize: "medium", // x-small, small, medium, large, x-large
             }
 
     }, function (err) {
@@ -125,7 +126,9 @@ function fetchEAN(ean) {
 }
 
 function succesHandler(ean) {
-    window.location.href = `../product-info/index.php?ean=${ean}`;
+    // location.replace = `../product-info/index.php?ean=${ean}`;
+    window.location.href = `../product-info/index.php?ean=${ean}`
+    //location.replace(`../product-info/index.php?ean=${ean}`)
 }
 
 function errorHandler(err) {

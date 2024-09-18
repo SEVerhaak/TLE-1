@@ -168,16 +168,16 @@ if (isset($_GET['ean'])) {
             document.getElementById('packaging').innerHTML = `Verpakking: Onbekend`;
         }
 
-        if (data.product.packaging_recycling_tags !== undefined && data.product.packaging_recycling_tags !== '') {
+        if (data.product.packaging_recycling_tags !== undefined && data.product.packaging_recycling_tags !== '' && data.product.packaging_recycling_tags.length !== 0) {
             document.getElementById('recycling').innerHTML = `Recycling: ${data.product.packaging_recycling_tags}`;
         } else{
-            document.getElementById('recycling').innerHTML = `Recycling: Geen data gevonden`;
+            document.getElementById('recycling').innerHTML = `Recycling: Onbekend`;
         }
 
         if (data.product.origins !== undefined && data.product.origins !== '') {
             document.getElementById('transport').innerHTML = `Transport: ${data.product.origins}`;
         } else{
-            document.getElementById('transport').innerHTML = `Transport: Geen data gevonden`;
+            document.getElementById('transport').innerHTML = `Transport: Onbekend`;
         }
 
         if (data.product.image_ingredients_small_url !== undefined && data.product.image_ingredients_small_url !== '') {
@@ -191,11 +191,7 @@ if (isset($_GET['ean'])) {
 
         //document.getElementById('nutri-score').innerHTML = `Nutri-score: ${data.product.nutriscore_2021_tags || 'N/A'}`;
 
-
-        console.log(data.product.packaging)
-        console.log(data.product.packaging_recycling_tags)
-        console.log(data.product.image_ingredients_small_url)
-        console.log(data.product.origins)
+        console.log(data.product.packaging_recycling_tags.length)
 
     }
 </script>

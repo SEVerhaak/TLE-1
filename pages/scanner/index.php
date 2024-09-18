@@ -34,10 +34,26 @@
 </div>
 <p id="warning"></p>
 <script>
+    let keypressArray = [];
+
     window.onload = function () {
         let video = document.getElementsByTagName('video')[0]
         video.setAttribute('playsinline', '');
     };
+
+    document.addEventListener("keypress", function(e) {
+        if (e.target.tagName !== "INPUT") {
+            /*
+            var input = document.querySelector(".my-input");
+            input.focus();
+            input.value = e.key;
+             */
+            console.log(e.key)
+            keypressArray.push(e.key)
+            console.log(keypressArray)
+            e.preventDefault();
+        }
+    });
 </script>
 </body>
 </html>
