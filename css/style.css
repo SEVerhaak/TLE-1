@@ -7,14 +7,13 @@ body {
     font-style: normal;
     background-color: #FAF4EB;
     margin: 0;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
 }
 
 main {
     margin: 1rem;
-
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .box {

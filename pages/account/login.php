@@ -59,8 +59,9 @@ if (isset($_POST['submit'])) {
             background-color: white;
         }
     </style>
-    <body>
     <?php include('../../includes/nav.php'); ?>
+    <body>
+
     <main>
         <div class="stripe"> </div>
         <form action="" method="post">
