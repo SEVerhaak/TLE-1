@@ -58,17 +58,21 @@ if (isset($_POST['submit'])) {
         body{
             background-color: white;
         }
+        h1{
+            padding-bottom: 4rem;
+        }
     </style>
     <?php include('../../includes/nav.php'); ?>
     <body>
 
     <main>
+        <h1>Login</h1>
         <div class="stripe"> </div>
         <form action="" method="post">
             <div class = "input-fields">
                 <div class = "input">
                     <label for="email"></label>
-                    <input type="text" id="email" name="email" placeholder="Email" required>
+                    <input type="text" id="email" name="email" placeholder="user@example.com" required>
                 </div>
                 <?php if(isset($errors['loginFailed'])) { ?>
                     <div class="notification is-danger">
@@ -79,15 +83,18 @@ if (isset($_POST['submit'])) {
                     <label for="password"></label>
                     <input type="password" id="password" name="password" placeholder="Wachtwoord" required>
                 </div>
+                <div class = "checkbox">
+                    <input type="checkbox" id="remember" name="remember" value="1">
+                    <label for="remember" class = "text-color-4"> Onthoud mijn gegevens</label>
+                </div>
             </div>
-            <div class = "buttons">
+            <div id="link-account">
+                <a id="link-form" href="register.php" class = "text-color-4">Nog geen account? Maak er een aan.</a>
+            </div>
                 <div>
-                    <button class="button" type="submit" name="submit">Inloggen</button>
+                    <button class="login-button color-3" type="submit" name="submit">Login</button>
                 </div>
-                <div id="link-account">
-                    <a id="link-form" href="register.php">Geen account? Maak er een aan.</a>
-                </div>
-            </div>
+
         </form>
 
     </main>
