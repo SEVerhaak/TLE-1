@@ -15,38 +15,30 @@ if(isset($_SESSION['users_id'])){
     <title>Homepage</title>
 </head>
 <body>
-<nav>
-    <img src="../../images/menu.png" alt="Menu">
-    <img src="../../images/settings.png" alt="Settings">
-</nav>
 
 <main>
-    <div class="stripe"> </div>
 
     <?php if(isset($_SESSION['users_id'])){
     ?><h1>Welkom <?= $userName ?></h1>
     <?php }?>
-    <img src="../../images/EcoJourneyL2.png" alt="Logo">
-    <div class="short-stripe"> </div>
-    <a href = "../scanner">
-        <button>Scan hier!</button>
-    </a>
-    <a href="../history/index.php">
-        <button>Scan Geschiedenis</button>
-    </a>
-    <?php if(isset($_SESSION['users_id'])){
-        ?><a href="../account/logout.php">
-            <button>Uitloggen</button>
+
+    <section class="container">
+
+        <a href = "../scanner">
+            <div class="box color-3">
+                <h2 class="color-white">Scan barcode</h2>
+            </div>
         </a>
-    <?php }else{ ?>
-        <a href="../account/login.php">
-            <button>Inloggen</button>
+
+        <a href="../history/index.php">
+            <div class="box color-6">
+                <h2 class="color-white">Zoek product</h2>
+            </div>
         </a>
-    <?php }?>
+
+    </section>
+
 </main>
 
-<footer>
-    <img src="../../images/triangular-arrows-sign-for-recycle.png" alt="Recycle"
-</footer>
 </body>
 </html>
