@@ -1,0 +1,29 @@
+nav{
+    height: 15vw;
+    display: flex;
+    padding: 0.5rem 1rem;
+    align-items: center;
+}
+.logo-navbar{
+    width: 3rem;
+}
+footer{
+    height: 35vw;
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    background-color: white;
+    bottom: 0;
+    width: 100vw;
+    border-top-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+    box-shadow: 0 0 0 #888, 0 -0.05rem 0.8rem rgba(0,0,0,0.2);
+    justify-content: space-around;
+    align-items: center;
+}
+.footer-img{
+    width: 3rem;
+}
+.footer-box{
+    margin-bottom: 1.5rem;
+}

@@ -18,9 +18,7 @@
 </head>
 
 <body>
-<nav>
-    <a href = "../homepage"><img src="../../images/arrow.png" alt="Menu"></a>
-</nav>
+<?php include('../../includes/nav.php'); ?>
 <main>
 <div class="stripe"> </div>
 <!-- Div to show the scanner -->
@@ -59,6 +57,7 @@
     });
 </script>
 </main>
+<?php include('../../includes/footer.php'); ?>
 </body>
 </html>
 

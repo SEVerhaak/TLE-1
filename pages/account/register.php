@@ -64,9 +64,7 @@ mysqli_close($db);
 <header>
 
 <body>
-<nav>
-    <a href = "../homepage"><img src="../../images/arrow.png" alt="Menu"></a>
-</nav>
+<?php include('../../includes/nav.php'); ?>
 <main>
     <div class="stripe"> </div>
     <form action="" method="post">
@@ -105,5 +103,6 @@ mysqli_close($db);
     </form>
     <p id="error"><?php if(isset($error)){echo $error;} ?></p>
 </main>
+<?php include('../../includes/footer.php'); ?>
 </body>
 </html>

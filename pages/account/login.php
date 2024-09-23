@@ -54,9 +54,7 @@ if (isset($_POST['submit'])) {
 
     </header>
     <body>
-    <nav>
-        <a href = "../homepage"><img src="../../images/arrow.png" alt="Menu"></a>
-    </nav>
+    <?php include('../../includes/nav.php'); ?>
     <main>
         <div class="stripe"> </div>
         <form action="" method="post">
@@ -86,7 +84,7 @@ if (isset($_POST['submit'])) {
         </form>
 
     </main>
-
+    <?php include('../../includes/footer.php'); ?>
     </body>
     </html>
 <?php
