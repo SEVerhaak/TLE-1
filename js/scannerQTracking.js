@@ -1,5 +1,5 @@
 let _scannerIsRunning = false;
-let filterMax = 25;
+//let filterMax = 25;
 let results = [];
 let processCounter = 0;
 
