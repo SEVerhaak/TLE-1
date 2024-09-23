@@ -16,9 +16,44 @@
 
     }
 
+    .eco-color-a{
+        background-color: #1E8F4E;
+    }
+
+    .eco-color-b{
+        background-color: #2ECC71;
+
+    }
+
+    .eco-color-c{
+        background-color: #F5C100;
+    }
+
+    .eco-color-d{
+        background-color: #EF7E1A;
+    }
+
+    .eco-color-e{
+        background-color: #D93726;
+    }
+
+    .eco-color-grey{
+        background-color: #B3B3B3;
+    }
+
     .image-container{
         padding: 1vw;
         border-radius: 1.5rem;
+    }
+
+    .eco-score-container{
+        padding: 4rem;
+        max-width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 1.5rem;
+        position: relative;
+        top: -2rem;
     }
 
     img{
@@ -26,6 +61,7 @@
         display: block;
         margin-left: auto;
         margin-right: auto;
+        border-radius: 1.5rem;
     }
 
 
@@ -37,6 +73,11 @@
             <img src="../../images/placeholder.webp"
         </div>
     </section>
+    <div class="eco-score-container eco-color-grey">
+        <h2>Lorum Ipsum</h2>
+
+    </div>
+
     <h1>Test</h1>
     <h2>Test</h2>
     <h3>Test</h3>

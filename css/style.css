@@ -1,4 +1,5 @@
 @import url("https://use.typekit.net/tln1elf.css");
+/* border radius: 1.5rem */
 
 body {
     font-family: "tt-commons-pro", sans-serif;
@@ -77,20 +78,26 @@ main {
 
 h1{
     color: #152108;
+    margin: 0;
+    padding: 0;
 }
 
 h2{
     color: #152108;
-
+    margin: 0;
+    padding: 0;
 }
 
 h3{
     color: #152108;
-
+    margin: 0;
+    padding: 0;
 }
 
 p{
     color: #152108;
+    margin: 0;
+    padding: 0;
 }
 
 .secondary{
