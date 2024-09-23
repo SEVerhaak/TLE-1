@@ -74,3 +74,29 @@ main {
 .text-color-3 {
     color: black;
 }
+
+h1{
+    color: #152108;
+}
+
+h2{
+    color: #152108;
+
+}
+
+h3{
+    color: #152108;
+
+}
+
+p{
+    color: #152108;
+}
+
+.secondary{
+    color: #E5E5E5;
+}
+
+a{
+    text-decoration: none;
+}
