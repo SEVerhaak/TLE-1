@@ -15,9 +15,7 @@
 </head>
 
 <body>
-<nav>
-    <a href = "index.php"><img src="../../images/arrow.png" alt="Menu"></a>
-</nav>
+<?php include('../../includes/nav.php'); ?>
 
 <main class="text-center">
     <div class="stripe"> </div>
@@ -76,5 +74,6 @@
     }
 </script>
 </main>
+<?php include('../../includes/footer.php'); ?>
 </body>
 </html>

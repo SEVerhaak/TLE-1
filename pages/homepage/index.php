@@ -12,10 +12,11 @@ if(isset($_SESSION['users_id'])){
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/elisa.css">
     <title>Homepage</title>
 </head>
 <body>
-
+<?php include('../../includes/nav.php'); ?>
 <main>
 
     <?php if(isset($_SESSION['users_id'])){
@@ -41,6 +42,6 @@ if(isset($_SESSION['users_id'])){
     </section>
 
 </main>
-
+<?php include('../../includes/footer.php'); ?>
 </body>
 </html>

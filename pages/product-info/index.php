@@ -34,10 +34,7 @@ if (isset($_GET['ean'])) {
 </header>
 <body>
 
-<nav>
-    <a href = "../homepage"><img src="../../images/arrow.png" alt="Menu"></a>
-</nav>
-
+<?php include('../../includes/nav.php'); ?>
 <main>
     <div class="stripe"> </div>
 
@@ -74,7 +71,7 @@ if (isset($_GET['ean'])) {
     </a>
 
 </main>
-
+<?php include('../../includes/footer.php'); ?>
 </body>
 </html>
 <script>
