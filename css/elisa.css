@@ -22,7 +22,7 @@ footer{
     align-items: center;
 }
 .footer-img{
-    width: 3rem;
+    border-radius: 0 !important;
 }
 .footer-box{
     display: flex;

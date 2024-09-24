@@ -1,0 +1,145 @@
+.container {
+
+}
+
+.eco-color-a {
+    background-color: #1E8F4E;
+}
+
+.eco-color-b {
+    background-color: #2ECC71;
+
+}
+
+.eco-color-c {
+    background-color: #F5C100;
+}
+
+.eco-color-d {
+    background-color: #EF7E1A;
+}
+
+.eco-color-e {
+    background-color: #D93726;
+}
+
+.eco-color-unknown {
+    background-color: #B3B3B3;
+}
+
+.image-container {
+    padding: 1vw;
+    border-radius: 1.5rem;
+    width: 85vw;
+    background-color: rgba(149, 149, 149, 0.25);
+}
+
+.eco-score-container {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 1.5rem;
+    top: -2rem;
+    position: relative;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.1);
+}
+
+img {
+    max-width: 85vw;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 1.5rem;
+}
+
+.eco-score-img {
+    width: 40%;
+    height: fit-content;
+    border-radius: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.product-title {
+    padding: 0.5rem 1rem;
+}
+
+.eco-score-flex-container {
+
+}
+
+.eco-score-img-text-container {
+    display: flex;
+    padding: 0.5rem 1rem;
+    justify-content: space-between;
+}
+
+.text-stacker {
+    display: flex;
+    flex-direction: column;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.accordion-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.accordion {
+    background-color: white;
+    color: #444;
+    cursor: pointer;
+    padding: 6vw;
+    width: 85vw;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.05);
+    margin: 2vw 0;
+    border-radius: 0.5rem;
+}
+
+.active {
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0);
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.panel {
+    margin-top: -2vw;
+    padding: 0;
+    display: none;
+    background-color: white;
+    width: 85vw;
+    overflow: hidden;
+    border-radius: 0 0 0.5rem 0.5rem;
+    transition: all 0.3s ease-in-out;
+}
+
+
+.save-info {
+    border: none;
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    position: fixed;
+    left: 0;
+    right: 0;
+    margin-inline: auto;
+    width: 85%;
+    bottom: 7rem;
+    font-size: 1.1rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    background-color: #59733F;
+}
+
+.accordion-container {
+    display: flex;
+    flex-direction: row;
+}
