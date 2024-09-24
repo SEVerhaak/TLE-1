@@ -8,6 +8,8 @@
     <script src="https://cdn.rawgit.com/serratus/quaggaJS/0420d5e0/dist/quagga.min.js"></script>
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/elisa.css">
+    <link rel="stylesheet" href="../../css/isis.css">
+
     <style>
         /* In order to place the tracking correctly */
         canvas.drawing, canvas.drawingBuffer {
@@ -21,7 +23,7 @@
 <body>
 <?php include('../../includes/nav.php'); ?>
 <main>
-<div class="stripe"> </div>
+
 <!-- Div to show the scanner -->
 <div id="scanner-container">
 
@@ -29,11 +31,24 @@
 <input style='display: none' type="button" id="btn" value="Start/Stop the scanner"/>
 <script src="../../js/scannerQTracking.js"></script>
 
+    <div class="box info">
+        <h2 class="color-1">Hoe te gebruiken?</h2>
+        <p class="color-1">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto consequatur debitis deleniti obcaecati provident! Aliquid atque autem corporis esse, ex explicabo facere, facilis illo illum maiores, minus officia optio soluta.
+        </p>
+    </div>
+
+
 <!-- Include the image-diff library -->
-<div class="wrapper">
-    <a href = "upload.php"><button>Upload een foto</button></a>
-    <a href = "../history"><button>Geschiedenis</button></a>
-</div>
+    <div class="wrapper">
+        <a href = "upload.php">
+            <div class="box color-3">
+                <h2 class="color-white">Upload/maak een foto</h2>
+                <img src="../../images/upload.png">
+            </div>
+        </a>
+    </div>
+
 <p id="warning"></p>
 <script>
     let keypressArray = [];

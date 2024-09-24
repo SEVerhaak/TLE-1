@@ -1,8 +1,9 @@
 .box {
     display: flex;
     flex-direction: row;
-    gap: 2vw;
     width: 80vw;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
 .info {
