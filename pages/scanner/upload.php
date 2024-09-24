@@ -19,27 +19,27 @@
 <?php include('../../includes/nav.php'); ?>
 
 <main>
-<h1>Upload</h1>
+<h1 id = "upload-text">Upload</h1>
 <div class = "upload-page">
     <img id="output" width="200" />
     <p id="error" style="color: red"></p>
     <input id = "send-image" type = "submit" name="button" value="Verstuur foto" class = "image-upload" style = "display: none"/>
     <input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;">
-    <label for="file" style="cursor: pointer;" class = "image-upload">Upload een foto</label>
+    <label for="file" style="cursor: pointer;" class = "image-upload" >Upload een foto</label>
 </div>
-
-<!--<input type="file" id="file-selector" accept="image/*">-->
 
 <script>
     let fileList
     let loadFile = function(event) {
         let image = document.getElementById('output');
         image.src = URL.createObjectURL(event.target.files[0]);
+        image.style.borderRadius = "1.5rem";
     };
     const fileSelector = document.getElementById('file');
     fileSelector.addEventListener('change', (event) => {
         fileList = event.target.files;
         document.getElementById('send-image').style.display = "block";
+        document.getElementById('upload-text').textContent = "Uw foto"
         let error = document.getElementById('error');
         error.textContent = "";
     });
