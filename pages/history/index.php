@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once "../../api/db.php";
+require_once "../../api/dblocal.php";
 /** @var mysqli $db */
 if(isset($_SESSION['users_id'])){
     $user_id = $_SESSION['users_id'];
@@ -28,8 +28,14 @@ if (mysqli_num_rows($result) > 0) {
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/elisa.css">
     <title>Homepage</title>
 </head>
+<style>
+    h1{
+        align-self: flex-start;
+    }
+</style>
 <body>
 <?php include('../../includes/nav.php'); ?>
 <main>

@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdn.rawgit.com/serratus/quaggaJS/0420d5e0/dist/quagga.min.js"></script>
     <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/elisa.css">
     <style>
         /* In order to place the tracking correctly */
         canvas.drawing, canvas.drawingBuffer {

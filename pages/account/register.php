@@ -9,7 +9,7 @@ require_once "../../api/dblocal.php";
 //check of er een submit is
 if(isset($_POST['submit'])){
     //omzetten naar goeie variabelen met security voor scripts
-    if(empty($_POST['f_name']) || empty($_POST['l_name']) || empty($_POST['email']) || empty($_POST['phone']) || empty($_POST['password'])) {
+    if(empty($_POST['f_name']) || empty($_POST['l_name']) || empty($_POST['email2']) || empty($_POST['phone']) || empty($_POST['password'])) {
         $error = "Error: All fields are required.";
     } else {
         $error = '';
@@ -25,25 +25,36 @@ if(isset($_POST['submit'])){
     }
     //pasword hashen en veilig maken voordat hij de database in gaat
     // in de database inserten
+    $querycheckmail = "SELECT * FROM `users` WHERE email = '$email'";
+    $resultcheckmail = mysqli_query($db, $querycheckmail)
+    or die('Error ' . mysqli_error($db) . ' with query ' . $querycheckmail);
 
-    $query = "INSERT INTO `users`(`email`, `password`, `f_name`, `l_name`, `phone`)
-VALUES ('$email','$hash','$firstName','$lastName', '$phoneNumber')";
-    $result = mysqli_query($db, $query)
-    or die('Error ' . mysqli_error($db) . ' with query ' . $query);
 
-    $secondQuery = "SELECT `id` FROM `users` WHERE `email` LIKE '$email';";
-    $result = mysqli_query($db, $secondQuery);
-    if ($result && mysqli_num_rows($result) > 0) {
-        $row = mysqli_fetch_assoc($result);
-
-        $_SESSION['users_id'] = $row['id'];
-        $_SESSION['user_name'] = $row['f_name'];
-        header('Location: ../homepage/index.php');
+    if ($resultcheckmail && mysqli_num_rows($resultcheckmail) > 0) {
+         $error = "Er is al een account met dit mailadres";
 
     } else {
         // Handle the case where no user is found or query failed
-        echo "No user found with this email or query failed.";
+        $query = "INSERT INTO `users`(`email`, `password`, `f_name`, `l_name`, `phone`)
+VALUES ('$email','$hash','$firstName','$lastName', '$phoneNumber')";
+        $result = mysqli_query($db, $query)
+        or die('Error ' . mysqli_error($db) . ' with query ' . $query);
+
+        $secondQuery = "SELECT `id`, `f_name` FROM `users` WHERE `email` LIKE '$email';";
+        $result = mysqli_query($db, $secondQuery);
+        if ($result && mysqli_num_rows($result) > 0) {
+            $row = mysqli_fetch_assoc($result);
+
+            $_SESSION['users_id'] = $row['id'];
+            $_SESSION['user_name'] = $row['f_name'];
+            header('Location: ../homepage/index.php');
+
+        } else {
+            // Handle the case where no user is found or query failed
+            echo "No user found with this email or query failed.";
+        }
     }
+
 
 
 }
