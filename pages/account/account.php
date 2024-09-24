@@ -38,6 +38,7 @@ if ($result && mysqli_num_rows($result) > 0) {
 <main>
     <h1>Account Overview</h1>
     <div class="account-details">
+        <p><img src="../../images/stockpfp.jpg"></p>  nog aanpassen naar persoonlijke pfp!!!
         <p><strong>First Name:</strong> <?= htmlspecialchars($user['f_name']); ?></p>
         <p><strong>Last Name:</strong> <?= htmlspecialchars($user['l_name']); ?></p>
         <p><strong>Email:</strong> <?= htmlspecialchars($user['email']); ?></p>
