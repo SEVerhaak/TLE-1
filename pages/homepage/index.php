@@ -21,8 +21,9 @@ if(isset($_SESSION['users_id'])){
 <main>
 
     <?php if(isset($_SESSION['users_id'])){
-    ?><h1>Welkom <?= $userName ?></h1>
+    ?><h1 class="color-1">Welkom <?= $userName ?>,</h1>
     <?php }?>
+    <h3 class="color-1"> Wat wilt u weten vandaag?</h3>
 
     <section class="container">
 
@@ -39,6 +40,13 @@ if(isset($_SESSION['users_id'])){
                 <img src="../../images/search.png">
             </div>
         </a>
+
+        <div class="box info">
+            <h2 class="color-1">Hoe te gebruiken?</h2>
+            <p class="color-1">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto consequatur debitis deleniti obcaecati provident! Aliquid atque autem corporis esse, ex explicabo facere, facilis illo illum maiores, minus officia optio soluta.
+            </p>
+        </div>
 
     </section>
 
