@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
-require_once "db.php";
+require_once "dblocal.php";
 /** @var mysqli $db */
 
 if (isset($_GET['ean']) and $_GET['name'] and $_GET['id']) {

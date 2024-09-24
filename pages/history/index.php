@@ -32,16 +32,16 @@ if (mysqli_num_rows($result) > 0) {
     <title>Homepage</title>
 </head>
 <style>
-    h1{
-        align-self: flex-start;
+    main{
+        align-items: flex-start;
     }
 </style>
 <body>
 <?php include('../../includes/nav.php'); ?>
 <main>
-    <div class="stripe"> </div>
     <h1 class="sub-header">Scan geschiedenis</h1>
-    <div class="stripe"> </div>
+    <input type="text" placeholder="Zoeken..." id = "search-bar" name="search">
+    <p>Toon alleen bewaarde producten</p>
     <?php if (!empty($data)) { ?>
         <!-- Als er resultaten zijn, toon ze -->
         <?php foreach ($data as $item) { ?>

@@ -14,7 +14,6 @@ if (isset($_GET['ean'])) {
 } else {
     header('location: ../homepage');
 }
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -25,6 +24,7 @@ if (isset($_GET['ean'])) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/bas.css">
+    <link rel="stylesheet" href="../../css/elisa.css">
     <title>Product-info</title>
 </head>
 
