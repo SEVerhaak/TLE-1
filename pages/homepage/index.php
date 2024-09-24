@@ -2,6 +2,7 @@
 session_start();
 if(isset($_SESSION['users_id'])){
     $userName = $_SESSION['user_name'];
+    $loggedIn = TRUE;
 }
 ?>
 <!doctype html>
@@ -19,29 +20,29 @@ if(isset($_SESSION['users_id'])){
 <body>
 <?php include('../../includes/nav.php'); ?>
 <main>
-
+    <div class="heading-text">
     <?php if(isset($_SESSION['users_id'])){
     ?><h1 class="color-1">Welkom <?= $userName ?>,</h1>
     <?php }?>
-    <h3 class="color-1"> Wat wilt u weten vandaag?</h3>
-
+    <h2 class="color-1"> Wat wilt u scannen vandaag?</h2>
+    </div>
     <section class="container">
 
         <a href = "../scanner">
             <div class="box color-3">
                 <h2 class="color-white">Scan barcode</h2>
-                <img src="../../images/barcode.png">
+                <img src="../../images/icons/barcode.svg">
             </div>
         </a>
 
         <a href="../history/index.php">
             <div class="box color-6">
                 <h2 class="color-white">Zoek product</h2>
-                <img src="../../images/search.png">
+                <img src="../../images/icons/search-big.svg">
             </div>
         </a>
 
-        <div class="box info">
+        <div style="padding: 1rem; align-items: baseline;" class="box info">
             <h2 class="color-1">Hoe te gebruiken?</h2>
             <p class="color-1">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto consequatur debitis deleniti obcaecati provident! Aliquid atque autem corporis esse, ex explicabo facere, facilis illo illum maiores, minus officia optio soluta.
@@ -49,6 +50,7 @@ if(isset($_SESSION['users_id'])){
         </div>
 
     </section>
+    <div style="margin-top: <?php if($loggedIn){echo '5rem';}else{echo '2rem';}?>"></div>
 
 </main>
 <?php include('../../includes/footer.php'); ?>
