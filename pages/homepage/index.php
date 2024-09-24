@@ -13,6 +13,7 @@ if(isset($_SESSION['users_id'])){
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/elisa.css">
+    <link rel="stylesheet" href="../../css/isis.css">
     <title>Homepage</title>
 </head>
 <body>
@@ -28,14 +29,14 @@ if(isset($_SESSION['users_id'])){
         <a href = "../scanner">
             <div class="box color-3">
                 <h2 class="color-white">Scan barcode</h2>
-                <img src="../images/barcode.png">
+                <img src="../../images/barcode.png">
             </div>
         </a>
 
         <a href="../history/index.php">
             <div class="box color-6">
                 <h2 class="color-white">Zoek product</h2>
-                <img src="../images/search.png">
+                <img src="../../images/search.png">
             </div>
         </a>
 
