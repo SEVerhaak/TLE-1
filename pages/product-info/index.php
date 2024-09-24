@@ -38,6 +38,14 @@ if (isset($_GET['ean'])) {
 </nav>
 
 <main>
+
+    <div id="loading" style="display: flex; justify-content: center; align-items: center; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0.8); z-index: 9999;">
+        <video id="loading-video" width="80%" autoplay loop>
+            <source src="../../video/laden.mp4" type="video/mp4">
+            Now Loading
+        </video>
+    </div>
+
     <div class="stripe"> </div>
 
     <h1 class="sub-header">
@@ -77,60 +85,60 @@ if (isset($_GET['ean'])) {
 </body>
 </html>
 <script>
-    const ean = document.getElementById('meta-data-ean').innerHTML;
-    const userId =  document.getElementById('meta-data-id').textContent;
-    let url = `https://world.openfoodfacts.org/api/v2/product/${ean}.json`;
-    // Gebruik de fetch-API om de data op te halen
+    // Toon de laadtekst bij het starten van het laden
+    document.getElementById('loading').style.display = 'flex';
 
+    // De URL voor de API-oproep
+    const ean = document.getElementById('meta-data-ean').innerHTML;
+    const userId = document.getElementById('meta-data-id').textContent;
+    let url = `https://world.openfoodfacts.org/api/v2/product/${ean}.json`;
+
+    // Gebruik de fetch-API om de productgegevens op te halen
     fetch(url)
         .then(response => {
-            // Controleer of het verzoek succesvol was
             if (!response.ok) {
-                window.location.href = '../scanner'
+                window.location.href = '../scanner';
                 throw new Error('Network response was not ok');
             }
-            // Converteer de response naar JSON
             return response.json();
         })
         .then(data => {
             if (data && data.product) {
                 dataHandler(data)
-                let name
-                if (data.product.brands && data.product.product_name){
-                    name = `${data.product.brands} - ${data.product.product_name}`
-                    saveToHistory(ean, name, userId)
-                } else{
-                    name = 'N.A'
-                    saveToHistory(ean, name, userId)
+                let name;
+                if (data.product.brands && data.product.product_name) {
+                    name = `${data.product.brands} - ${data.product.product_name}`;
+                    saveToHistory(ean, name, userId); // Voeg het product toe aan de geschiedenis
+                } else {
+                    name = 'N.A';
+                    saveToHistory(ean, name, userId);
                 }
             } else {
-                window.location.href = '../scanner'
+                window.location.href = '../scanner';
             }
+            // Verberg de laadtekst zodra de gegevens zijn geladen
+            document.getElementById('loading').style.display = 'none';
         })
         .catch(error => {
-            // Foutafhandeling als het verzoek mislukt
             console.error('Er is een fout opgetreden:', error);
+            // Verberg de laadtekst bij een fout
+            document.getElementById('loading').style.display = 'none';
         });
 
-    function saveToHistory(ean, name, id){
-        if (userId !== '' && userId !== undefined && userId){
-            console.log('saving to history!')
-            const url = `../../api/history-add.php?ean=` + encodeURIComponent(`${ean}`) + `&name=` + encodeURIComponent(`${name}`) + `&id=` + encodeURIComponent(`${id}`)
+    // De saveToHistory en dataHandler functies blijven hetzelfde
+    function saveToHistory(ean, name, id) {
+        if (userId !== '' && userId !== undefined && userId) {
+            console.log('Saving to history!');
+            const url = `../../api/history-add.php?ean=` + encodeURIComponent(`${ean}`) + `&name=` + encodeURIComponent(`${name}`) + `&id=` + encodeURIComponent(`${id}`);
             fetch(url)
                 .then(response => {
-                    // Controleer of het verzoek succesvol was
                     if (!response.ok) {
-                        //window.location.href = '../scanner'
                         throw new Error('Network response was not ok');
                     }
-                    // Converteer de response naar JSON
                     return response.json();
                 })
-                .then(data => {
-
-                })
+                .then(data => {})
                 .catch(error => {
-                    // Foutafhandeling als het verzoek mislukt
                     console.error('Er is een fout opgetreden:', error);
                 });
         }
