@@ -10,6 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.rawgit.com/serratus/quaggaJS/0420d5e0/dist/quagga.min.js"></script>
     <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/elisa.css">
 
     <title>Upload picture</title>
 </head>
@@ -17,25 +18,35 @@
 <body>
 <?php include('../../includes/nav.php'); ?>
 
-<main class="text-center">
-    <div class="stripe"> </div>
-<h2>Upload bestaande foto</h2>
-<input type="file" id="file-selector" accept="image/*">
-<h2>Maak nieuwe foto (Alleen voor mobiel beschikbaar!)</h2>
-<input type="file" id="picture" name="picture" accept="image/*" capture="environment" />
-<p id="error" style="color: red"></p>
-<script>
-    const fileSelector = document.getElementById('file-selector');
-    fileSelector.addEventListener('change', (event) => {
-        const fileList = event.target.files;
-        useFile(fileList, fileSelector)
-    });
+<main>
+<h1>Upload</h1>
+<div class = "upload-page">
+    <img id="output" width="200" />
+    <p id="error" style="color: red"></p>
+    <input id = "send-image" type = "submit" name="button" value="Verstuur foto" class = "image-upload" style = "display: none"/>
+    <input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;">
+    <label for="file" style="cursor: pointer;" class = "image-upload">Upload een foto</label>
+</div>
 
-    const camera = document.getElementById('picture')
-    camera.addEventListener('change', (event) => {
-        const fileList = event.target.files;
-        useFile(fileList, camera)
+<!--<input type="file" id="file-selector" accept="image/*">-->
+
+<script>
+    let fileList
+    let loadFile = function(event) {
+        let image = document.getElementById('output');
+        image.src = URL.createObjectURL(event.target.files[0]);
+    };
+    const fileSelector = document.getElementById('file');
+    fileSelector.addEventListener('change', (event) => {
+        fileList = event.target.files;
+        document.getElementById('send-image').style.display = "block";
+        let error = document.getElementById('error');
+        error.textContent = "";
     });
+    document.getElementById('send-image').onclick = function() {
+        useFile(fileList, fileSelector)
+    }
+
 
     function useFile(file, selector){
         console.log(file);
