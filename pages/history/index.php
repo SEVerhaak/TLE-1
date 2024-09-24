@@ -29,6 +29,7 @@ if (mysqli_num_rows($result) > 0) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/elisa.css">
+    <link rel="stylesheet" href="../../css/bas.css">
     <title>Homepage</title>
 </head>
 <style>
