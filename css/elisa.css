@@ -141,3 +141,27 @@ label{
 #search-bar::placeholder{
     color: #55645b;
 }
+.solid {
+    border-top: 3px solid #bbb;
+    width: 100vw;
+    margin-top: 0.5rem;
+    margin-left: -1rem;
+    margin-bottom: 2rem;
+}
+.history{
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+    width: 83vw;
+    border-radius: 1.5rem;
+    align-self: center;
+    padding: 1rem;
+    box-shadow: 0 8px 6px -6px rgba(228, 225, 221, 0.8);
+    margin: 0.5rem;
+}
+.color-box-history{
+    background-color: #e4e1dd;
+}
+#link-history{
+    align-self: flex-end;
+}
