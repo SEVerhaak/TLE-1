@@ -52,7 +52,7 @@ function fetchResults() {
         .then(response => {
             // Controleer of het verzoek succesvol was
             if (!response.ok) {
-                //window.location.href = '../scanner'
+                window.location.href = '../scanner'
                 throw new Error('Network response was not ok');
             }
             // Converteer de response naar JSON
@@ -79,13 +79,13 @@ function fetchResults() {
 
 
             } else {
-                //window.location.href = '../scanner'
+                window.location.href = '../scanner'
             }
         })
         .catch(error => {
             // Foutafhandeling als het verzoek mislukt
             console.error('Er is een fout opgetreden:', error);
-            //window.location.href = '../scanner'
+            window.location.href = '../scanner'
         });
 }
 
@@ -175,10 +175,10 @@ function dataHandler(data) {
 
 
     if (data.product.ecoscore_score !== undefined && data.product.ecoscore_score !== '') {
-        document.getElementById('ecoscore-score').innerHTML = `Ecoscore: ${data.product.ecoscore_score}%`;
+        document.getElementById('co2-info').innerHTML = `Ecoscore: ${data.product.ecoscore_score}%`;
         if (data.product.ecoscore_data.agribalyse.co2_total !== undefined && data.product.ecoscore_data.agribalyse.co2_total !== '') {
-            document.getElementById('co2-info').innerHTML = `CO2-score: ${Math.round(data.product.ecoscore_data.agribalyse.co2_total * 100)} gram CO2 uitstoot per 100 gram product`;
-            document.getElementById('co2-score').innerHTML = `CO2-score: ${Math.round(data.product.ecoscore_data.agribalyse.co2_total * 100)} gram CO2 uitstoot per 100 gram product`;
+            document.getElementById('co2-info').innerHTML = `${Math.round(data.product.ecoscore_data.agribalyse.co2_total * 100)} gram CO2 uitstoot per 100 gram product`;
+            document.getElementById('co2-score').innerHTML = `${Math.round(data.product.ecoscore_data.agribalyse.co2_total * 100)} gr`;
         } else {
             document.getElementById('co2-info').innerHTML = `Onbekend`;
             document.getElementById('co2-score').innerHTML = `Onbekend`;
