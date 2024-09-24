@@ -16,6 +16,7 @@
             position: absolute;
             left: 15vw;
             top: 24vw;
+            border-radius: 1.5rem;
         }
     </style>
 </head>
@@ -26,36 +27,35 @@
 
 <!-- Div to show the scanner -->
 <div id="scanner-container">
-
 </div>
 <input style='display: none' type="button" id="btn" value="Start/Stop the scanner"/>
 <script src="../../js/scannerQTracking.js"></script>
 
-    <div class="box info">
+    <!-- Include the image-diff library -->
+    <p id="warning"></p>
+
+    <div class="wrapper">
+        <a href = "upload.php">
+            <div class="box color-3" style="padding: 1.5rem;">
+                <h2 class="color-white">Upload/maak een foto</h2>
+                <img src="../../images/icons/upload.svg">
+            </div>
+        </a>
+    </div>
+
+    <div style="padding: 1rem; align-items: baseline;" class="box info">
         <h2 class="color-1">Hoe te gebruiken?</h2>
         <p class="color-1">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto consequatur debitis deleniti obcaecati provident! Aliquid atque autem corporis esse, ex explicabo facere, facilis illo illum maiores, minus officia optio soluta.
         </p>
     </div>
-
-
-<!-- Include the image-diff library -->
-    <div class="wrapper">
-        <a href = "upload.php">
-            <div class="box color-3">
-                <h2 class="color-white">Upload/maak een foto</h2>
-                <img src="../../images/upload.png">
-            </div>
-        </a>
-    </div>
-
-<p id="warning"></p>
-<script>
+    <script>
     let keypressArray = [];
 
     window.onload = function () {
         let video = document.getElementsByTagName('video')[0]
         video.setAttribute('playsinline', '');
+        video.style.borderRadius = '1.5rem'
     };
 
     document.addEventListener("keypress", function(e) {
