@@ -24,6 +24,7 @@ if (isset($_GET['ean'])) {
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/bas.css">
     <title>Product-info</title>
 </head>
 
@@ -33,10 +34,7 @@ if (isset($_GET['ean'])) {
 </header>
 <body>
 
-<nav>
-    <a href = "../homepage"><img src="../../images/arrow.png" alt="Menu"></a>
-</nav>
-
+<?php include('../../includes/nav.php'); ?>
 <main>
 
     <div id="loading" style="display: flex; justify-content: center; align-items: center; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0.8); z-index: 9999;">
@@ -81,7 +79,7 @@ if (isset($_GET['ean'])) {
     </a>
 
 </main>
-
+<?php include('../../includes/footer.php'); ?>
 </body>
 </html>
 <script>

@@ -1,0 +1,13 @@
+.box {
+    display: flex;
+    flex-direction: row;
+    gap: 2vw;
+    width: 80vw;
+}
+
+.info {
+    background-color: #E5E5E5;
+    transparency: 40%;
+    flex-direction: column;
+
+}

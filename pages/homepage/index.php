@@ -12,41 +12,45 @@ if(isset($_SESSION['users_id'])){
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/elisa.css">
+    <link rel="stylesheet" href="../../css/isis.css">
     <title>Homepage</title>
 </head>
 <body>
-<nav>
-    <img src="../../images/menu.png" alt="Menu">
-    <img src="../../images/settings.png" alt="Settings">
-</nav>
-
+<?php include('../../includes/nav.php'); ?>
 <main>
-    <div class="stripe"> </div>
 
     <?php if(isset($_SESSION['users_id'])){
-    ?><h1>Welkom <?= $userName ?></h1>
+    ?><h1 class="color-1">Welkom <?= $userName ?>,</h1>
     <?php }?>
-    <img src="../../images/EcoJourneyL2.png" alt="Logo">
-    <div class="short-stripe"> </div>
-    <a href = "../scanner">
-        <button>Scan hier!</button>
-    </a>
-    <a href="../history/index.php">
-        <button>Scan Geschiedenis</button>
-    </a>
-    <?php if(isset($_SESSION['users_id'])){
-        ?><a href="../account/logout.php">
-            <button>Uitloggen</button>
+    <h3 class="color-1"> Wat wilt u weten vandaag?</h3>
+
+    <section class="container">
+
+        <a href = "../scanner">
+            <div class="box color-3">
+                <h2 class="color-white">Scan barcode</h2>
+                <img src="../../images/barcode.png">
+            </div>
         </a>
-    <?php }else{ ?>
-        <a href="../account/login.php">
-            <button>Inloggen</button>
+
+        <a href="../history/index.php">
+            <div class="box color-6">
+                <h2 class="color-white">Zoek product</h2>
+                <img src="../../images/search.png">
+            </div>
         </a>
-    <?php }?>
+
+        <div class="box info">
+            <h2 class="color-1">Hoe te gebruiken?</h2>
+            <p class="color-1">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto consequatur debitis deleniti obcaecati provident! Aliquid atque autem corporis esse, ex explicabo facere, facilis illo illum maiores, minus officia optio soluta.
+            </p>
+        </div>
+
+    </section>
+
 </main>
-
-<footer>
-    <img src="../../images/triangular-arrows-sign-for-recycle.png" alt="Recycle"
-</footer>
+<?php include('../../includes/footer.php'); ?>
 </body>
 </html>

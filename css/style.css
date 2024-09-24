@@ -1,179 +1,115 @@
 @import url("https://use.typekit.net/tln1elf.css");
-
+/* border radius: 1.5rem */
 
 body {
     font-family: "tt-commons-pro", sans-serif;
     font-weight: 300;
     font-style: normal;
-    color: #735439;
-    height: 100vh;
+    background-color: #FAF4EB;
     margin: 0;
-    background-color: #F4EEE5;
-}
-
-nav img {
-    height: 12vw;
-    margin: 10px;
-}
-
-nav {
-    display: flex;
-    justify-content: space-between;
 }
 
 main {
+    margin: 1rem;
     display: flex;
-    flex-direction: column;
     align-items: center;
-}
-
-.text-center {
-    text-align: center;
-}
-
-main img {
-    height: 50vw;
-    margin: 5vw;
-    padding-right: 8vw;
-    padding-bottom: 5vw;
-}
-
-h1 {
-    font-family: "tt-commons-pro", sans-serif;
-    font-weight: 600;
-    font-style: normal;
-    color: #284010;
-}
-
-h2 {
-    color: #284010;
-}
-
-button {
-    background-color: #A7BF8F; /* Green */
-    border: 2px solid #284010;
-    border-radius: 16px;
-    color: #735439;
-    padding: 2vw 4vw;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-family: "tt-commons-pro", sans-serif;
-    font-weight: 600;
-    font-style: normal;
-    font-size: 16px;
-    margin: 2vw;
-    width: 90vw;
-}
-input[type="file"]::file-selector-button{
-    background-color: #A7BF8F; /* Green */
-    border: 2px solid #284010;
-    border-radius: 16px;
-    color: #735439;
-    padding: 2vw 4vw;
-    text-align: center;
-    text-decoration: none;
-    display: flex;
-    font-family: "tt-commons-pro", sans-serif;
-    font-weight: 600;
-    font-style: normal;
-    font-size: 16px;
-    margin: 2vw;
-    width: 60vw;
-    justify-content: center;
-}
-
-footer img {
-    height: 12vw;
-}
-
-footer{
-    position: fixed;
-    bottom: 0;
-}
-
-.wrapper{
-    display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
-video {
-    border: 2px solid #284010;
-    max-width: 75vw;
-    height: 80vw;
-    margin: 5vw 15vw;
-}
-#result {
-    margin-top: 20px;
-    font-size: 18px;
-    font-weight: bold;
+.box {
+    padding: 12.5vw 5vw;
+    border-radius: 1.5rem;
+    margin: 3vw 1vw;
 }
 
-.info {
-    background-color: #A7BF8F;
-    padding: 5vw;
-    border: 2px solid #284010;
-    border-radius: 16px;
-    width: 80vw;
+.background-color-1 {
+    background-color: #FAF4EB;
 }
 
-.stripe {
-    width: 75vw;
-    border: 3px solid #735439;
-    border-radius: 90px;
+.color-1 {
+    color: #152108;
 }
 
-.short-stripe {
-    width: 65vw;
-    border: 3px solid #735439;
-    border-radius: 90px;
-}
-
-.sub-header {
-    background-color: #A7BF8F;
-    padding: 5vw;
-    width: 80vw;
-    border: 2px solid #284010;
-    border-radius: 16px;
-    text-align: center;
-}
-
-section {
-    margin: 4vw;
-    padding: 1vw;
-}
-
-section #nutri-score-image, #ecoscore-image, #ingredients-image {
-    height: 10vh;
-}
-
-.history {
-    background-color: #A7BF8F;
-    margin: 4vw;
-    padding: 1vw;
-    border: 2px solid #284010;
-    border-radius: 16px;
-
-}
-.history button {
+.color-2 {
     background-color: #284010;
-    color: #F4EEE5;
 }
 
-#email, #password, #f_name, #l_name, #phone {
-    background-color: #F4EEE5; /* Green */
-    border: 2px solid #735439;
-    border-radius: 16px;
-    color: #735439;
-    padding: 2vw 4vw;
-    text-align: center;
+.color-3 {
+    background-color: #59733F;
+}
+
+.color-4 {
+    background-color: #A7BF8F;
+}
+
+.color-5 {
+    background-color: #735439;
+
+}
+
+.color-6 {
+    background-color: #F5D07C;
+
+}
+
+.color-7 {
+    background-color: #E5E5E5;
+    /* gebruik transparancy 40% / 60% */
+}
+
+.color-8 {
+    background-color: #A7BF8F;
+    /* gebruik transparancy 30% */
+}
+
+.color-white {
+    color: #FFFFFF;
+}
+
+.text-color-1 {
+    color: #152108;
+}
+
+.text-color-2 {
+    color: #E5E5E5;
+    /* gebruik transparancy 40% / 60% */
+}
+
+.text-color-3 {
+    color: black;
+}
+.text-color-4{
+    color: #59733F;
+}
+
+h1{
+    color: #152108;
+    margin: 0;
+    padding: 0;
+}
+
+h2{
+    color: #152108;
+    margin: 0;
+    padding: 0;
+}
+
+h3{
+    color: #152108;
+    margin: 0;
+    padding: 0;
+}
+
+p{
+    color: #152108;
+    margin: 0;
+    padding: 0;
+}
+
+.secondary{
+    color: #E5E5E5;
+}
+
+a{
     text-decoration: none;
-    display: inline-block;
-    font-family: "tt-commons-pro", sans-serif;
-    font-weight: 600;
-    font-style: normal;
-    font-size: 16px;
-    margin: 2vw;
-    width: 80vw;
 }

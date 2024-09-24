@@ -48,22 +48,31 @@ if (isset($_POST['submit'])) {
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel = "stylesheet" href="../../css/style.css">
+        <link rel="stylesheet" href="../../css/elisa.css">
         <title>Login</title>
     </head>
     <header>
 
     </header>
+    <style>
+        body{
+            background-color: white;
+        }
+        h1{
+            padding-bottom: 4rem;
+        }
+    </style>
+    <?php include('../../includes/nav.php'); ?>
     <body>
-    <nav>
-        <a href = "../homepage"><img src="../../images/arrow.png" alt="Menu"></a>
-    </nav>
+
     <main>
+        <h1>Login</h1>
         <div class="stripe"> </div>
         <form action="" method="post">
             <div class = "input-fields">
                 <div class = "input">
                     <label for="email"></label>
-                    <input type="text" id="email" name="email" placeholder="Email" required>
+                    <input type="text" id="email" name="email" placeholder="user@example.com" required>
                 </div>
                 <?php if(isset($errors['loginFailed'])) { ?>
                     <div class="notification is-danger">
@@ -74,19 +83,22 @@ if (isset($_POST['submit'])) {
                     <label for="password"></label>
                     <input type="password" id="password" name="password" placeholder="Wachtwoord" required>
                 </div>
+                <div class = "checkbox">
+                    <input type="checkbox" id="remember" name="remember" value="1">
+                    <label for="remember" class = "text-color-4"> Onthoud mijn gegevens</label>
+                </div>
             </div>
-            <div class = "buttons">
+            <div id="link-account">
+                <a id="link-form" href="register.php" class = "text-color-4">Nog geen account? Maak er een aan.</a>
+            </div>
                 <div>
-                    <button class="button" type="submit" name="submit">Inloggen</button>
+                    <button class="login-button color-3" type="submit" name="submit">Login</button>
                 </div>
-                <div id="link-account">
-                    <a id="link-form" href="register.php">Geen account? Maak er een aan.</a>
-                </div>
-            </div>
+
         </form>
 
     </main>
-
+    <?php include('../../includes/footer.php'); ?>
     </body>
     </html>
 <?php

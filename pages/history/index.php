@@ -31,10 +31,7 @@ if (mysqli_num_rows($result) > 0) {
     <title>Homepage</title>
 </head>
 <body>
-<nav>
-    <a href = "../homepage"><img src="../../images/arrow.png" alt="Menu"></a>
-</nav>
-
+<?php include('../../includes/nav.php'); ?>
 <main>
     <div class="stripe"> </div>
     <h1 class="sub-header">Scan geschiedenis</h1>
@@ -57,8 +54,6 @@ if (mysqli_num_rows($result) > 0) {
 
 </main>
 
-<footer>
-    <img src="../../images/triangular-arrows-sign-for-recycle.png" alt="Recycle"
-</footer>
+<?php include('../../includes/footer.php'); ?>
 </body>
 </html>
