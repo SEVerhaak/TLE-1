@@ -41,14 +41,14 @@ if (mysqli_num_rows($result) > 0) {
 <main>
     <h1 class="sub-header">Scan geschiedenis</h1>
     <input type="text" placeholder="Zoeken..." id = "search-bar" name="search">
-    <p>Toon alleen bewaarde producten</p>
+    <p class = "text-color-3" style = "opacity: 60%">Toon alleen bewaarde producten</p>
     <div class = "solid"> </div>
     <?php if (!empty($data)) { ?>
         <!-- Als er resultaten zijn, toon ze -->
         <?php foreach ($data as $item) { ?>
             <section class="history color-box-history">
                 <h3><?= $item['product_name'] ?> </h3>
-                <p> <?= "Barcode: " . $item['barcode'] ?> </p>
+                <p class = "text-color-3" style = "opacity: 60%"> <?= "Barcode: " . $item['barcode'] ?> </p>
 
                 <a id = "link-history" class = "text-color-4" href="../product-info/index.php?ean=<?= $item['barcode'] ?>">Meer informatie</a>
             </section>
