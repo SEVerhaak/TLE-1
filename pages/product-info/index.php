@@ -44,6 +44,14 @@ if (isset($_GET['ean'])) {
 <?php include('../../includes/nav.php'); ?>
 
 <main>
+
+    <div id="loading" style="display: flex; justify-content: center; align-items: center; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0.8); z-index: 9999;">
+        <video id="loading-video" width="80%" autoplay loop>
+            <source src="../../video/laden.mp4" type="video/mp4">
+            Now Loading
+        </video>
+    </div>
+
     <section class="container background-color-3">
         <div class="image-container color-7">
             <img id='product-image' src="../../images/placeholder.webp"

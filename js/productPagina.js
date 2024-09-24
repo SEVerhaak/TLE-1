@@ -7,6 +7,9 @@ let url
 startFetch()
 
 function startFetch(){
+    // Toon de laadtekst bij het starten van het laden
+    document.getElementById('loading').style.display = 'flex';
+
     accordion = document.getElementsByClassName("accordion");
     ean  = document.getElementById('meta-data-ean').innerHTML;
     userId = document.getElementById('meta-data-id').textContent;
@@ -18,6 +21,7 @@ function startFetch(){
             accordionInit();
             fetchResults();
         }catch (e){
+            window.location.href = '../scanner'
             console.error('Error starting fetch request')
         }
     }
@@ -60,12 +64,11 @@ function fetchResults() {
                 console.log('handling data')
 
                 //localStorage.setItem('data', JSON.stringify(data.product))
+                document.getElementById('loading').style.display = 'none';
 
-                if (false) {
-                    dataHandler(test)
-                } else {
-                    dataHandler(data)
+                dataHandler(data)
                     let name
+
                     if (data.product.brands && data.product.product_name) {
                         name = `${data.product.brands} - ${data.product.product_name}`
                         saveToHistory(ean, name, userId)
@@ -73,7 +76,7 @@ function fetchResults() {
                         name = 'N.A'
                         saveToHistory(ean, name, userId)
                     }
-                }
+
 
             } else {
                 window.location.href = '../scanner'
@@ -82,6 +85,7 @@ function fetchResults() {
         .catch(error => {
             // Foutafhandeling als het verzoek mislukt
             console.error('Er is een fout opgetreden:', error);
+            window.location.href = '../scanner'
         });
 }
 

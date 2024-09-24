@@ -107,7 +107,9 @@ function startScanner() {
 
 function fetchEAN(ean) {
     // fetch(`http://localhost/TLE-1/api/product-data-api.php?ean=${ean}`)
+    window.location.href = `../product-info/index.php?ean=${ean}`
 
+    /*
     fetch(`https://world.openfoodfacts.org/api/v3/product/${ean}.json`)
         .then(response => response.json())
         .then(data => {
@@ -131,6 +133,8 @@ function fetchEAN(ean) {
 
         })
         .catch(error => errorHandler(error));
+
+     */
 }
 
 function succesHandler(ean) {
