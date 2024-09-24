@@ -28,14 +28,14 @@ if(isset($_SESSION['users_id'])){
         <a href = "../scanner">
             <div class="box color-3">
                 <h2 class="color-white">Scan barcode</h2>
-                <img src="../images/barcode">
+                <img src="../images/barcode.png">
             </div>
         </a>
 
         <a href="../history/index.php">
             <div class="box color-6">
                 <h2 class="color-white">Zoek product</h2>
-                <img src="../images/search">
+                <img src="../images/search.png">
             </div>
         </a>
 
