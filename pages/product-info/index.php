@@ -77,7 +77,7 @@ if (isset($_GET['ean'])) {
         <h3 id="categories" style="font-weight: lighter">Categorie</h3>
     </div>
     <div class="accordion-wrapper">
-        <button class="accordion">CO2 Informatie</button>
+        <button class="accordion">CO2 Informatie <img class = "accordion-image" src="../../images/chefron.svg" /></button>
         <div class="panel">
             <ul>
                 <li id="co2-info">
@@ -85,7 +85,7 @@ if (isset($_GET['ean'])) {
             </ul>
         </div>
 
-        <button class="accordion">Verpakking & Recycle Informatie</button>
+        <button class="accordion">Verpakking & Recycle Informatie<img class = "accordion-image" src="../../images/chefron.svg" /></button>
         <div class="panel">
             <ul>
                 <li id="packaging">
@@ -95,13 +95,16 @@ if (isset($_GET['ean'])) {
             </ul>
         </div>
 
-        <button class="accordion">Transport Informatie</button>
+        <button class="accordion">Transport Informatie<img class = "accordion-image" src="../../images/chefron.svg" /></button>
         <div class="panel">
             <ul>
                 <li id="transport">
                 </li>
             </ul>
         </div>
+            <div class = "recommendation" >
+        </div >
+
     </div>
     <?php
     if($loggedIn){
