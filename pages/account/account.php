@@ -52,7 +52,7 @@ if ($result && mysqli_num_rows($result) > 0) {
         <img class = "image-pfp" src="../../images/stockpfp.jpg">
         <h1 class = "text-color-1"> <?= htmlspecialchars($user['f_name']) . ' ' . htmlspecialchars($user['l_name']); ?></h1>
         <h3>871 points</h3>
-        <button class="accordion">Email<img class = "accordion-image" src="../../images/chefron.svg" /></button>
+        <button class="accordion">Emails<img class = "accordion-image" src="../../images/chefron.svg" /></button>
         <div class="panel">
             <ul>
                 <p><?= htmlspecialchars($user['email']); ?></p>
