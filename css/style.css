@@ -63,6 +63,10 @@ main {
     /* gebruik transparancy 30% */
 }
 
+.color-red {
+    background-color: #ef4e4e !important;
+}
+
 .color-white {
     color: #FFFFFF;
 }

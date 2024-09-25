@@ -69,6 +69,8 @@ function fetchResults() {
                 dataHandler(data)
                     let name
 
+                    getFavourite(ean, userId)
+
                     if (data.product.brands && data.product.product_name) {
                         name = `${data.product.brands} - ${data.product.product_name}`
                         saveToHistory(ean, name, userId)
@@ -88,6 +90,82 @@ function fetchResults() {
             window.location.href = '../scanner/index.php?error=Product_niet_gevonden!'
         });
 }
+
+function getFavourite(ean,id){
+    if (userId !== '' && userId !== undefined && userId) {
+        console.log('getting favourite!')
+        const url = `../../api/favourite.php?ean=` + encodeURIComponent(`${ean}`) + `&id=` + encodeURIComponent(`${id}`)
+        fetch(url)
+            .then(response => {
+                // Controleer of het verzoek succesvol was
+                if (!response.ok) {
+                    //window.location.href = '../scanner'
+                    throw new Error('Network response was not ok');
+                }
+                // Converteer de response naar JSON
+                return response.json();
+            })
+            .then(data => {
+                const button = document.getElementsByClassName('save-info')[0]
+                button.addEventListener('click', favouriteClickHandler)
+
+                if (parseInt(data.favourite) !== 0) {
+                    buttonStyleHandler('favourite')
+                } else{
+                    buttonStyleHandler('not-favourite')
+                }
+
+            })
+            .catch(error => {
+                // Foutafhandeling als het verzoek mislukt
+                console.error('Er is een fout opgetreden:', error);
+            });
+    }
+}
+
+function buttonStyleHandler(type){
+    if (type === 'favourite'){
+        const button = document.getElementsByClassName('save-info')[0]
+        const text = document.getElementById('button-text')
+        text.textContent = 'verwijder zoekopdracht'
+        button.classList.add('color-red')
+    } else{
+        const button = document.getElementsByClassName('save-info')[0]
+        const text = document.getElementById('button-text')
+        text.textContent = 'bewaar zoekopdracht'
+        button.classList.remove('color-red')
+    }
+}
+
+function favouriteClickHandler(){
+    if (userId !== '' && userId !== undefined && userId) {
+        console.log('getting favourite!')
+        const url = `../../api/set-favourite.php?ean=` + encodeURIComponent(`${ean}`) + `&id=` + encodeURIComponent(`${userId}`)
+        fetch(url)
+            .then(response => {
+                // Controleer of het verzoek succesvol was
+                if (!response.ok) {
+                    //window.location.href = '../scanner'
+                    throw new Error('Network response was not ok');
+                }
+                // Converteer de response naar JSON
+                return response.json();
+            })
+            .then(data => {
+                console.log(data);
+                if (data.result === "removed favourite"){
+                    buttonStyleHandler('not-favourite')
+                }else{
+                    buttonStyleHandler('favourite')
+                }
+            })
+            .catch(error => {
+                // Foutafhandeling als het verzoek mislukt
+                console.error('Er is een fout opgetreden:', error);
+            });
+    }
+}
+
 
 
 function saveToHistory(ean, name, id) {
@@ -154,8 +232,7 @@ function dataHandler(data) {
         document.getElementById('quantity').innerHTML = `Geen gewicht bekend voor dit product`;
     }
 
-
-    if (data.product.ecoscore_grade !== '' && data.product.ecoscore_grade !== null && data.product.ecoscore_grade) {
+    if (data.product.ecoscore_grade !== '' && data.product.ecoscore_grade !== null && data.product.ecoscore_grade &&data.product.ecoscore_grade !== 'not-applicable' ) {
         document.getElementById('ecoscore-image').src = `../../images/eco-score/ecoscore-${data.product.ecoscore_grade}.svg`;
         document.getElementById('eco-score-color').classList.remove('eco-color-unknown')
         document.getElementById('eco-score-color').classList.add(`eco-color-${data.product.ecoscore_grade}`)
@@ -166,9 +243,6 @@ function dataHandler(data) {
                 collection[i].classList.add('color-white')
             }
         }
-
-
-
     } else {
         document.getElementById('ecoscore-image').src = `../../images/eco-score/ecoscore-unknown.svg`;
     }
@@ -176,17 +250,43 @@ function dataHandler(data) {
 
     if (data.product.ecoscore_score !== undefined && data.product.ecoscore_score !== '') {
         document.getElementById('co2-info').innerHTML = `Ecoscore: ${data.product.ecoscore_score}%`;
+
         if (data.product.ecoscore_data.agribalyse.co2_total !== undefined && data.product.ecoscore_data.agribalyse.co2_total !== '') {
-            document.getElementById('co2-info').innerHTML = `${Math.round(data.product.ecoscore_data.agribalyse.co2_total * 100)} gram CO2 uitstoot per 100 gram product`;
-            document.getElementById('co2-score').innerHTML = `${Math.round(data.product.ecoscore_data.agribalyse.co2_total * 100)} gr`;
+            const co2Per100g = Math.round(data.product.ecoscore_data.agribalyse.co2_total * 100);
+            const carEmissionsPerKm = 120; // average car emissions in grams of CO2 per kilometer
+            const kmEquivalent = (co2Per100g / carEmissionsPerKm).toFixed(2); // equivalent km driven
+
+            document.getElementById('co2-info').innerHTML = `${co2Per100g} gram CO2 uitstoot per 100 gram product`;
+            document.getElementById('co2-score').innerHTML = `${co2Per100g} gr`;
+
+            // Create new LI element to display km equivalent
+            const kmInfo = document.createElement('li');
+            kmInfo.id = 'km-info';
+            kmInfo.innerHTML = `Dat is gelijk aan ${kmEquivalent} km rijden met een gemiddelde auto.`;
+
+            // Append it after co2-info
+            document.getElementById('co2-info').parentNode.insertBefore(kmInfo, document.getElementById('co2-info').nextSibling);
         } else {
             document.getElementById('co2-info').innerHTML = `Onbekend`;
             document.getElementById('co2-score').innerHTML = `Onbekend`;
+
+            // Remove km-info if it exists
+            const kmInfo = document.getElementById('km-info');
+            if (kmInfo) {
+                kmInfo.remove();
+            }
         }
     } else {
         document.getElementById('co2-score').innerHTML = `Onbekend`;
         document.getElementById('co2-info').innerHTML = `Onbekend`;
+
+        // Remove km-info if it exists
+        const kmInfo = document.getElementById('km-info');
+        if (kmInfo) {
+            kmInfo.remove();
+        }
     }
+
 
 
     if (data.product.packaging !== undefined && data.product.packaging !== '') {

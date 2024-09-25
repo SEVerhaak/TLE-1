@@ -1,5 +1,5 @@
 <?php
-session_start();
+$isLoggedIn = isset($_SESSION['users_id']);
 ?>
 <footer>
     <a class="footer-box" href="../../pages/scanner/index.php">

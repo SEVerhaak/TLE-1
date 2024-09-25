@@ -7,7 +7,7 @@ if(isset($_SESSION['users_id'])){
 }else{
     header('Location: ../account/login.php');
 }
-$query = "SELECT barcode, product_name FROM `user_history` WHERE user_id = '$user_id';";
+$query = "SELECT barcode, product_name, favourite FROM `user_history` WHERE user_id = '$user_id';";
 $result = mysqli_query($db, $query)
 or die('Error ' . mysqli_error($db) . ' with query ' . $query);
 
@@ -51,7 +51,8 @@ if (mysqli_num_rows($result) > 0) {
     <?php if (!empty($data)) { ?>
         <!-- Als er resultaten zijn, toon ze -->
         <?php foreach ($data as $item) { ?>
-            <section class="history color-box-history">
+            <section class="history
+            <?php if($item['favourite'] === '1'){echo "color-box-history-favourite";}else{echo "color-box-history";} ?>">
                 <h3><?= $item['product_name'] ?> </h3>
                 <p class = "text-color-3" style = "opacity: 60%"> <?= "Barcode: " . $item['barcode'] ?> </p>
 
