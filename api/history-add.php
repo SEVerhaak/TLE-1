@@ -1,10 +1,14 @@
 <?php
+include "isLocal.php";
 
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
-require_once "dblocal.php";
-/** @var mysqli $db */
+if (isLocalhost()){
+    require_once "dblocal.php";
+} else {
+    require_once "db.php";
+}/** @var mysqli $db */
 
 if (isset($_GET['ean']) && isset($_GET['name']) && isset($_GET['id'])) {
 

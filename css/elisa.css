@@ -152,7 +152,7 @@ label{
     color: #55645b;
 }
 .solid {
-    border-top: 3px solid #bbb;
+    border-top: 1px solid rgba(187, 187, 187, 0.45);
     width: 100vw;
     margin-top: 0.5rem;
     margin-left: -1rem;

@@ -1,6 +1,14 @@
 <?php
+include "../../api/isLocal.php";
+
 session_start();
-require_once "../../api/dblocal.php";
+
+if (isLocalhost()){
+    require_once "../../api/dblocal.php";
+} else {
+    require_once "../../api/db.php";
+}
+
 /** @var mysqli $db */
 if(isset($_SESSION['users_id'])){
     $user_id = $_SESSION['users_id'];

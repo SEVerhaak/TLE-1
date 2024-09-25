@@ -1,11 +1,19 @@
 <?php
+include "../../api/isLocal.php";
+
 session_start();
+
+if (isLocalhost()){
+    require_once "../../api/dblocal.php";
+} else {
+    require_once "../../api/db.php";
+}
 
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 //connectie met de database
 /** @var $db */
-require_once "../../api/dblocal.php";
+
 //check of er een submit is
 if(isset($_POST['submit'])){
     //omzetten naar goeie variabelen met security voor scripts

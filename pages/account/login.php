@@ -1,7 +1,14 @@
 <?php
-session_start();
-/** @var mysqli $db */
+include "../../api/isLocal.php";
 
+session_start();
+
+
+if (isLocalhost()){
+    require_once "../../api/dblocal.php";
+} else {
+    require_once "../../api/db.php";
+}
 
 // Als het inlogformulier is ingediend
 if (isset($_POST['submit'])) {

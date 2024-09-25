@@ -6,28 +6,28 @@ let url
 
 startFetch()
 
-function startFetch(){
+function startFetch() {
     // Toon de laadtekst bij het starten van het laden
     document.getElementById('loading').style.display = 'flex';
 
     accordion = document.getElementsByClassName("accordion");
-    ean  = document.getElementById('meta-data-ean').innerHTML;
+    ean = document.getElementById('meta-data-ean').innerHTML;
     userId = document.getElementById('meta-data-id').textContent;
     url = `https://world.openfoodfacts.org/api/v2/product/${ean}.json`;
 
-    if(ean !== '' && ean){
-        try{
+    if (ean !== '' && ean) {
+        try {
             console.log('starting the whole thing!')
             accordionInit();
             fetchResults();
-        }catch (e){
+        } catch (e) {
             //window.location.href = '../scanner'
             console.error('Error starting fetch request')
         }
     }
 }
 
-function accordionInit(){
+function accordionInit() {
     // voor de dropdown accordion menu's
     for (let i = 0; i < accordion.length; i++) {
         accordion[i].addEventListener("click", function () {
@@ -67,17 +67,17 @@ function fetchResults() {
                 document.getElementById('loading').style.display = 'none';
 
                 dataHandler(data)
-                    let name
+                let name
 
-                    getFavourite(ean, userId)
+                getFavourite(ean, userId)
 
-                    if (data.product.brands && data.product.product_name) {
-                        name = `${data.product.brands} - ${data.product.product_name}`
-                        saveToHistory(ean, name, userId)
-                    } else {
-                        name = 'N.A'
-                        saveToHistory(ean, name, userId)
-                    }
+                if (data.product.brands && data.product.product_name) {
+                    name = `${data.product.brands} - ${data.product.product_name}`
+                    saveToHistory(ean, name, userId)
+                } else {
+                    name = 'N.A'
+                    saveToHistory(ean, name, userId)
+                }
 
 
             } else {
@@ -91,7 +91,7 @@ function fetchResults() {
         });
 }
 
-function getFavourite(ean,id){
+function getFavourite(ean, id) {
     if (userId !== '' && userId !== undefined && userId) {
         console.log('getting favourite!')
         const url = `../../api/favourite.php?ean=` + encodeURIComponent(`${ean}`) + `&id=` + encodeURIComponent(`${id}`)
@@ -111,7 +111,7 @@ function getFavourite(ean,id){
 
                 if (parseInt(data.favourite) !== 0) {
                     buttonStyleHandler('favourite')
-                } else{
+                } else {
                     buttonStyleHandler('not-favourite')
                 }
 
@@ -123,21 +123,21 @@ function getFavourite(ean,id){
     }
 }
 
-function buttonStyleHandler(type){
-    if (type === 'favourite'){
+function buttonStyleHandler(type) {
+    if (type === 'favourite') {
         const button = document.getElementsByClassName('save-info')[0]
         const text = document.getElementById('button-text')
-        text.textContent = 'verwijder zoekopdracht'
+        text.textContent = 'verwijder bewaard product'
         button.classList.add('color-red')
-    } else{
+    } else {
         const button = document.getElementsByClassName('save-info')[0]
         const text = document.getElementById('button-text')
-        text.textContent = 'bewaar zoekopdracht'
+        text.textContent = 'bewaar product'
         button.classList.remove('color-red')
     }
 }
 
-function favouriteClickHandler(){
+function favouriteClickHandler() {
     if (userId !== '' && userId !== undefined && userId) {
         console.log('getting favourite!')
         const url = `../../api/set-favourite.php?ean=` + encodeURIComponent(`${ean}`) + `&id=` + encodeURIComponent(`${userId}`)
@@ -153,9 +153,9 @@ function favouriteClickHandler(){
             })
             .then(data => {
                 console.log(data);
-                if (data.result === "removed favourite"){
+                if (data.result === "removed favourite") {
                     buttonStyleHandler('not-favourite')
-                }else{
+                } else {
                     buttonStyleHandler('favourite')
                 }
             })
@@ -165,7 +165,6 @@ function favouriteClickHandler(){
             });
     }
 }
-
 
 
 function saveToHistory(ean, name, id) {
@@ -220,24 +219,27 @@ function dataHandler(data) {
         document.getElementById('categories').innerHTML = 'Geen categorieën gevonden'
     }
 
+    let quantityGlobal
 
     if (data.product.product_quantity !== undefined && data.product.product_quantity !== '' && data.product.product_quantity !== null) {
         if (data.product.product_quantity_unit !== undefined && data.product.product_quantity_unit !== '' && data.product.product_quantity_unit !== null) {
             document.getElementById('quantity').innerHTML = `Hoeveelheid: ${data.product.product_quantity} ${data.product.product_quantity_unit}`;
+            quantityGlobal = parseInt(`${data.product.product_quantity}`)
         } else {
             document.getElementById('quantity').innerHTML = `Hoeveelheid: ${data.product.product_quantity}`;
+            quantityGlobal = parseInt(`${data.product.product_quantity}`)
         }
     } else {
         console.log(`Geen gewicht bekend voor dit product`)
         document.getElementById('quantity').innerHTML = `Geen gewicht bekend voor dit product`;
     }
 
-    if (data.product.ecoscore_grade !== '' && data.product.ecoscore_grade !== null && data.product.ecoscore_grade &&data.product.ecoscore_grade !== 'not-applicable' ) {
+    if (data.product.ecoscore_grade !== '' && data.product.ecoscore_grade !== null && data.product.ecoscore_grade && data.product.ecoscore_grade !== 'not-applicable') {
         document.getElementById('ecoscore-image').src = `../../images/eco-score/ecoscore-${data.product.ecoscore_grade}.svg`;
         document.getElementById('eco-score-color').classList.remove('eco-color-unknown')
         document.getElementById('eco-score-color').classList.add(`eco-color-${data.product.ecoscore_grade}`)
 
-        if (data.product.ecoscore_grade === 'e' || data.product.ecoscore_grade === 'a'){
+        if (data.product.ecoscore_grade === 'e' || data.product.ecoscore_grade === 'a') {
             let collection = document.getElementsByClassName('results')
             for (let i = 0; i < collection.length; i++) {
                 collection[i].classList.add('color-white')
@@ -260,12 +262,25 @@ function dataHandler(data) {
             document.getElementById('co2-score').innerHTML = `${co2Per100g} gr`;
 
             // Create new LI element to display km equivalent
+            // Create new LI element to display km equivalent
             const kmInfo = document.createElement('li');
             kmInfo.id = 'km-info';
             kmInfo.innerHTML = `Dat is gelijk aan ${kmEquivalent} km rijden met een gemiddelde auto.`;
 
             // Append it after co2-info
             document.getElementById('co2-info').parentNode.insertBefore(kmInfo, document.getElementById('co2-info').nextSibling);
+
+            if (quantityGlobal && quantityGlobal !== ''){
+                const totalEmissions = (co2Per100g * (quantityGlobal / 100)).toFixed(0); // Round to 2 decimal places
+                const totalInfo = document.createElement('li');
+                totalInfo.id = 'total-info';
+                totalInfo.innerHTML = `Dit product stoot in totaal ${totalEmissions} gram CO2 uit.`;
+
+                // Append it after km-info
+                document.getElementById('km-info').parentNode.insertBefore(totalInfo, document.getElementById('km-info').nextSibling);
+            }
+
+
         } else {
             document.getElementById('co2-info').innerHTML = `Onbekend`;
             document.getElementById('co2-score').innerHTML = `Onbekend`;
@@ -286,7 +301,6 @@ function dataHandler(data) {
             kmInfo.remove();
         }
     }
-
 
 
     if (data.product.packaging !== undefined && data.product.packaging !== '') {

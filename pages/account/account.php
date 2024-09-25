@@ -1,8 +1,15 @@
 <?php
+include "../../api/isLocal.php";
+
 session_start();
 
+
+if (isLocalhost()){
+    require_once "../../api/dblocal.php";
+} else {
+    require_once "../../api/db.php";
+}
 /** @var mysqli $db */
-require_once "../../api/dblocal.php";
 
 // Check if the user is logged in
 if (!isset($_SESSION['users_id'])) {
