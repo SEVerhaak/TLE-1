@@ -13,10 +13,7 @@ if (isset($_GET['ean'])) {
     } else {
         $id = '';
     }
-//    $ean = mysqli_real_escape_string($db, $_GET['ean']);
-    // Controleer of er al een array voor EAN's in de sessie bestaat, zo niet, maak er een
 } else {
-    //header('location: ../homepage');
     echo 'no ean given :(';
 }
 ?>
@@ -32,11 +29,7 @@ if (isset($_GET['ean'])) {
     <link rel="stylesheet" href="../../css/bas.css">
     <link rel="stylesheet" href="../../css/elisa.css">
     <script type="text/javascript" src="../../js/productPagina.js" defer></script>
-
 </head>
-<style>
-
-</style>
 <header>
     <div id="meta-data-ean" style="display: none;"><?php echo $ean ?> </div>
     <div id="meta-data-id" style="display: none"><?= $id ?></div>
@@ -55,7 +48,7 @@ if (isset($_GET['ean'])) {
 
     <section class="container background-color-3">
         <div class="image-container color-7">
-            <img id='product-image' src="../../images/placeholder.webp"
+            <img id='product-image' src="../../images/placeholder.webp" />
         </div>
     </section>
     <div id='eco-score-color' class="eco-score-container eco-color-unknown">
@@ -102,16 +95,34 @@ if (isset($_GET['ean'])) {
                 </li>
             </ul>
         </div>
-            <div class = "recommendation" >
+        <div class = "recommendation" >
         </div >
 
     </div>
     <?php
     if($loggedIn){
         echo '    <button class="save-info eco-color-grey">
-        <h3 class="color-white"> bewaar zoekopdracht </h3>
+        <h3 id="button-text" class="color-white"> bewaar zoekopdracht </h3>
     </button>
-    '; }?>
+    ';
+    }
+
+    // Check if the EAN is 8710412043749 and display the link
+    if ($ean == '8710412043749') {
+        $link = "https://localhost/TLE-1/pages/product-info/index.php?ean=7622201751708";
+        echo '<div style="text-align: center; margin-top: 20px; font-size: 24px; color: blue;">
+        <a href="' . $link . '" target="_blank">Recommended Product</a>
+      </div>';
+
+    }
+    if ($ean == '8712800188339') {
+        $link = "https://localhost/TLE-1/pages/product-info/index.php?ean=7394376616136";
+        echo '<div style="text-align: center; margin-top: 20px; font-size: 24px; color: blue;">
+        <a href="' . $link . '" target="_blank">Recommended Product</a>
+      </div>';
+
+    }
+    ?>
     <div style="margin-top: <?php if($loggedIn){echo '6rem';}else{echo '0';}?>"></div>
 
 </main>
