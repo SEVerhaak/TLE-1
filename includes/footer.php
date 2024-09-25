@@ -1,14 +1,17 @@
+<?php
+session_start();
+?>
 <footer>
-    <a class = "footer-box" href = "../../pages/scanner/index.php">
-        <img class = "footer-img" src = "../../images/icons/search.svg">
+    <a class="footer-box" href="../../pages/scanner/index.php">
+        <img class="footer-img" src="../../images/icons/search.svg">
         <p>Zoeken</p>
     </a>
-    <a class = "footer-box" href = "../../pages/history/index.php">
-        <img class = "footer-img" src = "../../images/icons/receipt.svg">
+    <a class="footer-box" href="../../pages/history/index.php">
+        <img class="footer-img" src="../../images/icons/receipt.svg">
         <p>Gescand</p>
     </a>
-    <a class = "footer-box" href = "../../pages/account/login.php">
-        <img class = "footer-img" src = "../../images/icons/user.svg">
+    <a class="footer-box" href="<?php echo isset($_SESSION['users_id']) ? '../../pages/account/account.php' : '../../pages/account/login.php'; ?>">
+        <img class="footer-img" src="../../images/icons/user.svg">
         <p>Account</p>
     </a>
 </footer>
