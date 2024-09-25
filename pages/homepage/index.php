@@ -37,7 +37,7 @@ if(isset($_SESSION['users_id'])){
 
         <a href="../history/index.php">
             <div class="box color-6">
-                <h2 class="color-white">Zoek product</h2>
+                <h2 class="color-white">Zoek geschiedenis</h2>
                 <img src="../../images/icons/search-big.svg">
             </div>
         </a>
@@ -45,13 +45,10 @@ if(isset($_SESSION['users_id'])){
         <div style="padding: 1rem; align-items: baseline;" class="box info">
             <h2 class="color-1">Hoe te gebruiken?</h2>
             <p class="color-1">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto consequatur debitis deleniti obcaecati provident! Aliquid atque autem corporis esse, ex explicabo facere, facilis illo illum maiores, minus officia optio soluta.
-            </p>
+                Met de EcoJourney app kun je eenvoudig een product scannen om direct de eco-score te zien, waarmee je de milieu-impact van het product kunt beoordelen. Daarnaast kun je je zoekgeschiedenis bekijken om eerdere scans en scores terug te vinden.            </p>
         </div>
 
     </section>
-    <div style="margin-top: <?php if($loggedIn){echo '5rem';}else{echo '2rem';}?>"></div>
-
 </main>
 <?php include('../../includes/footer.php'); ?>
 </body>

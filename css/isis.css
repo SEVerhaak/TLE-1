@@ -3,7 +3,7 @@
     flex-direction: row;
     width: 80vw;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
 .info {

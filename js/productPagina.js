@@ -52,7 +52,7 @@ function fetchResults() {
         .then(response => {
             // Controleer of het verzoek succesvol was
             if (!response.ok) {
-                window.location.href = '../scanner'
+                window.location.href = '../scanner/index.php?error=Product_niet_gevonden!'
                 throw new Error('Network response was not ok');
             }
             // Converteer de response naar JSON
@@ -79,13 +79,13 @@ function fetchResults() {
 
 
             } else {
-                window.location.href = '../scanner'
+                window.location.href = '../scanner/index.php?error=Product_niet_gevonden!'
             }
         })
         .catch(error => {
             // Foutafhandeling als het verzoek mislukt
             console.error('Er is een fout opgetreden:', error);
-            window.location.href = '../scanner'
+            window.location.href = '../scanner/index.php?error=Product_niet_gevonden!'
         });
 }
 

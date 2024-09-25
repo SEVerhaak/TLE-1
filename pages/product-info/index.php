@@ -32,6 +32,7 @@ if (isset($_GET['ean'])) {
     <link rel="stylesheet" href="../../css/bas.css">
     <link rel="stylesheet" href="../../css/elisa.css">
     <script type="text/javascript" src="../../js/productPagina.js" defer></script>
+
 </head>
 <style>
 
@@ -76,7 +77,7 @@ if (isset($_GET['ean'])) {
         <h3 id="categories" style="font-weight: lighter">Categorie</h3>
     </div>
     <div class="accordion-wrapper">
-        <button class="accordion">CO2 Informatie</button>
+        <button class="accordion">CO2 Informatie <img class = "accordion-image" src="../../images/chefron.svg" /></button>
         <div class="panel">
             <ul>
                 <li id="co2-info">
@@ -84,7 +85,7 @@ if (isset($_GET['ean'])) {
             </ul>
         </div>
 
-        <button class="accordion">Verpakking & Recycle Informatie</button>
+        <button class="accordion">Verpakking & Recycle Informatie<img class = "accordion-image" src="../../images/chefron.svg" /></button>
         <div class="panel">
             <ul>
                 <li id="packaging">
@@ -94,13 +95,16 @@ if (isset($_GET['ean'])) {
             </ul>
         </div>
 
-        <button class="accordion">Transport Informatie</button>
+        <button class="accordion">Transport Informatie<img class = "accordion-image" src="../../images/chefron.svg" /></button>
         <div class="panel">
             <ul>
                 <li id="transport">
                 </li>
             </ul>
         </div>
+            <div class = "recommendation" >
+        </div >
+
     </div>
     <?php
     if($loggedIn){
@@ -108,7 +112,7 @@ if (isset($_GET['ean'])) {
         <h3 class="color-white"> bewaar zoekopdracht </h3>
     </button>
     '; }?>
-    <div style="margin-top: <?php if($loggedIn){echo '11rem';}else{echo '6rem';}?>"></div>
+    <div style="margin-top: <?php if($loggedIn){echo '6rem';}else{echo '0';}?>"></div>
 
 </main>
 <?php include('../../includes/footer.php'); ?>
