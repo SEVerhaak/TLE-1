@@ -11,5 +11,4 @@
         <img class = "footer-img" src = "../../images/icons/user.svg">
         <p>Account</p>
     </a>
-
 </footer>
