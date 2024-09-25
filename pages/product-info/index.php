@@ -109,7 +109,7 @@ if (isset($_GET['ean'])) {
     <?php
     if($loggedIn){
         echo '    <button class="save-info eco-color-grey">
-        <h3 class="color-white"> bewaar zoekopdracht </h3>
+        <h3 id="button-text" class="color-white"> bewaar zoekopdracht </h3>
     </button>
     '; }?>
     <div style="margin-top: <?php if($loggedIn){echo '6rem';}else{echo '0';}?>"></div>
