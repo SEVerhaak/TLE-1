@@ -76,6 +76,16 @@ input#email, input#password, input#f_name, input#l_name, input#phone, input#emai
     border-radius: 1.5rem;
     font-weight: bold;
 }
+.logout-button{
+    margin-top: 1rem;
+    color: white;
+    font-size: 1.5rem;
+    height: 15vw;
+    width: 60vw;
+    border: #59733F;
+    border-radius: 1.5rem;
+    font-weight: bold;
+}
 .register-button{
     margin-top: 1rem;
     color: white;
@@ -177,4 +187,14 @@ label{
 }
 #link-history{
     align-self: flex-end;
+}
+.image-pfp{
+    border-radius: 50%;
+    width: 50vw;
+    margin: 1rem;
+}
+.account-details{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }

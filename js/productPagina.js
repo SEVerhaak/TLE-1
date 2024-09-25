@@ -192,6 +192,10 @@ function saveToHistory(ean, name, id) {
 }
 
 function dataHandler(data) {
+    console.log(data.product.categories_hierarchy)
+    let tag = data.product.categories_hierarchy
+    let last = tag[tag.length-1]
+    console.log(last)
     console.log(data);
     if (data.product.brands !== undefined && data.product.brands !== '' && data.product.brands !== null) {
         if (data.product.product_name !== undefined && data.product.product_name !== '' && data.product.product_name !== null) {

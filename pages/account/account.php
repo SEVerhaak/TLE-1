@@ -38,6 +38,7 @@ if ($result && mysqli_num_rows($result) > 0) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/elisa.css">
+    <link rel="stylesheet" href="../../css/bas.css">
     <script src="../../js/currentPage.js" defer></script>
     <title>Account Preview</title>
 </head>
@@ -47,16 +48,49 @@ if ($result && mysqli_num_rows($result) > 0) {
 <body>
 <?php include('../../includes/nav.php'); ?>
 <main>
-    <h1>Account Overview</h1>
     <div class="account-details">
-        <p><img src="../../images/stockpfp.jpg"></p>  nog aanpassen naar persoonlijke pfp!!!
-        <p><strong>First Name:</strong> <?= htmlspecialchars($user['f_name']); ?></p>
-        <p><strong>Last Name:</strong> <?= htmlspecialchars($user['l_name']); ?></p>
-        <p><strong>Email:</strong> <?= htmlspecialchars($user['email']); ?></p>
-        <p><strong>Phone Number:</strong> <?= htmlspecialchars($user['phone']); ?></p>
+        <img class = "image-pfp" src="../../images/stockpfp.jpg">
+        <h1 class = "text-color-1"> <?= htmlspecialchars($user['f_name']) . ' ' . htmlspecialchars($user['l_name']); ?></h1>
+        <h3>871 points</h3>
+        <button class="accordion">Email<img class = "accordion-image" src="../../images/chefron.svg" /></button>
+        <div class="panel">
+            <ul>
+                <p><?= htmlspecialchars($user['email']); ?></p>
+            </ul>
+        </div>
+        <button class="accordion">Telefoonnummer<img class = "accordion-image" src="../../images/chefron.svg" /></button>
+        <div class="panel">
+            <ul>
+                <p><?= htmlspecialchars($user['phone']); ?></p>
+            </ul>
+        </div>
     </div>
-    <a href="logout.php" class="logout-button">Log out</a>
+    <div>
+        <a href="logout.php"><button class="logout-button color-3" >Logout</button></a>
+    </div>
 </main>
 <?php include('../../includes/footer.php'); ?>
 </body>
 </html>
+<script>
+    let accordion
+    accordionInit()
+
+    function accordionInit(){
+        accordion = document.getElementsByClassName("accordion");
+        // voor de dropdown accordion menu's
+        for (let i = 0; i < accordion.length; i++) {
+            accordion[i].addEventListener("click", function () {
+                console.log(this)
+                let panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                    this.classList.remove("active");
+                } else {
+                    panel.style.display = "block";
+                    this.classList.add("active");
+                }
+            });
+        }
+    }
+</script>
