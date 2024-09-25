@@ -172,6 +172,9 @@ label{
 .color-box-history{
     background-color: #e4e1dd;
 }
+.color-box-history-favourite{
+    background-color: rgba(135, 182, 76, 0.19)
+}
 #link-history{
     align-self: flex-end;
 }
