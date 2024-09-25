@@ -71,6 +71,7 @@ mysqli_close($db);
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel = "stylesheet" href="../../css/style.css">
     <link rel = "stylesheet" href="../../css/elisa.css">
+    <script src="../../js/currentPage.js" defer></script>
     <title>Maak account aan</title>
 </head>
 <header>
@@ -82,6 +83,8 @@ mysqli_close($db);
     padding-bottom: 3rem;
     }
     </style>
+    <div id="meta-data-page" style="display: none;">2</div>
+</header>
 <body>
 <?php include('../../includes/nav.php'); ?>
 <main>

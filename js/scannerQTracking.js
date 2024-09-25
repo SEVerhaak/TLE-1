@@ -6,6 +6,11 @@ let processCounter = 0;
 startScanner();
 
 function startScanner() {
+    let errorText = document.getElementById('error')
+
+    if(errorText && errorText.textContent !== ''){
+        errorText.textContent = errorText.textContent.replace('_', ' ')
+    }
 
     Quagga.init({
 

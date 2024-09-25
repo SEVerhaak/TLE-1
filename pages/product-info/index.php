@@ -32,6 +32,7 @@ if (isset($_GET['ean'])) {
     <link rel="stylesheet" href="../../css/bas.css">
     <link rel="stylesheet" href="../../css/elisa.css">
     <script type="text/javascript" src="../../js/productPagina.js" defer></script>
+
 </head>
 <style>
 
@@ -108,7 +109,7 @@ if (isset($_GET['ean'])) {
         <h3 class="color-white"> bewaar zoekopdracht </h3>
     </button>
     '; }?>
-    <div style="margin-top: <?php if($loggedIn){echo '11rem';}else{echo '6rem';}?>"></div>
+    <div style="margin-top: <?php if($loggedIn){echo '6rem';}else{echo '0';}?>"></div>
 
 </main>
 <?php include('../../includes/footer.php'); ?>

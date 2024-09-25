@@ -50,8 +50,6 @@ if(isset($_SESSION['users_id'])){
         </div>
 
     </section>
-    <div style="margin-top: <?php if($loggedIn){echo '5rem';}else{echo '2rem';}?>"></div>
-
 </main>
 <?php include('../../includes/footer.php'); ?>
 </body>

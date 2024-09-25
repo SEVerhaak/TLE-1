@@ -1,3 +1,12 @@
+<?php
+session_start();
+if (isset($_GET['error'])) {
+    $error = $_GET['error'];
+} else {
+
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,6 +15,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdn.rawgit.com/serratus/quaggaJS/0420d5e0/dist/quagga.min.js"></script>
+    <script src="../../js/currentPage.js" defer></script>
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/elisa.css">
     <link rel="stylesheet" href="../../css/isis.css">
@@ -20,7 +30,10 @@
         }
     </style>
 </head>
-
+<header>
+    <div id="meta-data-error" style="display: none;"><?php echo $error ?></div>
+    <div id="meta-data-page" style="display: none;">0</div>
+</header>
 <body>
 <?php include('../../includes/nav.php'); ?>
 <main>
@@ -32,6 +45,7 @@
 <script src="../../js/scannerQTracking.js"></script>
 
     <!-- Include the image-diff library -->
+    <p id="error" style="color: red"><?php echo $error ?></p>
     <p id="warning"></p>
 
     <div class="wrapper">
@@ -71,6 +85,8 @@
             e.preventDefault();
         }
     });
+
+
 </script>
 </main>
 <?php include('../../includes/footer.php'); ?>

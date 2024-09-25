@@ -49,10 +49,11 @@ if (isset($_POST['submit'])) {
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel = "stylesheet" href="../../css/style.css">
         <link rel="stylesheet" href="../../css/elisa.css">
+        <script src="../../js/currentPage.js" defer></script>
         <title>Login</title>
     </head>
     <header>
-
+        <div id="meta-data-page" style="display: none;">2</div>
     </header>
     <style>
         body{

@@ -30,6 +30,7 @@ if (mysqli_num_rows($result) > 0) {
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/elisa.css">
     <link rel="stylesheet" href="../../css/bas.css">
+    <script src="../../js/currentPage.js" defer></script>
     <title>Homepage</title>
 </head>
 <style>
@@ -37,6 +38,9 @@ if (mysqli_num_rows($result) > 0) {
         align-items: flex-start;
     }
 </style>
+<header>
+    <div id="meta-data-page" style="display: none;">1</div>
+</header>
 <body>
 <?php include('../../includes/nav.php'); ?>
 <main>
