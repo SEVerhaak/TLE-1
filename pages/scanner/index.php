@@ -3,7 +3,7 @@ session_start();
 if (isset($_GET['error'])) {
     $error = $_GET['error'];
 } else {
-
+    $error = '';
 }
 ?>
 
@@ -60,8 +60,7 @@ if (isset($_GET['error'])) {
     <div style="padding: 1rem; align-items: baseline;" class="box info">
         <h2 class="color-1">Hoe te gebruiken?</h2>
         <p class="color-1">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto consequatur debitis deleniti obcaecati provident! Aliquid atque autem corporis esse, ex explicabo facere, facilis illo illum maiores, minus officia optio soluta.
-        </p>
+            Op de scanpagina van EcoJourney kun je producten scannen door simpelweg de barcode te scannen of een foto van het product te uploaden. De app analyseert de gegevens en geeft direct de eco-score, zodat je snel kunt zien hoe milieuvriendelijk het product is.        </p>
     </div>
     <script>
     let keypressArray = [];
