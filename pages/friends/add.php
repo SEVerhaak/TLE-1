@@ -1,8 +1,17 @@
 <?php
 session_start();
 
+$dbLocation = '';
+
+if (isLocalhost()){
+    $dbLocation = '../../api/dblocal.php';
+} else {
+    $dbLocation = '../../api/db.php';
+}
+
+require_once $dbLocation;
+
 /** @var mysqli $db */
-require_once "../../api/dblocal.php";
 
 // Check if the user is logged in
 if (!isset($_SESSION['users_id'])) {

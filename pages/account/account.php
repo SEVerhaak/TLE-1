@@ -3,12 +3,16 @@ include "../../api/isLocal.php";
 
 session_start();
 
+$dbLocation = '';
 
 if (isLocalhost()){
-    require_once "../../api/dblocal.php";
+    $dbLocation = '../../api/dblocal.php';
 } else {
-    require_once "../../api/db.php";
+    $dbLocation = '../../api/db.php';
 }
+
+require_once $dbLocation;
+
 /** @var mysqli $db */
 
 // Check if the user is logged in

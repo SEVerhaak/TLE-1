@@ -3,12 +3,15 @@ include "../../api/isLocal.php";
 
 session_start();
 
+$dbLocation = '';
 
 if (isLocalhost()){
-    require_once "../../api/dblocal.php";
+    $dbLocation = '../../api/dblocal.php';
 } else {
-    require_once "../../api/db.php";
+    $dbLocation = '../../api/db.php';
 }
+
+require_once $dbLocation;
 
 // Als het inlogformulier is ingediend
 if (isset($_POST['submit'])) {

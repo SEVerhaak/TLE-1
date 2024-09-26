@@ -4,11 +4,16 @@ include "isLocal.php";
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
+$dbLocation = '';
+
 if (isLocalhost()){
-    require_once "dblocal.php";
+    $dbLocation = 'dblocal.php';
 } else {
-    require_once "db.php";
+    $dbLocation = 'db.php';
 }
+
+require_once $dbLocation;
+
 /** @var mysqli $db */
 
 if (isset($_GET['ean'])) {
