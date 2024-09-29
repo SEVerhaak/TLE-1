@@ -43,6 +43,7 @@ if (mysqli_num_rows($result) > 0) {
     <link rel="stylesheet" href="../../css/elisa.css">
     <link rel="stylesheet" href="../../css/bas.css">
     <script src="../../js/currentPage.js" defer></script>
+    <script src="../../js/favoriteFilter.js" defer></script>
     <title>Homepage</title>
 </head>
 <style>
@@ -59,6 +60,9 @@ if (mysqli_num_rows($result) > 0) {
     <h1 class="sub-header">Scan geschiedenis</h1>
     <input type="text" placeholder="Zoeken..." id = "search-bar" name="search">
     <p class = "text-color-3" style = "opacity: 60%">Toon alleen bewaarde producten</p>
+    <input type="checkbox" id="show-favorites-only" />
+    <label for="show-favorites-only">Show only favorites</label>
+
     <div class = "solid"> </div>
     <?php if (!empty($data)) { ?>
         <!-- Als er resultaten zijn, toon ze -->
