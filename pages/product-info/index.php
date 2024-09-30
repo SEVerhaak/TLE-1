@@ -106,13 +106,14 @@ if (isset($_GET['ean'])) {
 
     </div>
     <?php
+
     if ($loggedIn) {
         echo '    <button class="save-info eco-color-grey">
         <h3 id="button-text" class="color-white"> bewaar zoekopdracht </h3>
     </button>
     ';
     }
-
+/*
     // Check if the EAN is 8710412043749 and display the link
     if ($ean == '8710412043749') {
         $link = "https://localhost/TLE-1/pages/product-info/index.php?ean=7622201751708";
@@ -128,6 +129,7 @@ if (isset($_GET['ean'])) {
       </div>';
 
     }
+    */
     ?>
     <div style="margin-top: <?php if ($loggedIn) {
         echo '6rem';
@@ -141,13 +143,17 @@ if (isset($_GET['ean'])) {
             position: absolute;
             border-radius: 0;
             left: 13.5rem;
-            bottom: -29rem;
+            bottom: -25rem;
         }
 
         .recommended-container{
             background-color: rgba(149, 149, 149, 0.25);
             border-radius: 1.5rem;
             padding-bottom: 2rem;
+            min-width: 90vw;
+            max-width: 90vw;
+            min-height: 35vh;
+            max-height: 35vh;
         }
 
         .text-buttons{
@@ -163,11 +169,11 @@ if (isset($_GET['ean'])) {
         }
 
     </style>
-
+    <h2 style="margin-bottom: 1rem">Aanbevolen ECO-Producten</h2>
     <div class="recommended-container">
         <div class="recommended-text-flexbox">
             <h1 id="previous" class="text-buttons"><</h1>
-            <h3 id="product-title-recommended" style="color: black">Product Title</h3>
+            <h3 id="product-title-recommended" style="color: black;max-width: 40%;min-width: 40%;">Loading...</h3>
             <h1 id="next" class="text-buttons">></h1>
         </div>
         <div class="recommended-image-flexbox" style="display: flex">
