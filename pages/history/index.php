@@ -45,6 +45,8 @@ if (mysqli_num_rows($result) > 0) {
     <link rel="stylesheet" href="../../css/isis.css">
     <script src="../../js/currentPage.js" defer></script>
     <script src="../../js/favoriteFilter.js" defer></script>
+    <script src="../../js/clickableHistory.js" defer></script>
+
     <title>Homepage</title>
 </head>
 <style>
