@@ -37,25 +37,18 @@ if ($result && mysqli_num_rows($result) > 0) {
     exit();
 }
 
-if (isset($_POST['submit'])) {
+if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
+    // Retrieve the uploaded file
+    $image = $_FILES['image']['tmp_name'];
+    $imgContent = addslashes(file_get_contents($image));
 
-    // Controleer of er een bestand is geüpload
-    if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
-        // Haal bestandsinformatie op
-        $image = $_FILES['image']['tmp_name'];
-        $imgContent = addslashes(file_get_contents($image));
+    // Update the image in the database (store as BLOB)
+    $sql = "UPDATE `users` SET `photo` = '$imgContent' WHERE `id` = '$user_id'";
 
-        // Update de afbeelding in de database (opslaan als BLOB)
-        $sql = "UPDATE `users` SET `photo` = '$imgContent' WHERE `id` = '$user_id'";
-
-        if ($db->query($sql) === TRUE) {
-            echo "Afbeelding is succesvol geüpload en opgeslagen!";
-            header("Refresh:0"); // Pagina opnieuw laden om de nieuwe afbeelding te weergeven
-        } else {
-            echo "Fout bij het opslaan van het bestand in de database: " . $db->error;
-        }
+    if ($db->query($sql) === TRUE) {
+        echo "Afbeelding is succesvol geüpload en opgeslagen!";
     } else {
-        echo "Geen bestand geüpload of er is een fout opgetreden.";
+        echo "Fout bij het opslaan van het bestand in de database: " . $db->error;
     }
 }
 
@@ -79,6 +72,7 @@ function getImageMimeType($imageData) {
     <link rel="stylesheet" href="../../css/elisa.css">
     <link rel="stylesheet" href="../../css/bas.css">
     <script src="../../js/currentPage.js" defer></script>
+    <script src="../../js/uploadFoto.js" defer></script>
     <title>Account Preview</title>
 </head>
 <header>
@@ -96,11 +90,10 @@ function getImageMimeType($imageData) {
         }?>
         <h1 class = "text-color-1"> <?= htmlspecialchars($user['f_name']) . ' ' . htmlspecialchars($user['l_name']); ?></h1>
         <h3><?= htmlspecialchars($user['score']) ?> points</h3>
-            <form action="account.php" method="post" enctype="multipart/form-data">
-                <label for="file-upload" class="custom-file-upload color-3"> Kies foto </label>
-                <input type="file" name="image" id="file-upload">
-                <input type="submit" name="submit" value="Upload foto" class="upload-button color-3">
-            </form>
+        <form id="upload-form" action="account.php" method="post" enctype="multipart/form-data">
+            <label for="file-upload" class="custom-file-upload color-3">Upload foto</label>
+            <input type="file" name="image" id="file-upload" style="display: none;" accept="image/*">
+        </form>
         <button class="accordion">Emails<img class = "accordion-image" src="../../images/chefron.svg" /></button>
         <div class="panel">
             <ul>
@@ -115,6 +108,7 @@ function getImageMimeType($imageData) {
         </div>
     </div>
     <div>
+        <a href="../friends/"><button class="logout-button color-3" >Friends</button></a>
         <a href="logout.php"><button class="logout-button color-3" >Logout</button></a>
     </div>
 </main>
