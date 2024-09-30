@@ -147,6 +147,7 @@ img {
     font-size: 1.1rem;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     background-color: #59733F;
+    z-index: 9;
 }
 
 .accordion-container {

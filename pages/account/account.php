@@ -27,7 +27,7 @@ if (!isset($_SESSION['users_id'])) {
 
 // Fetch the user's data from the database
 $user_id = $_SESSION['users_id'];
-$query = "SELECT `email`, `f_name`, `l_name`, `phone`, `photo` FROM `users` WHERE `id` = '$user_id'";
+$query = "SELECT `email`, `f_name`, `l_name`, `phone`, `photo`, `score` FROM `users` WHERE `id` = '$user_id'";
 $result = mysqli_query($db, $query);
 
 if ($result && mysqli_num_rows($result) > 0) {
@@ -36,6 +36,37 @@ if ($result && mysqli_num_rows($result) > 0) {
     echo "User data not found.";
     exit();
 }
+
+if (isset($_POST['submit'])) {
+
+    // Controleer of er een bestand is geüpload
+    if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
+        // Haal bestandsinformatie op
+        $image = $_FILES['image']['tmp_name'];
+        $imgContent = addslashes(file_get_contents($image));
+
+        // Update de afbeelding in de database (opslaan als BLOB)
+        $sql = "UPDATE `users` SET `photo` = '$imgContent' WHERE `id` = '$user_id'";
+
+        if ($db->query($sql) === TRUE) {
+            echo "Afbeelding is succesvol geüpload en opgeslagen!";
+            header("Refresh:0"); // Pagina opnieuw laden om de nieuwe afbeelding te weergeven
+        } else {
+            echo "Fout bij het opslaan van het bestand in de database: " . $db->error;
+        }
+    } else {
+        echo "Geen bestand geüpload of er is een fout opgetreden.";
+    }
+}
+
+function getImageMimeType($imageData) {
+    $finfo = finfo_open(FILEINFO_MIME_TYPE);
+    $mimeType = finfo_buffer($finfo, $imageData);
+    finfo_close($finfo);
+    return $mimeType;
+}
+
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -58,18 +89,18 @@ if ($result && mysqli_num_rows($result) > 0) {
 <main>
     <div class="account-details">
         <?php
-        if ($user['photo'] != "" && file_exists($dbLocation . $user['photo'])) {
-            echo '<img class="image-pfp" src="../../images/uploads/' . htmlspecialchars($user['photo']) . '" alt="Profielfoto">';
-        } else { ?>
-            <img class = "image-pfp" src="../../images/stockpfp.jpg">
-            <form action="upload.php" method="post" enctype="multipart/form-data">
-                <label>Select Image File:</label>
-                <input type="file" name="image">
-                <input type="submit" name="submit" value="Upload">
-            </form>
-        <?php } ?>
+        if (!empty($user['photo'])) {
+            echo '<img class="image-pfp" src="data:' . getImageMimeType($user['photo']) . ';base64,' . base64_encode($user['photo']) . '" alt="Profielfoto">';
+        } else {
+            echo '<img class="image-pfp" src="../../images/stockpfp.jpg" alt="Standaard Profielfoto">';
+        }?>
         <h1 class = "text-color-1"> <?= htmlspecialchars($user['f_name']) . ' ' . htmlspecialchars($user['l_name']); ?></h1>
-        <h3>871 points</h3>
+        <h3><?= htmlspecialchars($user['score']) ?> points</h3>
+            <form action="account.php" method="post" enctype="multipart/form-data">
+                <label for="file-upload" class="custom-file-upload color-3"> Kies foto </label>
+                <input type="file" name="image" id="file-upload">
+                <input type="submit" name="submit" value="Upload foto" class="upload-button color-3">
+            </form>
         <button class="accordion">Emails<img class = "accordion-image" src="../../images/chefron.svg" /></button>
         <div class="panel">
             <ul>
