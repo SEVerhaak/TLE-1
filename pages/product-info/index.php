@@ -138,18 +138,34 @@ if (isset($_GET['ean'])) {
             position: absolute;
             border-radius: 0;
             left: 13.5rem;
-            bottom: -28rem;
+            bottom: -29rem;
         }
+
+        .recommended-container{
+            background-color: rgba(149, 149, 149, 0.25);
+            border-radius: 1.5rem;
+            padding-bottom: 2rem;
+        }
+
+        .text-buttons{
+            padding: 0 1rem;
+            margin: 1.5rem 0.5rem;
+            border-radius: 0.5rem;
+            background-color: #59733F;
+            color: white;
+        }
+
+
     </style>
 
     <div class="recommended-container">
         <div class="recommended-text-flexbox" style="display: flex; justify-content: space-around; align-items: center;">
-            <h1><</h1>
-            <h3>Product Title</h3>
-            <h1>></h1>
+            <h1 class="text-buttons"><</h1>
+            <h3 style="color: black">Product Title</h3>
+            <h1 class="text-buttons">></h1>
         </div>
         <div class="recommended-image-flexbox" style="display: flex">
-            <img src="../../images/placeholder.webp" style="max-width: 80%">
+            <img src="../../images/placeholder.webp" style="max-width: 80%;">
             <img class='recommended-eco-score-img' src="../../images/eco-score/ecoscore-unknown.svg">
         </div>
     </div>
