@@ -13,7 +13,7 @@ checkbox.addEventListener('change', () => {
         });
     } else {
         historySections.forEach((section) => {
-            section.style.display = 'block';
+            section.style.display = 'flex';
         });
     }
 });

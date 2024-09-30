@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once "../../api/isLocal.php";
 
 $dbLocation = '';
 
@@ -16,7 +17,7 @@ require_once $dbLocation;
 
 // Check if the user is logged in
 if (!isset($_SESSION['users_id'])) {
-    header('Location: login.php');
+    header('Location: ../account/login.php');
     exit();
 }
 

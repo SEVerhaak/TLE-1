@@ -192,12 +192,12 @@ function saveToHistory(ean, name, id) {
 }
 
 function dataHandler(data) {
-    console.log(data.product.categories_hierarchy)
     let tag = data.product.categories_hierarchy
     let last = tag[tag.length-1]
-    console.log(last);
-    console.log(`https://world.openfoodfacts.net/api/v2/search?categories_tags_en=${last}&fields=ecoscore_grade,code,brands `)
-    console.log(data);
+
+    const url = `https://world.openfoodfacts.net/api/v2/search?categories_tags_en=${last}&fields=ecoscore_grade,code,brands,image_front_small_url`
+    fetchRecommended(url)
+
     if (data.product.brands !== undefined && data.product.brands !== '' && data.product.brands !== null) {
         if (data.product.product_name !== undefined && data.product.product_name !== '' && data.product.product_name !== null) {
             document.getElementById('product-name').innerHTML = `${data.product.brands} - ${data.product.product_name}`;
@@ -213,6 +213,7 @@ function dataHandler(data) {
 
     if (data.product.image_front_small_url !== undefined && data.product.image_front_small_url !== '' && data.product.image_front_small_url !== null) {
         document.getElementById('product-image').src = `${data.product.image_front_small_url}`;
+        console.log()
     } else {
         document.getElementById('product-image').src = `../../images/placeholder.webp`;
     }
@@ -328,5 +329,13 @@ function dataHandler(data) {
     }
 
     console.log(data.product.packaging_recycling_tags.length)
+
+}
+
+function fetchRecommended(url){
+    console.log(url)
+}
+
+function fillRecommended(data){
 
 }
