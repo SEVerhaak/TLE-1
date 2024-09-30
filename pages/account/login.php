@@ -13,9 +13,10 @@ if (isLocalhost()){
 
 require_once $dbLocation;
 
+/** @var mysqli $db */
+
 // Als het inlogformulier is ingediend
 if (isset($_POST['submit'])) {
-    require_once "../../api/dblocal.php";
 
     // Ontvang de ingediende gegevens
     $email = mysqli_real_escape_string($db, $_POST['email']);
