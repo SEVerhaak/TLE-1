@@ -42,7 +42,9 @@ if (mysqli_num_rows($result) > 0) {
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/elisa.css">
     <link rel="stylesheet" href="../../css/bas.css">
+    <link rel="stylesheet" href="../../css/isis.css">
     <script src="../../js/currentPage.js" defer></script>
+    <script src="../../js/favoriteFilter.js" defer></script>
     <title>Homepage</title>
 </head>
 <style>
@@ -57,24 +59,30 @@ if (mysqli_num_rows($result) > 0) {
 <?php include('../../includes/nav.php'); ?>
 <main>
     <h1 class="sub-header">Scan geschiedenis</h1>
-    <input type="text" placeholder="Zoeken..." id = "search-bar" name="search">
-    <p class = "text-color-3" style = "opacity: 60%">Toon alleen bewaarde producten</p>
-    <div class = "solid"> </div>
-    <?php if (!empty($data)) { ?>
-        <!-- Als er resultaten zijn, toon ze -->
-        <?php foreach ($data as $item) { ?>
-            <section class="history
-            <?php if($item['favourite'] === '1'){echo "color-box-history-favourite";}else{echo "color-box-history";} ?>">
-                <h3><?= $item['product_name'] ?> </h3>
-                <p class = "text-color-3" style = "opacity: 60%"> <?= "Barcode: " . $item['barcode'] ?> </p>
+    <input type="text" placeholder="Zoeken..." id = "search-bar" name="search" style = "opacity: 60%" class = "color-3" >
+    <div class="fav-row">
+        <input type="checkbox" id="show-favorites-only" style = "opacity: 60%" />
+        <p class = "text-color-3" style = "opacity: 60%">Toon alleen favoriete producten</p>
+    </div>
 
-                <a id = "link-history" class = "text-color-4" href="../product-info/index.php?ean=<?= $item['barcode'] ?>">Meer informatie</a>
-            </section>
+    <div class="solid"> </div>
+    <div id="search-results">
+        <?php if (!empty($data)) { ?>
+            <!-- Als er resultaten zijn, toon ze -->
+            <?php foreach ($data as $item) { ?>
+                <section class="history
+            <?php if($item['favourite'] === '1'){echo "color-box-history-favourite";}else{echo "color-box-history";} ?>">
+                    <h3><?= $item['product_name'] ?> </h3>
+                    <p class = "text-color-3" style = "opacity: 60%"> <?= "Barcode: " . $item['barcode'] ?> </p>
+
+                    <a id = "link-history" class = "text-color-4" href="../product-info/index.php?ean=<?= $item['barcode'] ?>">Meer informatie</a>
+                </section>
+            <?php } ?>
+        <?php } else { ?>
+            <!-- Als er geen resultaten zijn, toon een bericht -->
+            <p>Geen scan geschiedenis gevonden.</p>
         <?php } ?>
-    <?php } else { ?>
-        <!-- Als er geen resultaten zijn, toon een bericht -->
-        <p>Geen scan geschiedenis gevonden.</p>
-    <?php } ?>
+    </div>
 
 
 </main>
