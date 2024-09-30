@@ -155,18 +155,21 @@ if (isset($_GET['ean'])) {
             color: white;
         }
 
+        .recommended-text-flexbox{
+            display: flex; justify-content: space-around; align-items: center;
+        }
 
     </style>
 
     <div class="recommended-container">
-        <div class="recommended-text-flexbox" style="display: flex; justify-content: space-around; align-items: center;">
-            <h1 class="text-buttons"><</h1>
-            <h3 style="color: black">Product Title</h3>
-            <h1 class="text-buttons">></h1>
+        <div class="recommended-text-flexbox">
+            <h1 id="previous" class="text-buttons"><</h1>
+            <h3 id="product-title-recommended" style="color: black">Product Title</h3>
+            <h1 id="next" class="text-buttons">></h1>
         </div>
         <div class="recommended-image-flexbox" style="display: flex">
-            <img src="../../images/placeholder.webp" style="max-width: 80%;">
-            <img class='recommended-eco-score-img' src="../../images/eco-score/ecoscore-unknown.svg">
+            <img id="product-image-recommended" src="../../images/placeholder.webp" style="max-width: 80%;">
+            <img id="ecoscore-recommended" class='recommended-eco-score-img' src="../../images/eco-score/ecoscore-unknown.svg">
         </div>
     </div>
 </main>
