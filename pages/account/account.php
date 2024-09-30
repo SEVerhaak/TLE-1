@@ -115,6 +115,7 @@ function getImageMimeType($imageData) {
         </div>
     </div>
     <div>
+        <a href="../friends/"><button class="logout-button color-3" >Friends</button></a>
         <a href="logout.php"><button class="logout-button color-3" >Logout</button></a>
     </div>
 </main>
