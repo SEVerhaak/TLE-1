@@ -27,7 +27,7 @@ if (!isset($_SESSION['users_id'])) {
 
 // Fetch the user's data from the database
 $user_id = $_SESSION['users_id'];
-$query = "SELECT `email`, `f_name`, `l_name`, `phone`, `photo` FROM `users` WHERE `id` = '$user_id'";
+$query = "SELECT `email`, `f_name`, `l_name`, `phone`, `photo`, `score` FROM `users` WHERE `id` = '$user_id'";
 $result = mysqli_query($db, $query);
 
 if ($result && mysqli_num_rows($result) > 0) {
@@ -69,7 +69,7 @@ if ($result && mysqli_num_rows($result) > 0) {
             </form>
         <?php } ?>
         <h1 class = "text-color-1"> <?= htmlspecialchars($user['f_name']) . ' ' . htmlspecialchars($user['l_name']); ?></h1>
-        <h3>871 points</h3>
+        <h3><?= htmlspecialchars($user['score']) ?> points</h3>
         <button class="accordion">Emails<img class = "accordion-image" src="../../images/chefron.svg" /></button>
         <div class="panel">
             <ul>

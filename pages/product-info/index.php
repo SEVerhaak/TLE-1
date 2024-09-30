@@ -2,6 +2,7 @@
 //require_once "../../api/db.php";
 ///** @var mysqli $db */
 session_start();
+include "../../api/dblocal.php";
 
 $loggedIn = false;
 
@@ -10,6 +11,8 @@ if (isset($_GET['ean'])) {
     if (isset($_SESSION['users_id'])) {
         $id = $_SESSION['users_id'];
         $loggedIn = true;
+        $updateQuery = "UPDATE `users` SET `score` = `score` + 10 WHERE `id` = '$id'";
+        mysqli_query($db, $updateQuery);
     } else {
         $id = '';
     }
