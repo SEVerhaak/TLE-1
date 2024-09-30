@@ -98,9 +98,8 @@ function getImageMimeType($imageData) {
         <h1 class = "text-color-1"> <?= htmlspecialchars($user['f_name']) . ' ' . htmlspecialchars($user['l_name']); ?></h1>
         <h3>871 points</h3>
             <form action="account.php" method="post" enctype="multipart/form-data">
-                <div class="file-position">
-                    <input type="file" name="image">
-                </div>
+                <label for="file-upload" class="custom-file-upload color-3"> Kies foto </label>
+                <input type="file" name="image" id="file-upload">
                 <input type="submit" name="submit" value="Upload foto" class="upload-button color-3">
             </form>
         <button class="accordion">Emails<img class = "accordion-image" src="../../images/chefron.svg" /></button>
