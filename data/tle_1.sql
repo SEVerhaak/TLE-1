@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 18, 2024 at 12:53 PM
+-- Generation Time: Sep 29, 2024 at 11:40 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -104,18 +104,22 @@ CREATE TABLE `user_history` (
   `id` int(10) UNSIGNED NOT NULL,
   `barcode` varchar(255) NOT NULL,
   `product_name` varchar(255) NOT NULL,
-  `user_id` int(11) NOT NULL
+  `user_id` int(11) NOT NULL,
+  `favourite` tinyint(4) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user_history`
 --
 
-INSERT INTO `user_history` (`id`, `barcode`, `product_name`, `user_id`) VALUES
-(1, '1', 'test', 1),
-(2, '8711327511576 ', 'Lipton - Lipton Green Ice Tea', 15),
-(3, '8711327511576 ', 'Lipton - Lipton Green Ice Tea', 15),
-(4, '241', 'test', 15);
+INSERT INTO `user_history` (`id`, `barcode`, `product_name`, `user_id`, `favourite`) VALUES
+(1, '1', 'test', 1, 0),
+(2, '8711327511576 ', 'Lipton - Lipton Green Ice Tea', 15, 0),
+(3, '8711327511576 ', 'Lipton - Lipton Green Ice Tea', 15, 0),
+(4, '241', 'test', 15, 0),
+(22, '8718452670529 ', 'Jumbo - Grof Volkoren', 5, 1),
+(23, '7622201751708 ', 'Milka - Choco sensations', 5, 0),
+(24, '8712800188339 ', 'Campina,Chocomel - Chocomel Halfvol', 5, 0);
 
 --
 -- Indexes for dumped tables
@@ -154,7 +158,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `user_history`
 --
 ALTER TABLE `user_history`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
