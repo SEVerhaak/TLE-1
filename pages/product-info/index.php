@@ -40,9 +40,10 @@ if (isset($_GET['ean'])) {
 <body>
 <?php include('../../includes/nav.php'); ?>
 
-<main>
+<main style="padding-bottom: 14rem">
 
-    <div id="loading" style="display: flex; justify-content: center; align-items: center; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0.8); z-index: 9999;">
+    <div id="loading"
+         style="display: flex; justify-content: center; align-items: center; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0.8); z-index: 9999;">
         <video id="loading-video" width="80%" autoplay loop>
             <source src="../../video/laden.mp4" type="video/mp4">
             Now Loading
@@ -51,7 +52,7 @@ if (isset($_GET['ean'])) {
 
     <section class="container background-color-3">
         <div class="image-container color-7">
-            <img id='product-image' src="../../images/placeholder.webp" />
+            <img id='product-image' src="../../images/placeholder.webp"/>
         </div>
     </section>
     <div id='eco-score-color' class="eco-score-container eco-color-unknown">
@@ -73,7 +74,7 @@ if (isset($_GET['ean'])) {
         <h3 id="categories" style="font-weight: lighter">Categorie</h3>
     </div>
     <div class="accordion-wrapper">
-        <button class="accordion">CO2 Informatie <img class = "accordion-image" src="../../images/chefron.svg" /></button>
+        <button class="accordion">CO2 Informatie <img class="accordion-image" src="../../images/chefron.svg"/></button>
         <div class="panel">
             <ul>
                 <li id="co2-info">
@@ -81,7 +82,8 @@ if (isset($_GET['ean'])) {
             </ul>
         </div>
 
-        <button class="accordion">Verpakking & Recycle Informatie<img class = "accordion-image" src="../../images/chefron.svg" /></button>
+        <button class="accordion">Verpakking & Recycle Informatie<img class="accordion-image"
+                                                                      src="../../images/chefron.svg"/></button>
         <div class="panel">
             <ul>
                 <li id="packaging">
@@ -91,19 +93,20 @@ if (isset($_GET['ean'])) {
             </ul>
         </div>
 
-        <button class="accordion">Transport Informatie<img class = "accordion-image" src="../../images/chefron.svg" /></button>
+        <button class="accordion">Transport Informatie<img class="accordion-image" src="../../images/chefron.svg"/>
+        </button>
         <div class="panel">
             <ul>
                 <li id="transport">
                 </li>
             </ul>
         </div>
-        <div class = "recommendation" >
-        </div >
+        <div class="recommendation">
+        </div>
 
     </div>
     <?php
-    if($loggedIn){
+    if ($loggedIn) {
         echo '    <button class="save-info eco-color-grey">
         <h3 id="button-text" class="color-white"> bewaar zoekopdracht </h3>
     </button>
@@ -126,8 +129,49 @@ if (isset($_GET['ean'])) {
 
     }
     ?>
-    <div style="margin-top: <?php if($loggedIn){echo '6rem';}else{echo '0';}?>"></div>
+    <div style="margin-top: <?php if ($loggedIn) {
+        echo '6rem';
+    } else {
+        echo '0';
+    } ?>"></div>
 
+    <style>
+        .recommended-eco-score-img{
+            max-width: 35%;
+            position: absolute;
+            border-radius: 0;
+            left: 13.5rem;
+            bottom: -29rem;
+        }
+
+        .recommended-container{
+            background-color: rgba(149, 149, 149, 0.25);
+            border-radius: 1.5rem;
+            padding-bottom: 2rem;
+        }
+
+        .text-buttons{
+            padding: 0 1rem;
+            margin: 1.5rem 0.5rem;
+            border-radius: 0.5rem;
+            background-color: #59733F;
+            color: white;
+        }
+
+
+    </style>
+
+    <div class="recommended-container">
+        <div class="recommended-text-flexbox" style="display: flex; justify-content: space-around; align-items: center;">
+            <h1 class="text-buttons"><</h1>
+            <h3 style="color: black">Product Title</h3>
+            <h1 class="text-buttons">></h1>
+        </div>
+        <div class="recommended-image-flexbox" style="display: flex">
+            <img src="../../images/placeholder.webp" style="max-width: 80%;">
+            <img class='recommended-eco-score-img' src="../../images/eco-score/ecoscore-unknown.svg">
+        </div>
+    </div>
 </main>
 <?php include('../../includes/footer.php'); ?>
 
