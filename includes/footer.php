@@ -2,6 +2,11 @@
 $isLoggedIn = isset($_SESSION['users_id']);
 ?>
 <footer>
+    <a class="footer-box" href="../../pages/homepage/index.php">
+        <img class="footer-img" src="../../images/icons/home.svg">
+        <p>Home</p>
+    </a>
+
     <a class="footer-box" href="../../pages/scanner/index.php">
         <img class="footer-img" src="../../images/icons/search.svg">
         <p>Zoeken</p>
