@@ -195,8 +195,9 @@ function saveToHistory(ean, name, id) {
 function dataHandler(data) {
     let tag = data.product.categories_hierarchy
     let last = tag[tag.length-1]
+    last.replace()
 
-    const url = `https://world.openfoodfacts.net/api/v2/search?categories_tags_en=${last}&fields=ecoscore_grade,code,brands,image_front_small_url,image_front_small_url`
+    const url = `https://world.openfoodfacts.net/api/v2/search?categories_tags_en=${last}&fields=ecoscore_grade,code,brands,image_front_small_url`
     fetchRecommended(url)
 
     if (data.product.brands !== undefined && data.product.brands !== '' && data.product.brands !== null) {
@@ -356,10 +357,37 @@ function fetchRecommended(url) {
 }
 
 function handleData(data) {
+
+
+
+    const index = 0;
+
     console.log('Ontvangen data:', data);
+    const products = data.products
+
+// Define the grade order where 'a' is best (1) and 'e' is worst (5)
+    const gradeOrder = { a: 1, b: 2, c: 3, d: 4, e: 5 };
+
+// Bubble sort algorithm to sort the array
+    for (let i = 0; i < products.length - 1; i++) {
+        for (let j = 0; j < products.length - i - 1; j++) {
+            // Compare the ecoscore_grade using the gradeOrder mapping
+            if (gradeOrder[products[j].ecoscore_grade] > gradeOrder[products[j + 1].ecoscore_grade]) {
+                // Swap the elements if they are in the wrong order
+                let temp = products[j];
+                products[j] = products[j + 1];
+                products[j + 1] = temp;
+            }
+        }
+    }
+
+    console.log(products)
+
+    /*
     let productTitleRecommended = document.getElementById('product-title-recommended')
     let productImageRecommend = document.getElementById('product-image-recommended')
     productImageRecommend.src = data.products[6].image_front_small_url
     productTitleRecommended.textContent = data.products[0].brands
+     */
 }
 
