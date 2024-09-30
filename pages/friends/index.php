@@ -23,7 +23,7 @@ if (!isset($_SESSION['users_id'])) {
 
 // Fetch the user's data from the database
 $user_id = $_SESSION['users_id'];
-$query = "SELECT `email`, `f_name`, `l_name`, `phone` FROM `users` WHERE `id` = '$user_id'";
+$query = "SELECT `email`, `f_name`, `l_name`, `phone`, `score`  FROM `users` WHERE `id` = '$user_id'";
 $result = mysqli_query($db, $query);
 
 if ($result && mysqli_num_rows($result) > 0) {
@@ -34,7 +34,7 @@ if ($result && mysqli_num_rows($result) > 0) {
 }
 
 // Fetch the user's friends from the database
-$friendsQuery = "SELECT u.id, u.f_name, u.l_name
+$friendsQuery = "SELECT u.id, u.f_name, u.l_name, u.score
                  FROM friends f 
                  JOIN users u ON f.friend_id = u.id 
                  WHERE f.user_id = '$user_id'";
@@ -74,7 +74,7 @@ if ($friendsResult && mysqli_num_rows($friendsResult) > 0) {
         <ul>
             <?php foreach ($friends as $friend): ?>
                 <li>
-                    <?= htmlspecialchars($friend['f_name']) . ' ' . htmlspecialchars($friend['l_name']) ?> punten: (0)
+                    <?= htmlspecialchars($friend['f_name']) . ' ' . htmlspecialchars($friend['l_name'] . " - Score: " . htmlspecialchars($friend['score'])) ?>
                 </li>
             <?php endforeach; ?>
         </ul>
