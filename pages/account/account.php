@@ -89,6 +89,10 @@ function getImageMimeType($imageData) {
             echo '<img class="image-pfp" src="../../images/stockpfp.jpg" alt="Standaard Profielfoto">';
         }?>
         <h1 class = "text-color-1"> <?= htmlspecialchars($user['f_name']) . ' ' . htmlspecialchars($user['l_name']); ?></h1>
+
+
+        <!-- Toon je ID -->
+        <h class = "text-color-1">ID: <?= $_SESSION["users_id"] ?></h>
         <h3><?= htmlspecialchars($user['score']) ?> points</h3>
         <form id="upload-form" action="account.php" method="post" enctype="multipart/form-data">
             <label for="file-upload" class="custom-file-upload color-3">Upload foto</label>
