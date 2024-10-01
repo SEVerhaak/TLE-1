@@ -31,6 +31,8 @@
     padding: 1vw;
     border-radius: 1.5rem;
     width: 85vw;
+    min-height: 45vw;
+    max-height: 45vw;
     background-color: rgba(149, 149, 149, 0.25);
 }
 
