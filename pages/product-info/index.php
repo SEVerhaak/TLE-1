@@ -38,11 +38,11 @@ if (isset($_GET['ean'])) {
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Layout</title>
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/bas.css">
     <link rel="stylesheet" href="../../css/elisa.css">
     <script type="text/javascript" src="../../js/productPagina.js" defer></script>
+    <title>EcoJourney Product-info</title>
 </head>
 <header>
     <div id="meta-data-ean" style="display: none;"><?php echo $ean ?> </div>
@@ -112,8 +112,7 @@ if (isset($_GET['ean'])) {
                 </li>
             </ul>
         </div>
-        <div class="recommendation">
-        </div>
+
 
     </div>
     <?php
@@ -151,10 +150,10 @@ if (isset($_GET['ean'])) {
     <style>
         .recommended-eco-score-img{
             max-width: 35%;
-            position: absolute;
+            position: relative;
             border-radius: 0;
-            left: 13.5rem;
-            bottom: -25rem;
+            left: 6rem;
+            bottom: 2rem;
         }
 
         .recommended-container{
@@ -177,6 +176,9 @@ if (isset($_GET['ean'])) {
 
         .recommended-text-flexbox{
             display: flex; justify-content: space-around; align-items: center;
+        }
+        .recommended-image-flexbox{
+            flex-direction: column;
         }
 
     </style>
