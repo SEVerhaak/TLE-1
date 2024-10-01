@@ -357,54 +357,61 @@ function fetchRecommended(url) {
         .catch(error => {
             // Foutafhandeling
             console.error('Er is een fout opgetreden bij het ophalen van de data:', error);
+            let productTitleRecommended = document.getElementById('product-title-recommended')
+            productTitleRecommended.textContent = 'Geen alternatieven gevonden!'
         });
 }
 
 
 
 function handleData(data) {
-    let next = document.getElementById('next')
-    let previous = document.getElementById('previous')
-    previous.addEventListener('click', decrease)
-    next.addEventListener('click', increase)
+    if (data){
+        let next = document.getElementById('next')
+        let previous = document.getElementById('previous')
+        previous.addEventListener('click', decrease)
+        next.addEventListener('click', increase)
 
-    console.log('Ontvangen data:', data);
-    const products = data.products
-    indexMax = products.length - 1
+        console.log('Ontvangen data:', data);
+        const products = data.products
+        indexMax = products.length - 1
 
-    if (indexMax > 3){
-        indexMax = 3;
-    }
+        if (indexMax > 3){
+            indexMax = 3;
+        }
 
-    // Define the grade order where 'a' is best (1) and 'e' is worst (5)
-    const gradeOrder = { a: 1, b: 2, c: 3, d: 4, e: 5 };
+        // Define the grade order where 'a' is best (1) and 'e' is worst (5)
+        const gradeOrder = { a: 1, b: 2, c: 3, d: 4, e: 5 };
 
-    // Bubble sort algorithm to sort the array
-    for (let i = 0; i < products.length - 1; i++) {
-        for (let j = 0; j < products.length - i - 1; j++) {
-            // Compare the ecoscore_grade using the gradeOrder mapping
-            if (gradeOrder[products[j].ecoscore_grade] > gradeOrder[products[j + 1].ecoscore_grade]) {
-                // Swap the elements if they are in the wrong order
-                let temp = products[j];
-                products[j] = products[j + 1];
-                products[j + 1] = temp;
+        // Bubble sort algorithm to sort the array
+        for (let i = 0; i < products.length - 1; i++) {
+            for (let j = 0; j < products.length - i - 1; j++) {
+                // Compare the ecoscore_grade using the gradeOrder mapping
+                if (gradeOrder[products[j].ecoscore_grade] > gradeOrder[products[j + 1].ecoscore_grade]) {
+                    // Swap the elements if they are in the wrong order
+                    let temp = products[j];
+                    products[j] = products[j + 1];
+                    products[j + 1] = temp;
+                }
             }
         }
+
+
+        recommendedData = products
+
+        setSelected();
+
+        console.log(products)
+
+        /*
+        let productTitleRecommended = document.getElementById('product-title-recommended')
+        let productImageRecommend = document.getElementById('product-image-recommended')
+        productImageRecommend.src = data.products[6].image_front_small_url
+        productTitleRecommended.textContent = data.products[0].brands
+         */
+    } else{
+        let productTitleRecommended = document.getElementById('product-title-recommended')
+        productTitleRecommended.textContent = 'Geen alternatieven gevonden!'
     }
-
-
-    recommendedData = products
-
-    setSelected();
-
-    console.log(products)
-
-    /*
-    let productTitleRecommended = document.getElementById('product-title-recommended')
-    let productImageRecommend = document.getElementById('product-image-recommended')
-    productImageRecommend.src = data.products[6].image_front_small_url
-    productTitleRecommended.textContent = data.products[0].brands
-     */
 }
 
 function increase(){
