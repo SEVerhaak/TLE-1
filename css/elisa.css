@@ -52,9 +52,31 @@ input#email, input#password, input#f_name, input#l_name, input#phone, input#emai
     border: white;
     font-size: 1rem;
 
-    background: #fafafa url(../images/placeholder.webp) left no-repeat ;
+
     background-size: 2rem;
     text-indent: 3rem;
+    background-position: 2rem;
+}
+input#email{
+    background: #fafafa url(../images/icons/mail.svg) left no-repeat ;
+    background-position: 0.9rem;
+}
+input#email2{
+    background: #fafafa url(../images/icons/mail.svg) left no-repeat ;
+    background-position: 0.9rem;
+}
+input#password{
+    background: #fafafa url(../images/icons/password.svg) left no-repeat ;
+    background-position: 0.9rem;
+
+}
+input#phone{
+    background: #fafafa url(../images/icons/phone.svg) left no-repeat ;
+    background-position: 0.9rem;
+
+}
+input#f_name, input#l_name{
+    background: #fafafa url(../images/icons/user-form.svg) left no-repeat ;
     background-position: 0.9rem;
 }
 #f_name{
