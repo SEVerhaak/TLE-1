@@ -1,8 +1,19 @@
 <?php
-//require_once "../../api/db.php";
-///** @var mysqli $db */
+include "../../api/isLocal.php";
+
 session_start();
-include "../../api/dblocal.php";
+
+$dbLocation = '';
+
+if (isLocalhost()){
+    $dbLocation = '../../api/dblocal.php';
+} else {
+    $dbLocation = '../../api/db.php';
+}
+
+require_once $dbLocation;
+
+/** @var mysqli $db */
 
 $loggedIn = false;
 
