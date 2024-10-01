@@ -111,9 +111,11 @@ function getImageMimeType($imageData) {
             </ul>
         </div>
     </div>
-    <div>
-        <a href="../friends/"><button class="logout-button color-3" >Friends</button></a>
-        <a href="logout.php"><button class="logout-button color-3" >Logout</button></a>
+    <div style="
+    width: 85vw;
+">
+        <a href="../friends/"><button class="logout-button color-3" style="width: 100%;">Friends</button></a>
+        <a href="logout.php"><button class="logout-button color-red" style="width: 100%;" >Logout</button></a>
     </div>
 </main>
 <?php include('../../includes/footer.php'); ?>

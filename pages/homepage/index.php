@@ -15,8 +15,13 @@ if(isset($_SESSION['users_id'])){
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/elisa.css">
     <link rel="stylesheet" href="../../css/isis.css">
+    <script src="../../js/currentPage.js" defer></script>
+
     <title>Homepage</title>
 </head>
+<header>
+    <div id="meta-data-page" style="display: none;">0</div>
+</header>
 <body>
 <?php include('../../includes/nav.php'); ?>
 <main>
@@ -35,10 +40,10 @@ if(isset($_SESSION['users_id'])){
             </div>
         </a>
 
-        <a href="../history/index.php">
+        <a href="../scanner/upload.php">
             <div class="box color-6">
-                <h2 class="color-white">Zoek geschiedenis</h2>
-                <img src="../../images/icons/search-big.svg">
+                <h2 class="color-white">Upload barcode</h2>
+                <img src="../../images/icons/upload.svg">
             </div>
         </a>
 

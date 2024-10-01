@@ -1,5 +1,5 @@
 let activePage = parseInt(document.getElementById('meta-data-page').textContent);
-let activeIconArray = ['../../images/icons/search-selected.svg','../../images/icons/receipt-selected.svg', '../../images/icons/user-selected.svg' ]
+let activeIconArray = ['../../images/icons/home-selected.svg','../../images/icons/receipt-selected.svg', '../../images/icons/user-selected.svg' ]
 
 console.log(activePage)
 

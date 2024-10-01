@@ -96,6 +96,7 @@ function getFavourite(ean, id) {
     if (userId !== '' && userId !== undefined && userId) {
         console.log('getting favourite!')
         const url = `../../api/favourite.php?ean=` + encodeURIComponent(`${ean}`) + `&id=` + encodeURIComponent(`${id}`)
+        console.log('favourite url: ' + url);
         fetch(url)
             .then(response => {
                 // Controleer of het verzoek succesvol was
@@ -195,8 +196,9 @@ function saveToHistory(ean, name, id) {
 function dataHandler(data) {
     let tag = data.product.categories_hierarchy
     let last = tag[tag.length-1]
+    last = last.replace('en:', '');
 
-    const url = `https://world.openfoodfacts.net/api/v2/search?categories_tags_en=${last}&fields=ecoscore_grade,code,brands,image_front_small_url,image_front_small_url`
+    const url = `https://world.openfoodfacts.net/api/v2/search?categories_tags_en=${last}&fields=ecoscore_grade,code,brands,image_front_small_url`
     fetchRecommended(url)
 
     if (data.product.brands !== undefined && data.product.brands !== '' && data.product.brands !== null) {
@@ -220,7 +222,7 @@ function dataHandler(data) {
     }
 
     if (data.product.categories !== undefined && data.product.categories !== '' && data.product.categories !== null) {
-        document.getElementById('categories').innerHTML = `Categorieën: ${data.product.categories}`;
+        document.getElementById('categories').innerHTML = `Categorie: ${last}`;
     } else {
         console.log('categorien')
         document.getElementById('categories').innerHTML = 'Geen categorieën gevonden'
@@ -333,6 +335,9 @@ function dataHandler(data) {
 
 }
 
+let indexRecommended = 0;
+let indexMax = 3;
+let recommendedData
 
 function fetchRecommended(url) {
     console.log('Fetching data from:', url);
@@ -355,11 +360,94 @@ function fetchRecommended(url) {
         });
 }
 
+
+
 function handleData(data) {
+    let next = document.getElementById('next')
+    let previous = document.getElementById('previous')
+    previous.addEventListener('click', decrease)
+    next.addEventListener('click', increase)
+
     console.log('Ontvangen data:', data);
+    const products = data.products
+    indexMax = products.length - 1
+
+    if (indexMax > 3){
+        indexMax = 3;
+    }
+
+    // Define the grade order where 'a' is best (1) and 'e' is worst (5)
+    const gradeOrder = { a: 1, b: 2, c: 3, d: 4, e: 5 };
+
+    // Bubble sort algorithm to sort the array
+    for (let i = 0; i < products.length - 1; i++) {
+        for (let j = 0; j < products.length - i - 1; j++) {
+            // Compare the ecoscore_grade using the gradeOrder mapping
+            if (gradeOrder[products[j].ecoscore_grade] > gradeOrder[products[j + 1].ecoscore_grade]) {
+                // Swap the elements if they are in the wrong order
+                let temp = products[j];
+                products[j] = products[j + 1];
+                products[j + 1] = temp;
+            }
+        }
+    }
+
+
+    recommendedData = products
+
+    setSelected();
+
+    console.log(products)
+
+    /*
     let productTitleRecommended = document.getElementById('product-title-recommended')
     let productImageRecommend = document.getElementById('product-image-recommended')
     productImageRecommend.src = data.products[6].image_front_small_url
     productTitleRecommended.textContent = data.products[0].brands
+     */
 }
 
+function increase(){
+    if (indexRecommended === indexMax){
+        indexRecommended = 0
+    } else{
+        indexRecommended++
+    }
+    setSelected()
+
+}
+
+function decrease(){
+    if (indexRecommended === 0){
+        indexRecommended = indexMax
+    } else{
+        indexRecommended--
+    }
+    setSelected()
+}
+
+function setSelected(){
+    let productTitleRecommended = document.getElementById('product-title-recommended')
+    let productImageRecommend = document.getElementById('product-image-recommended')
+    let ecoScore  = document.getElementById('ecoscore-recommended')
+    let ecoScoreString = recommendedData[indexRecommended].ecoscore_grade
+    let code = recommendedData[indexRecommended].code;
+
+    console.log(recommendedData[indexRecommended].ecoscore_grade)
+    //let recommendedDiv = document.getElementsByClassName('recommended-container')[0]
+
+    productImageRecommend.addEventListener("click", function(){
+        window.location.href = `http://localhost/TLE-1/pages/product-info/index.php?ean=${recommendedData[indexRecommended].code}`;
+    });
+
+    ecoScore.src = `../../images/eco-score/ecoscore-${ecoScoreString}.svg`
+    productImageRecommend.src = recommendedData[indexRecommended].image_front_small_url;
+
+    // Set a placeholder if the image fails to load
+    productImageRecommend.onerror = function() {
+        this.src = '../../images/placeholder.webp';  // Placeholder image path
+    };
+
+    productTitleRecommended.textContent = recommendedData[indexRecommended].brands
+
+}
