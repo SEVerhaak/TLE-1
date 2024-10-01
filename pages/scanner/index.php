@@ -15,7 +15,6 @@ if (isset($_GET['error'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdn.rawgit.com/serratus/quaggaJS/0420d5e0/dist/quagga.min.js"></script>
-    <script src="../../js/currentPage.js" defer></script>
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/elisa.css">
     <link rel="stylesheet" href="../../css/isis.css">
@@ -32,7 +31,6 @@ if (isset($_GET['error'])) {
 </head>
 <header>
     <div id="meta-data-error" style="display: none;"><?php echo $error ?></div>
-    <div id="meta-data-page" style="display: none;">0</div>
 </header>
 <body>
 <?php include('../../includes/nav.php'); ?>

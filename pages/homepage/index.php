@@ -15,8 +15,13 @@ if(isset($_SESSION['users_id'])){
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/elisa.css">
     <link rel="stylesheet" href="../../css/isis.css">
+    <script src="../../js/currentPage.js" defer></script>
+
     <title>Homepage</title>
 </head>
+<header>
+    <div id="meta-data-page" style="display: none;">0</div>
+</header>
 <body>
 <?php include('../../includes/nav.php'); ?>
 <main>
