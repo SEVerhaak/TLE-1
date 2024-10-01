@@ -162,8 +162,8 @@ if (isset($_GET['ean'])) {
             padding-bottom: 2rem;
             min-width: 90vw;
             max-width: 90vw;
-            min-height: 35vh;
-            max-height: 35vh;
+            min-height: 37vh;
+            max-height: 37vh;
         }
 
         .text-buttons{

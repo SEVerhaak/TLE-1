@@ -67,7 +67,7 @@ if ($friendsResult && mysqli_num_rows($friendsResult) > 0) {
 <?php include('../../includes/nav.php'); ?>
 <main>
     <h1>Vrienden</h1>
-    <a href='../../pages/friends/add.php'>Voeg vrienden toe</a>
+    <a class="custom-file-upload color-3" href='../../pages/friends/add.php'>Voeg vrienden toe</a>
 
     <h2>Jouw Vrienden:</h2>
     <?php if (count($friends) > 0): ?>

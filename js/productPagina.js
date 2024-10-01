@@ -437,7 +437,7 @@ function setSelected(){
     //let recommendedDiv = document.getElementsByClassName('recommended-container')[0]
 
     productImageRecommend.addEventListener("click", function(){
-        window.location.href = `http://localhost/TLE-1/pages/product-info/index.php?ean=${recommendedData[indexRecommended].code}`;
+        window.location.href = `../../pages/product-info/index.php?ean=${recommendedData[indexRecommended].code}`;
     });
 
     ecoScore.src = `../../images/eco-score/ecoscore-${ecoScoreString}.svg`
