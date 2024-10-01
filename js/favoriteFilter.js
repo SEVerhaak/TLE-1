@@ -25,7 +25,7 @@ searchBar.addEventListener('input', (e) => {
     for (let i = 0; i < results.length; i++) {
         const productName = results[i].querySelector('h3').textContent.toLowerCase();
         if (productName.includes(searchTerm)) {
-            results[i].style.display = 'block';
+            results[i].style.display = 'flex';
         } else {
             results[i].style.display = 'none';
         }
