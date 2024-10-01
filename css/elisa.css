@@ -43,7 +43,7 @@ footer{
     color: #d0d4d3;
 }
 
-input#email, input#password, input#f_name, input#l_name, input#phone, input#email2{
+input#email, input#password, input#f_name, input#l_name, input#phone, input#email2, input#friend_id{
     width: 80vw;
     height: 10vw;
     margin: 0.5rem;
@@ -73,6 +73,12 @@ input#password{
 input#phone{
     background: #fafafa url(../images/icons/phone.svg) left no-repeat ;
     background-position: 0.9rem;
+
+}
+input#friend_id{
+    background: #fafafa url(../images/icons/search.svg) left no-repeat ;
+    background-position: 0.9rem;
+    margin-top: 8vw;
 
 }
 input#f_name, input#l_name{
@@ -107,6 +113,17 @@ input#f_name, input#l_name{
     border: #59733F;
     border-radius: 1.5rem;
     font-weight: bold;
+}
+.search_button{
+
+    color: white;
+    font-size: 1.5rem;
+    height: 15vw;
+    width: 85vw;
+    border: #59733F;
+    border-radius: 1.5rem;
+    font-weight: bold;
+    margin-top:110vw;
 }
 
 .upload-button{

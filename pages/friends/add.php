@@ -85,8 +85,8 @@ if (isset($_POST['search'])) {
     <?php endif; ?>
 
     <form method="post">
-        <input type="text" name="friend_id" placeholder="Vrienden ID..." required>
-        <button type="submit" name="search">Zoeken en toevoegen</button>
+        <input type="text" id = "friend_id" name="friend_id" placeholder="Vrienden ID..." required>
+        <button type="submit" class = "search_button color-3" name="search">Zoeken en toevoegen</button>
     </form>
 </main>
 <?php include('../../includes/footer.php'); ?>
