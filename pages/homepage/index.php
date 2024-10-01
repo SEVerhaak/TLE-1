@@ -51,6 +51,7 @@ if(isset($_SESSION['users_id'])){
             <h2 class="color-1">Hoe te gebruiken?</h2>
             <p class="color-1">
                 Met de EcoJourney app kun je eenvoudig een product scannen om direct de eco-score te zien, waarmee je de milieu-impact van het product kunt beoordelen. Daarnaast kun je je zoekgeschiedenis bekijken om eerdere scans en scores terug te vinden.            </p>
+           <br></br> <p class="color-1"> Je kan punten verdienen door het scannen van producten! Voor elk product dat je scant, verdien je 10 punten! Ga met je vrienden de strijd aan en kijkt wie het meeste punten kan verdienen! </p>
         </div>
 
     </section>

@@ -59,6 +59,8 @@ if (isset($_GET['error'])) {
         <h2 class="color-1">Hoe te gebruiken?</h2>
         <p class="color-1">
             Op de scanpagina van EcoJourney kun je producten scannen door simpelweg de barcode te scannen of een foto van het product te uploaden. De app analyseert de gegevens en geeft direct de eco-score, zodat je snel kunt zien hoe milieuvriendelijk het product is.        </p>
+        <br></br> <p class="color-1"> Je kan punten verdienen door het scannen van producten! Voor elk product dat je scant, verdien je 10 punten! Ga met je vrienden de strijd aan en kijkt wie het meeste punten kan verdienen! </p>
+
     </div>
     <script>
     let keypressArray = [];
