@@ -17,7 +17,7 @@ require_once $dbLocation;
 if(isset($_SESSION['users_id'])){
     $user_id = $_SESSION['users_id'];
 }else{
-    header('Location: ../account/login.php');
+    header('Location: ../account/login.php?error=1');
 }
 $query = "SELECT barcode, product_name, favourite FROM `user_history` WHERE user_id = '$user_id';";
 $result = mysqli_query($db, $query)

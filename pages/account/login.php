@@ -15,6 +15,12 @@ require_once $dbLocation;
 
 /** @var mysqli $db */
 
+$error = '';
+
+if (isset($_GET['error'])) {
+    $error = 'Je moet ingelogd hiervoor zijn!';
+}
+
 // Als het inlogformulier is ingediend
 if (isset($_POST['submit'])) {
 
@@ -101,8 +107,9 @@ if (isset($_POST['submit'])) {
                 </div>
             </div>
             <div id="link-account">
-                <a id="link-form" href="register.php" class = "text-color-4">Nog geen account? Maak er een aan.</a>
+                <a id="link-form" href="register.php" class = "text-color-4">Nog geen account? Maak er een aan!</a>
             </div>
+            <p style="color: red;"><?= $error ?></p>
                 <div>
                     <button class="login-button color-3" type="submit" name="submit">Login</button>
                 </div>
