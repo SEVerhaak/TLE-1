@@ -18,7 +18,7 @@ if (isset($_GET['error'])) {
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/elisa.css">
     <link rel="stylesheet" href="../../css/isis.css">
-
+    <title>EcoJourney Scanner</title>
     <style>
         /* In order to place the tracking correctly */
         canvas.drawing, canvas.drawingBuffer {

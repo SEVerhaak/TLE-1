@@ -67,7 +67,7 @@ if (isset($_POST['submit'])) {
         <link rel = "stylesheet" href="../../css/style.css">
         <link rel="stylesheet" href="../../css/elisa.css">
         <script src="../../js/currentPage.js" defer></script>
-        <title>Login</title>
+        <title>EcoJourney Login</title>
     </head>
     <header>
         <div id="meta-data-page" style="display: none;">2</div>

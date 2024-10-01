@@ -17,7 +17,7 @@ if(isset($_SESSION['users_id'])){
     <link rel="stylesheet" href="../../css/isis.css">
     <script src="../../js/currentPage.js" defer></script>
 
-    <title>Homepage</title>
+    <title>EcoJourney</title>
 </head>
 <header>
     <div id="meta-data-page" style="display: none;">0</div>

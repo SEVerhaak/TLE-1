@@ -73,7 +73,7 @@ function getImageMimeType($imageData) {
     <link rel="stylesheet" href="../../css/bas.css">
     <script src="../../js/currentPage.js" defer></script>
     <script src="../../js/uploadFoto.js" defer></script>
-    <title>Account Preview</title>
+    <title>EcoJourney Account</title>
 </head>
 <header>
     <div id="meta-data-page" style="display: none;">2</div>

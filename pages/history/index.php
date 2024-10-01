@@ -47,7 +47,7 @@ if (mysqli_num_rows($result) > 0) {
     <script src="../../js/favoriteFilter.js" defer></script>
     <script src="../../js/clickableHistory.js" defer></script>
 
-    <title>Homepage</title>
+    <title>Geschiedenis</title>
 </head>
 <style>
     main{
